@@ -1,0 +1,39 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      - name: Scully Publish
+        # You may pin to the exact commit or the version.
+        # uses: cmgriffing/scully-gh-pages-action@089c8e948312fa3ad94d1ebc9d763df442c839a8
+        uses: cmgriffing/scully-gh-pages-action@v9
+        with:
+          # A personal access token needed to push your site after it has been built.
+          access-token: ${{ secrets.ACESS_TOKEN }}
+          # The branch expected by GitHub to have the static files needed for your site.
+          deploy-branch: pro # optional, default is master
+          # Additional arguments that get passed to `npm run build`.
+          #build-args: # optional, default is 
+          # Additional arguments that get passed to `npm run scully`.
+          #scully-args: # optional, default is 
