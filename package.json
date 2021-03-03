@@ -21,9 +21,12 @@
         "@angular/platform-browser": "~11.2.0",
         "@angular/platform-browser-dynamic": "~11.2.0",
         "@angular/router": "~11.2.0",
+        "@popperjs/core": "^2.9.0",
         "@scullyio/init": "^1.1.1",
         "@scullyio/ng-lib": "^1.0.0",
         "@scullyio/scully": "^1.0.0",
+        "bootstrap": "^5.0.0-beta2",
+        "jquery": "^3.6.0",
         "rxjs": "~6.6.0",
         "tslib": "^2.0.0",
         "zone.js": "~0.11.3"
