@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Project } from 'src/app/models/project';
+import { FirebasedbService } from 'src/app/services/firebasedb.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  private _projects: Project[] = [];
 
-  ngOnInit(): void {
+  constructor(private firedbService: FirebasedbService) {
+    this.firedbService.getProjects().subscribe(
+      (originalProjects) => {
+        this._projects = originalProjects;
+      }
+    )
+  }
+
+  ngOnInit(): void { }
+
+  get projects(): Project[] {
+    return this._projects;
   }
 
 }

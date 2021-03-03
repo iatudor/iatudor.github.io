@@ -1,28 +1,28 @@
-<header class="sticky-top">
-    <div class="collapse i-a" id="navbarHeader">
-        <div class="container i-a">
-            <div class="row i-a">
-                <div class="text-center p-5 i-a">
-                    <a [routerLink]="['/home']" class="btn btn-outline-light mx-3">
-                        <i class="far fa-user"></i> Iniciar sessió
+<header [ngClass]="['sticky-top']">
+    <div [ngClass]="['collapse i-a']" id="navbarHeader">
+        <div [ngClass]="['container i-a']">
+            <div [ngClass]="['row i-a']">
+                <div [ngClass]="['text-center p-5 i-a']">
+                    <a [routerLink]="['/home']" [ngClass]="['btn btn-outline-light mx-3']">
+                        <i [ngClass]="['far fa-user']"></i> Iniciar sessió
                     </a>
                 </div>
             </div>
         </div>
     </div>
-    <nav class="navbar navbar-dark shadow-sm i-a">
-        <div class="container-fluid i-a">
-            <a [routerLink]="['/home']" class="d-flex justify-content-start align-items-center text-light px-4 i-a">
-                <i class="fas fa-briefcase h2 m-0"></i>
-                <!-- <h3 class="fw-normal px-1 m-0 h-font-header"> Ionut Atudoroaie</h3> -->
+    <nav [ngClass]="['navbar navbar-dark shadow-sm i-a']">
+        <div [ngClass]="['container-fluid i-a']">
+            <a [routerLink]="['/home']" [ngClass]="['d-flex justify-content-start align-items-center text-light px-4 i-a']">
+                <i [ngClass]="['fas fa-briefcase m-0 i-font-header']"></i>
+                <!-- <h3 [ngClass]="['fw-normal px-1 m-0 h-font-header']"> Ionut Atudoroaie</h3> -->
             </a>
-            <div class="d-none d-lg-block">
-                <a [routerLink]="['/home']" class="btn btn-outline-light mx-3">
-                    <i class="far fa-user"></i> Iniciar sessió
+            <div [ngClass]="['d-none d-lg-block']">
+                <a [routerLink]="['/home']" [ngClass]="['btn btn-outline-light mx-3']">
+                    <i [ngClass]="['far fa-user']"></i> Iniciar sessió
                 </a>
             </div>
-            <button class="navbar-toggler d-lg-none px-3 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+            <button [ngClass]="['navbar-toggler d-lg-none px-3 border-0']" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                    <span [ngClass]="['navbar-toggler-icon']"></span>
             </button>
         </div>
     </nav>

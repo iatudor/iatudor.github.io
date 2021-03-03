@@ -1,8 +1,20 @@
-<p>
-    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laudantium iusto, consequuntur quam voluptate deleniti debitis aut saepe aspernatur unde inventore fugit earum minus molestias nesciunt nulla odio sunt quod optio? Odit neque fuga voluptates similique
-    eius cum doloribus voluptatem fugit iure! Dicta blanditiis doloremque in corrupti! Numquam consectetur atque nobis eos earum quae tempora commodi dicta. Quam, blanditiis? Dicta, praesentium. Est, distinctio iusto obcaecati at quod, fuga ipsam nam
-    facilis vel amet ullam sequi suscipit cum eum, nemo maxime velit. Recusandae, autem? Consectetur libero id vitae quaerat asperiores exercitationem nulla. Incidunt laboriosam eligendi debitis illo libero placeat laudantium, distinctio animi, quis minus
-    mollitia voluptate? Nobis qui eos alias nisi animi odit quibusdam voluptatum tenetur quod dolorem, placeat veritatis officia distinctio! Doloremque ipsam odit expedita voluptatem praesentium repellendus cum blanditiis culpa eaque nisi, dignissimos
-    illo sed nobis animi quibusdam, dolore minima doloribus possimus modi eos incidunt. Officia blanditiis exercitationem magnam quo. Distinctio odit fugit fugiat! Alias enim minus recusandae eligendi, aperiam accusantium, praesentium quasi necessitatibus
-    repellendus maxime quo saepe, quod quas. Autem, nisi labore corrupti aliquam dolorem quam ea cupiditate nemo.
-</p>
+<div [ngClass]="['container-fluid']">
+    <h1 class="d-flex justify-content-center m-5 fa-4x">Ionut Atudoroaie <span class="title-span d-none d-sm-block">&nbsp;|&nbsp;</span> Portfolio</h1>
+    <div *ngFor="let pro of projects; let i = index" [ngClass]="['row mt-5 d-flex justify-content-center align-items-center']">
+        <div [ngClass]="['col-12 col-md-6 col-lg-3 d-flex justify-content-center justify-content-md-center px-5']">
+            <img [src]="pro.image" alt="Representació del projecte {{i+1}}: {{pro.title}}" [ngClass]="['shadow p-3 bg-body rounded pro-card']" />
+        </div>
+        <div [ngClass]="['col-12 col-md-6 col-lg-3']">
+            <h1 [ngClass]="['d-flex justify-content-center justify-content-md-start m-1 mb-3 fa-3x']"><span class="title-span d-none d-sm-block fw-600">|&nbsp;</span>{{pro.title}}</h1>
+            <div [ngClass]="['mx-2']">
+                {{pro.desc}}
+            </div>
+            <div *ngFor="let tag of pro.tags; let i = index" class="d-inline-flex mx-2">
+                <a href="">{{tag}}</a>&nbsp;
+            </div>
+            <div [ngClass]="['d-flex justify-content-center justify-content-md-end m-3']">
+                <button type="button" class="btn btn-outline-primary d-block "><i class="fas fa-external-link-alt"></i> Més informació</button>
+            </div>
+        </div>
+    </div>
+</div>

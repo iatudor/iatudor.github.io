@@ -1,0 +1,15 @@
+if idx < a la original o si es > que la original en Details component
+
+
+
+INNER HTML DE DETALLS PROJECTE:
+
+<!-- <div [ngClass]="['']" [innerHTML]="pro.html">
+            </div> -->
+
+
+EN VEZ DE UNA IMAGEN --> UN VIDEO DE CADA PROYECTO
+
+
+YT:
+https://youtu.be/QKZDFBupVUA?list=PLCOqCeQCPXXVB6hrWIAZtZRL6VZ5OIa1l&t=1803
