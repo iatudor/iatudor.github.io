@@ -1,38 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import url('assets/fontawesome-5.15.2/css/all.min.css');
+@import url("assets/fontawesome-5.15.2/css/all.min.css");
 *,
 *:before,
 *:after {
-    box-sizing: inherit;
+  box-sizing: inherit;
 }
 
 html {
-    height: 100%;
-    box-sizing: border-box;
+  height: 100%;
+  box-sizing: border-box;
 }
 
 body {
-    position: relative;
-    margin: 0;
-    padding: 0;
-    padding-bottom: 11rem;
-    min-height: 100%;
-    font-family: "Helvetica Neue", Arial, sans-serif;
-    /* background-color: #2d3b48!important;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  padding-bottom: 11rem;
+  min-height: 100%;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  /* background-color: #2d3b48!important;
     background-color: black!important;
     background-color: #f5f5f5!important; */
 }
-
 
 /* .i-a {
     background-color: #2d3b48!important;
     background-color: #12385c!important;
 } */
 
-
 /* Header */
-
 
 /* header {
     display: block;
@@ -87,62 +84,59 @@ body {
   } */
 
 .i-font-header {
-    font-size: 2rem;
+  font-size: 2rem;
 }
 
 .h-font-header {
-    font-family: nexa!important;
+  font-family: nexa !important;
 }
 
 .banner {
-    font-family: nexa;
-    text-transform: uppercase;
-    color: #295883!important;
+  font-family: nexa;
+  text-transform: uppercase;
+  color: #295883 !important;
 }
 
 a {
-    text-decoration: none!important;
+  text-decoration: none !important;
 }
 
 .i-a {
-    background-color: #2d3b48!important;
-    background-color: #12385c!important;
+  background-color: #2d3b48 !important;
+  background-color: #12385c !important;
 }
-
 
 /* Home */
 
 .title-span {
-    color: #348de1;
-    font-weight: lighter;
+  color: #348de1;
+  font-weight: lighter;
 }
 
 .fw-600 {
-    font-weight: 600;
+  font-weight: 600;
 }
-
 
 /* Project Card */
 
 .pro-card {
-    width: 300px!important;
+  width: 300px !important;
+  height: 300px !important;
 }
-
 
 /* .title-span-2 {
     color: #348de1;
     font-weight: lighter;
 } */
 
-
 /* Footer */
 
 .footer {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    padding: 1rem;
-    color: #ffffff;
-    background-color: #2d3b48;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  color: #ffffff;
+  background-color: #2d3b48;
 }
