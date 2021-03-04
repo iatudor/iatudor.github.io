@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
-import { AngularFirestore } from '@angular/fire/firestore'
+import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
 import { Project } from '../models/project';
@@ -14,6 +14,6 @@ export class FirebasedbService {
 
   //* Retorna documents de la BBDD 'projects'
   getProjects(): Observable<Project[]> {
-    return this.firestore.collection<Project>('projects').valueChanges();    
+    return this.firestore.collection<Project>('projects').valueChanges();
   }
 }
