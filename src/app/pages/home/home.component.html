@@ -1,21 +1,32 @@
-<div [ngClass]="['container-fluid']">
-    <h1 class="d-flex justify-content-center m-5 fa-4x">Ionut Atudoroaie <span class="title-span d-none d-sm-block">&nbsp;|&nbsp;</span> Portfolio</h1>
-    <div *ngFor="let pro of projects; let i = index" [ngClass]="getOrder('row mt-5 d-flex justify-content-center align-items-center', i)">
-        <div [ngClass]="['col-12 col-md-6 col-lg-3 d-flex justify-content-center justify-content-md-center px-5 order-md-2']">
+<div class="banner-image h-100">
+    <div class="banner-text">
+        <h1 [ngClass]="['title d-flex justify-content-center fa-4x']">Ionut Atudoroaie
+            <span [ngClass]="['title-span d-none d-sm-block']">&nbsp;|&nbsp;</span> <span [ngClass]="['title-span d-none d-sm-block']">Portfolio</span>
+        </h1>
+    </div>
+</div>
+<div [ngClass]="['container-fluid h-100']">
+    <!-- <h1 [ngClass]="['title d-flex justify-content-center my-5 fa-4x']">Ionut Atudoroaie
+        <span [ngClass]="['title-span d-none d-sm-block']">&nbsp;|&nbsp;</span> <span [ngClass]="['title-span d-none d-sm-block']">Portfolio</span>
+    </h1> -->
+    <div *ngFor="let pro of projects; let i = index" [ngClass]="['row mt-5 d-flex justify-content-center align-items-center']">
+        <div [ngClass]="getOrder('col-12 col-md-6 col-lg-3 d-flex justify-content-center justify-content-md-center px-5', i)">
             <img [src]="pro.image" alt="Representació del projecte {{i+1}}: {{pro.title}}" [ngClass]="['shadow p-3 rounded pro-card']" />
         </div>
-        <div [ngClass]="getOrder('col-12 col-md-6 col-lg-3 order-md-1', i+1)">
+        <div [ngClass]="getOrder('col-12 col-md-6 col-lg-3', i+1)">
             <h1 [ngClass]="['d-flex justify-content-center justify-content-md-start m-1 mb-3 fa-3x']">
-                <span class="title-span d-none d-sm-block fw-600">|&nbsp;</span>{{pro.title}}
+                <span [ngClass]="['title-span d-none d-sm-block fw-600']">|&nbsp;</span>{{pro.title}}
             </h1>
             <div [ngClass]="['d-flex justify-content-center justify-content-md-start mx-2']">
                 {{pro.desc}}
             </div>
-            <div class="d-flex justify-content-center justify-content-md-start aling-items-center mx-2 my-3">
-                <a *ngFor="let tag of pro.tags; let i = index" href="">{{tag}}</a>&nbsp;
+            <div [ngClass]="['d-flex justify-content-center justify-content-md-start aling-items-center mx-2 my-3']">
+                <a *ngFor="let tag of pro.tags; let i = index" href="{{tag}}" [ngClass]="['mx-2']">{{tag}}</a>
             </div>
             <div [ngClass]="['d-flex justify-content-center justify-content-md-end m-3']">
-                <button type="button" class="btn btn-outline-primary d-block "><i class="fas fa-external-link-alt"></i> Més informació</button>
+                <button type="button" (click)="proDetails(i)" [ngClass]="['btn btn-outline-primary d-block']">
+                  <i [ngClass]="['fas fa-external-link-alt']"></i> Més informació
+                </button>
             </div>
         </div>
     </div>

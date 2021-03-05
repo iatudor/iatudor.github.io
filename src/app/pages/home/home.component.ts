@@ -26,4 +26,8 @@ export class HomeComponent implements OnInit {
     if (2 % n == 0) return classesToAdd + ' order-md-2';
     else return classesToAdd + ' order-md-1';
   }
+
+  proDetails(i: number) {
+    // this.router.navigate(['forecast', latt_long, 'h', latt_long]);
+  }
 }
