@@ -12,4 +12,30 @@ EN VEZ DE UNA IMAGEN --> UN VIDEO DE CADA PROYECTO
 
 
 YT:
-https://youtu.be/QKZDFBupVUA?list=PLCOqCeQCPXXVB6hrWIAZtZRL6VZ5OIa1l&t=1803
+https://youtu.be/QKZDFBupVUA?list=PLCOqCeQCPXXVB6hrWIAZtZRL6VZ5OIa1l&t=1804
+
+
+
+this.editorConfig = {
+      removePlugins: ['MathType'],
+      toolbar: {
+          items: [
+            'heading', 'horizontalLine', '|',
+            'bold', 'italic', 'strikethrough', 'underline', 'subscript', 'superscript', 'link', 'bulletedList', 'numberedList', 'todoList', '|',
+            'fontBackgroundColor', 'fontColor', 'fontsize', 'fontfamily', 'highlight', '|',
+            'alignment', 'indent', 'outdent', '|',
+            'code', 'codeBlock', 'htmlEmbed', '|',
+            //'-', // break point
+            'ckfinder', 'imageUpload', 'imageInsert', 'blockQuote', 'insertTable', 'mediaEmbed', 'undo', 'redo', '|',
+            'MathType', 'ChemType', 'specialCharacters'       
+          ],
+          shouldNotGroupWhenFull: true
+        },
+        image: {
+          toolbar: [
+              'imageStyle:full', 'imageStyle:side', '|',
+              'imageTextAlternative'
+          ],
+          styles: ['full', 'side']
+      }
+    }

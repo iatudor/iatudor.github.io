@@ -1,0 +1,26 @@
+<div [ngClass]="['container-fluid min-vh-100 mb-5']">
+    <h1 [ngClass]="['title d-flex justify-content-center my-5 fa-4x']">Ionut Atudoroaie
+        <span [ngClass]="['title-span d-none d-sm-block']">&nbsp;|&nbsp;</span> <span [ngClass]="['title-span d-none d-sm-block']">Projects</span>
+    </h1>
+    <div *ngFor="let pro of projects; let i = index" [ngClass]="['row mt-5 d-flex justify-content-center align-items-center']">
+        <div [ngClass]="getOrder('col-12 col-md-6 col-lg-3 d-flex justify-content-center justify-content-md-center px-5', i+1)">
+            <img [src]="pro.image" alt="Representació del projecte {{i+1}}: {{pro.title}}" [ngClass]="['shadow p-3 rounded pro-card']" />
+        </div>
+        <div [ngClass]="getOrder('col-12 col-md-6 col-lg-3', i+2)">
+            <h1 [ngClass]="['d-flex justify-content-center justify-content-md-start m-1 mb-3 fa-3x']">
+                <span [ngClass]="['title-span d-none d-sm-block fw-600']">|&nbsp;</span>{{pro.title}}
+            </h1>
+            <div [ngClass]="['d-flex justify-content-center justify-content-md-start mx-2']">
+                {{pro.desc}}
+            </div>
+            <div [ngClass]="['d-flex justify-content-center justify-content-md-start aling-items-center mx-2 my-3']">
+                <a *ngFor="let tag of pro.tags; let i = index" href="{{tag}}" [ngClass]="['mx-2']">{{tag}}</a>
+            </div>
+            <div [ngClass]="['d-flex justify-content-center justify-content-md-end m-3']">
+                <button type="button" (click)="viewProject(i)" [ngClass]="['btn btn-outline-primary d-block']">
+                  <i [ngClass]="['fas fa-external-link-alt']"></i> Més info.
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

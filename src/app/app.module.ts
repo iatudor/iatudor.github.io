@@ -11,13 +11,17 @@ import { HomeComponent } from './pages/home/home.component';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { FormsModule } from '@angular/forms';
+import { ViewProjectComponent } from './pages/view-project/view-project.component';
+import { ProjectsComponent } from './pages/projects/projects.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    ViewProjectComponent,
+    ProjectsComponent
   ],
   imports: [
     BrowserModule,

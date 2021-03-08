@@ -12,7 +12,7 @@ export class FirebasedbService {
 
   constructor(private firestore: AngularFirestore) {}
 
-  //* Retorna documents de la BBDD 'projects'
+  //* Retorna documents de la DB 'projects'
   getProjects(): Observable<Project[]> {
     return this.firestore.collection<Project>('projects').valueChanges();
   }

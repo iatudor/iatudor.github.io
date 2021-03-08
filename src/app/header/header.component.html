@@ -3,25 +3,48 @@
         <div [ngClass]="['container i-a']">
             <div [ngClass]="['row i-a']">
                 <div [ngClass]="['text-center p-5 i-a']">
-                    <a [routerLink]="['/home']" [ngClass]="['btn btn-outline-light mx-3']">
-                        <i [ngClass]="['far fa-user']"></i> Iniciar sessió
-                    </a>
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item my-3">
+                            <a [routerLink]="['/cv']" [ngClass]="['btn btn-outline-light border border-bottom-1 mx-3']">
+                                <i [ngClass]="['fas fa-user-graduate']"></i> CV
+                            </a>
+                        </li>
+                        <li class="nav-item my-3">
+                            <a [routerLink]="['/projects']" [ngClass]="['btn btn-outline-light border border-bottom-1 mx-3']">
+                                <i [ngClass]="['fas fa-briefcase']"></i> Projectes
+                            </a>
+                        </li>
+                        <hr class="text-light"/>
+                        <li class="nav-item my-3">
+                            <a [routerLink]="['/home']" [ngClass]="['btn btn-primary mx-3']">
+                                <i [ngClass]="['far fa-user']"></i> Iniciar sessió
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
-    <nav [ngClass]="['navbar navbar-dark shadow-sm i-a']">
-        <div [ngClass]="['container-fluid i-a']">
-            <a [routerLink]="['/home']" [ngClass]="['d-flex justify-content-start align-items-center text-light px-4 i-a']">
+    <nav [ngClass]="getClassesIfRouteIsHome('navbar navbar-dark')">
+        <div [ngClass]="getClassesIfRouteIsHome('container-fluid')">
+            <a [routerLink]="['/home']" [ngClass]="getClassesIfRouteIsHome('d-flex justify-content-start align-items-center text-light px-4')">
                 <i [ngClass]="['fas fa-briefcase m-0 i-font-header']"></i>
                 <!-- <h3 [ngClass]="['fw-normal px-1 m-0 h-font-header']"> Ionut Atudoroaie</h3> -->
             </a>
             <div [ngClass]="['d-none d-lg-block']">
-                <a [routerLink]="['/home']" [ngClass]="['btn btn-outline-light mx-3']">
-                    <i [ngClass]="['far fa-user']"></i> Iniciar sessió
+                <a [routerLink]="['/cv']" [ngClass]="['btn btn-outline-light mx-1 h-border-r-btn border-0']">
+                    <i [ngClass]="['fas fa-user-graduate']"></i> CV
+                </a>
+                <span [ngClass]="['text-muted']">|</span>
+                <a [routerLink]="['/projects']" [ngClass]="['btn btn-outline-light mx-1 h-border-r-btn border-0']">
+                    <i [ngClass]="['fas fa-briefcase']"></i> Projectes
+                </a>
+                <span [ngClass]="['text-muted']">|</span>
+                <a [routerLink]="['/home']" [ngClass]="['btn btn-outline-light mx-1 me-3 h-border-r-btn border-0']">
+                    <i [ngClass]="['fas fa-sign-in-alt']"></i> Iniciar sessió
                 </a>
             </div>
-            <button [ngClass]="['navbar-toggler d-lg-none px-3 border-0']" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+            <button [ngClass]="['navbar-toggler nv-toggler-height d-lg-none px-3 border-0']" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
                     <span [ngClass]="['navbar-toggler-icon']"></span>
             </button>
         </div>
