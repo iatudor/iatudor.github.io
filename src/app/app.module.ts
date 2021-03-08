@@ -13,6 +13,7 @@ import { environment } from 'src/environments/environment';
 import { FormsModule } from '@angular/forms';
 import { ViewProjectComponent } from './pages/view-project/view-project.component';
 import { ProjectsComponent } from './pages/projects/projects.component';
+import { CvComponent } from './pages/cv/cv.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ProjectsComponent } from './pages/projects/projects.component';
     FooterComponent,
     HomeComponent,
     ViewProjectComponent,
-    ProjectsComponent
+    ProjectsComponent,
+    CvComponent
   ],
   imports: [
     BrowserModule,

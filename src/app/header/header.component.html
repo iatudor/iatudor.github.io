@@ -3,19 +3,19 @@
         <div [ngClass]="['container i-a']">
             <div [ngClass]="['row i-a']">
                 <div [ngClass]="['text-center p-5 i-a']">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item my-3">
+                    <ul [ngClass]="['navbar-nav mr-auto']">
+                        <li [ngClass]="['nav-item my-3']">
                             <a [routerLink]="['/cv']" [ngClass]="['btn btn-outline-light border border-bottom-1 mx-3']">
                                 <i [ngClass]="['fas fa-user-graduate']"></i> CV
                             </a>
                         </li>
-                        <li class="nav-item my-3">
+                        <li [ngClass]="['nav-item my-3']">
                             <a [routerLink]="['/projects']" [ngClass]="['btn btn-outline-light border border-bottom-1 mx-3']">
                                 <i [ngClass]="['fas fa-briefcase']"></i> Projectes
                             </a>
                         </li>
-                        <hr class="text-light"/>
-                        <li class="nav-item my-3">
+                        <hr [ngClass]="['text-light']"/>
+                        <li [ngClass]="['nav-item my-3']">
                             <a [routerLink]="['/home']" [ngClass]="['btn btn-primary mx-3']">
                                 <i [ngClass]="['far fa-user']"></i> Iniciar sessió
                             </a>

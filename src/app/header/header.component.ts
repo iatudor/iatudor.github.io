@@ -12,8 +12,9 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  // Header transparent si la ruta es /home
+  // Header transparent si la ruta és /home
   getClassesIfRouteIsHome(classesToAdd: string): string {
+      
     let route = 'home';
     let currRoute = this.router.url;
     let curr = currRoute.split('/', 2);

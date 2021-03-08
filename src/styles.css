@@ -177,6 +177,138 @@ a {
     box-shadow: 5px 2px 12px #8d8d8d!important;
 }
 
+/* CV */
+
+#bg_cv_img {
+    content:url("assets/pdf/cv-pdf-background.jpg");
+}
+
+span.cls_003 {
+    font-family: "Liberation Sans Narrow Bold", serif;
+    font-size: 14.1px;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    font-style: normal;
+    text-decoration: none
+}
+
+div.cls_003 {
+    font-family: "Liberation Sans Narrow Bold", serif;
+    font-size: 14.1px;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    font-style: normal;
+    text-decoration: none
+}
+
+span.cls_004 {
+    font-family: "Liberation Sans Narrow Bold", serif;
+    font-size: 24.1px;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    font-style: normal;
+    text-decoration: none
+}
+
+div.cls_004 {
+    font-family: "Liberation Sans Narrow Bold", serif;
+    font-size: 24.1px;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    font-style: normal;
+    text-decoration: none
+}
+
+span.cls_002 {
+    font-family: "Liberation Sans Narrow", serif;
+    font-size: 12.1px;
+    color: rgb(0, 0, 0);
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none
+}
+
+div.cls_002 {
+    font-family: "Liberation Sans Narrow", serif;
+    font-size: 12.1px;
+    color: rgb(0, 0, 0);
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none
+}
+
+span.cls_005 {
+    font-family: "Liberation Sans Narrow", serif;
+    font-size: 12.1px;
+    color: rgb(41, 95, 153);
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none
+}
+
+div.cls_005 {
+    font-family: "Liberation Sans Narrow", serif;
+    font-size: 12.1px;
+    color: rgb(41, 95, 153);
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none
+}
+
+span.cls_006 {
+    font-family: "Liberation Sans Narrow", serif;
+    font-size: 12.1px;
+    color: rgb(0, 168, 51);
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none
+}
+
+div.cls_006 {
+    font-family: "Liberation Sans Narrow", serif;
+    font-size: 12.1px;
+    color: rgb(0, 168, 51);
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none
+}
+
+span.cls_007 {
+    font-family: "Liberation Sans Narrow Bold", serif;
+    font-size: 12.1px;
+    color: rgb(51, 100, 163);
+    font-weight: bold;
+    font-style: normal;
+    text-decoration: none
+}
+
+div.cls_007 {
+    font-family: "Liberation Sans Narrow Bold", serif;
+    font-size: 12.1px;
+    color: rgb(51, 100, 163);
+    font-weight: bold;
+    font-style: normal;
+    text-decoration: none
+}
+
+span.cls_009 {
+    font-family: "Liberation Sans Narrow", serif;
+    font-size: 12.1px;
+    color: rgb(51, 100, 163);
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none
+}
+
+div.cls_009 {
+    font-family: "Liberation Sans Narrow", serif;
+    font-size: 12.1px;
+    color: rgb(51, 100, 163);
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none
+}
+
 /* Project Card */
 
 .pro-card {

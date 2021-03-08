@@ -12,14 +12,15 @@ export class FooterComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  // Header transparent si la ruta es /home
+  // Footer amagat si la ruta és /home
   getClassesIfRouteIsHome(classesToAdd: string): string {
+      
     let route = 'home';
     let currRoute = this.router.url;
     let curr = currRoute.split('/', 2);
 
-    if (curr[1] == route) return classesToAdd + ' bg-transparent';
+    if (curr[1] == route) return classesToAdd;
 
-    return classesToAdd + ' i-a';
+    return "";
   }
 }
