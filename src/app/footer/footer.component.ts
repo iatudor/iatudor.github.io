@@ -12,14 +12,15 @@ export class FooterComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  // Footer amagat si la ruta és /home
+  // Footer amagat si la ruta és /home o /cv
   getClassesIfRouteIsHome(classesToAdd: string): string {
       
     let route = 'home';
+    let route2 = 'cv';
     let currRoute = this.router.url;
     let curr = currRoute.split('/', 2);
 
-    if (curr[1] == route) return classesToAdd;
+    if (curr[1] == route || curr[1] == route2) return classesToAdd;
 
     return "";
   }
