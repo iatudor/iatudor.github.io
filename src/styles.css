@@ -101,7 +101,7 @@ a {
 }
 
 .h-border-r-btn {
-    border-radius: 10px!important;
+  border-radius: 10px !important;
 }
 
 /* Home */
@@ -120,7 +120,7 @@ a {
 }
 
 .nv-toggler-height {
-    height: 36px!important;
+  height: 36px !important;
 }
 
 /* Banner */
@@ -132,13 +132,13 @@ a {
 }
 
 .banner-image {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.357), rgba(0, 0, 0, 0.672)), url("assets/img/Ionut_Atudor.JPG");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.357), rgba(0, 0, 0, 0.672)),
+    url("assets/img/Ionut_Atudor.JPG");
   position: relative;
   margin-top: -52px;
   background-position: 30% 10%;
   background-repeat: no-repeat;
-  background-size: cover!important;
-
+  background-size: cover !important;
 }
 
 .banner-container {
@@ -151,162 +151,351 @@ a {
 }
 
 .banner-container a {
-    position: relative;
-    width: fit-content;
-    font-family: Arial!important;
-    color: white;
-    background-color: #ffffff00;
-    padding: 10px;
-    margin-top: 30px;
-    border-style: solid;
-    border-width: 1.6px;
-    border-color: #808080;
-    /* border-radius: 20px; */
-    border: 0px;
-    border-bottom: 4px solid #348de1;
-    cursor: pointer;
-    transition: 400ms;
+  position: relative;
+  width: fit-content;
+  font-family: Arial !important;
+  color: white;
+  background-color: #ffffff00;
+  padding: 10px;
+  margin-top: 30px;
+  border-style: solid;
+  border-width: 1.6px;
+  border-color: #808080;
+  /* border-radius: 20px; */
+  border: 0px;
+  border-bottom: 4px solid #348de1;
+  cursor: pointer;
+  transition: 400ms;
 }
 
 .banner-container a:hover {
-    border-color: whitesmoke!important;
-    background-color: whitesmoke!important;
-    border-radius: 20px;
-    color: #295883!important;
-    border-style: solid!important;
-    box-shadow: 5px 2px 12px #8d8d8d!important;
+  border-color: whitesmoke !important;
+  background-color: whitesmoke !important;
+  border-radius: 20px;
+  color: #295883 !important;
+  border-style: solid !important;
+  box-shadow: 5px 2px 12px #8d8d8d !important;
 }
 
 /* CV */
 
+.cv-container-wrapper {
+  height: 841px;
+}
+
+.cv-container {
+  position: absolute;
+  left: 50%;
+  margin-left: -297px;
+  top: 190px;
+  width: 595px;
+  height: 841px;
+  border-style: outset;
+  overflow: hidden;
+}
+
+.cv-container-bg {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
 #bg_cv_img {
-    content:url("assets/pdf/cv-pdf-background.jpg");
+  content: url("assets/pdf/cv-pdf-background.jpg");
+}
+
+.div-cls_003 {
+  position: absolute;
+  left: 312.4px;
+  top: 49.11px;
+}
+.div-cls_004 {
+  position: absolute;
+  left: 55.4px;
+  top: 63.61px;
+}
+.div-cls_002 {
+  position: absolute;
+  left: 92.3px;
+  top: 119.31px;
+}
+.div-cls_005 {
+  position: absolute;
+  left: 92.3px;
+  top: 133.11px;
+}
+.div-cls_002 {
+  position: absolute;
+  left: 92.3px;
+  top: 160.71px;
+}
+.div-cls_005 {
+  position: absolute;
+  left: 92.3px;
+  top: 174.51px;
+}
+.div-cls_002 {
+  position: absolute;
+  left: 92.3px;
+  top: 202.11px;
+}
+.div-cls_005 {
+  position: absolute;
+  left: 92.3px;
+  top: 215.91px;
+}
+.div-cls_002 {
+  position: absolute;
+  left: 90.9px;
+  top: 243.51px;
+}
+.div-cls_005 {
+  position: absolute;
+  left: 90.9px;
+  top: 257.31px;
+}
+.div-cls_006 {
+  position: absolute;
+  left: 59.6px;
+  top: 287.61px;
+}
+.div-cls_005 {
+  position: absolute;
+  left: 59.6px;
+  top: 307.91px;
+}
+.div-cls_005 {
+  position: absolute;
+  left: 59.6px;
+  top: 327.21px;
+}
+.div-cls_005 {
+  position: absolute;
+  left: 59.6px;
+  top: 346.51px;
+}
+.div-cls_005 {
+  position: absolute;
+  left: 59.6px;
+  top: 365.81px;
+}
+.div-cls_006 {
+  position: absolute;
+  left: 59.6px;
+  top: 404.41px;
+}
+.div-cls_005 {
+  position: absolute;
+  left: 62.9px;
+  top: 424.71px;
+}
+.div-cls_005 {
+  position: absolute;
+  left: 181.5px;
+  top: 447.11px;
+}
+.div-cls_005 {
+  position: absolute;
+  left: 409.3px;
+  top: 447.11px;
+}
+.div-cls_002 {
+  position: absolute;
+  left: 502.2px;
+  top: 468.91px;
+}
+.div-cls_005 {
+  position: absolute;
+  left: 63px;
+  top: 481.01px;
+}
+.div-cls_005 {
+  position: absolute;
+  left: 181.5px;
+  top: 499.21px;
+}
+.div-cls_005 {
+  position: absolute;
+  left: 63px;
+  top: 514.41px;
+}
+.div-cls_005 {
+  position: absolute;
+  left: 181.5px;
+  top: 526.81px;
+}
+.div-cls_005 {
+  position: absolute;
+  left: 312.9px;
+  top: 540.61px;
+}
+.div-cls_005 {
+  position: absolute;
+  left: 70.6px;
+  top: 559.01px;
+}
+.div-cls_008 {
+  position: absolute;
+  left: 445.8px;
+  top: 560.11px;
+}
+.div-cls_002 {
+  position: absolute;
+  left: 504.1px;
+  top: 585.21px;
+}
+.div-cls_006 {
+  position: absolute;
+  left: 59.6px;
+  top: 604.51px;
+}
+.div-cls_005 {
+  position: absolute;
+  left: 62.9px;
+  top: 624.81px;
+}
+.div-cls_005 {
+  position: absolute;
+  left: 181.5px;
+  top: 638.61px;
+}
+.div-cls_005 {
+  position: absolute;
+  left: 460.1px;
+  top: 652.41px;
+}
+.div-cls_002 {
+  position: absolute;
+  left: 504.1px;
+  top: 671.71px;
+}
+.div-cls_006 {
+  position: absolute;
+  left: 59.6px;
+  top: 710.31px;
+}
+.div-cls_005 {
+  position: absolute;
+  left: 59.6px;
+  top: 730.61px;
+}
+.div-cls_005 {
+  position: absolute;
+  left: 229.7px;
+  top: 730.61px;
+}
+.div-cls_002 {
+  position: absolute;
+  left: 346.21px;
+  top: 744.41px;
 }
 
 span.cls_003 {
-    font-family: "Liberation Sans Narrow Bold", serif;
-    font-size: 14.1px;
-    color: rgb(255, 255, 255);
-    font-weight: bold;
-    font-style: normal;
-    text-decoration: none
+  font-family: "Liberation Sans Narrow Bold", serif;
+  font-size: 14.1px;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  font-style: normal;
+  text-decoration: none;
 }
 
 div.cls_003 {
-    font-family: "Liberation Sans Narrow Bold", serif;
-    font-size: 14.1px;
-    color: rgb(255, 255, 255);
-    font-weight: bold;
-    font-style: normal;
-    text-decoration: none
+  font-family: "Liberation Sans Narrow Bold", serif;
+  font-size: 14.1px;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  font-style: normal;
+  text-decoration: none;
 }
 
 span.cls_004 {
-    font-family: "Liberation Sans Narrow Bold", serif;
-    font-size: 24.1px;
-    color: rgb(255, 255, 255);
-    font-weight: bold;
-    font-style: normal;
-    text-decoration: none
+  font-family: "Liberation Sans Narrow Bold", serif;
+  font-size: 25.1px;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  font-style: normal;
+  text-decoration: none;
 }
 
 div.cls_004 {
-    font-family: "Liberation Sans Narrow Bold", serif;
-    font-size: 24.1px;
-    color: rgb(255, 255, 255);
-    font-weight: bold;
-    font-style: normal;
-    text-decoration: none
+  font-family: "Liberation Sans Narrow Bold", serif;
+  font-size: 25.1px;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  font-style: normal;
+  text-decoration: none;
 }
 
 span.cls_002 {
-    font-family: "Liberation Sans Narrow", serif;
-    font-size: 12.1px;
-    color: rgb(0, 0, 0);
-    font-weight: normal;
-    font-style: normal;
-    text-decoration: none
+  font-family: "Liberation Sans Narrow", serif;
+  font-size: 12.1px;
+  color: rgb(0, 0, 0);
+  font-weight: normal;
+  font-style: normal;
+  text-decoration: none;
 }
 
 div.cls_002 {
-    font-family: "Liberation Sans Narrow", serif;
-    font-size: 12.1px;
-    color: rgb(0, 0, 0);
-    font-weight: normal;
-    font-style: normal;
-    text-decoration: none
+  font-family: "Liberation Sans Narrow", serif;
+  font-size: 12.1px;
+  color: rgb(0, 0, 0);
+  font-weight: normal;
+  font-style: normal;
+  text-decoration: none;
 }
 
 span.cls_005 {
-    font-family: "Liberation Sans Narrow", serif;
-    font-size: 12.1px;
-    color: rgb(41, 95, 153);
-    font-weight: normal;
-    font-style: normal;
-    text-decoration: none
+  font-family: "Liberation Sans Narrow", serif;
+  font-size: 12.1px;
+  color: rgb(41, 95, 153);
+  font-weight: normal;
+  font-style: normal;
+  text-decoration: none;
 }
 
 div.cls_005 {
-    font-family: "Liberation Sans Narrow", serif;
-    font-size: 12.1px;
-    color: rgb(41, 95, 153);
-    font-weight: normal;
-    font-style: normal;
-    text-decoration: none
+  font-family: "Liberation Sans Narrow", serif;
+  font-size: 12.1px;
+  color: rgb(41, 95, 153);
+  font-weight: normal;
+  font-style: normal;
+  text-decoration: none;
 }
 
 span.cls_006 {
-    font-family: "Liberation Sans Narrow", serif;
-    font-size: 12.1px;
-    color: rgb(0, 168, 51);
-    font-weight: normal;
-    font-style: normal;
-    text-decoration: none
+  font-family: "Liberation Sans Narrow Bold", serif;
+  font-size: 12.1px;
+  color: rgb(51, 100, 163);
+  font-weight: bold;
+  font-style: normal;
+  text-decoration: none;
 }
 
 div.cls_006 {
-    font-family: "Liberation Sans Narrow", serif;
-    font-size: 12.1px;
-    color: rgb(0, 168, 51);
-    font-weight: normal;
-    font-style: normal;
-    text-decoration: none
+  font-family: "Liberation Sans Narrow Bold", serif;
+  font-size: 12.1px;
+  color: rgb(51, 100, 163);
+  font-weight: bold;
+  font-style: normal;
+  text-decoration: none;
 }
 
-span.cls_007 {
-    font-family: "Liberation Sans Narrow Bold", serif;
-    font-size: 12.1px;
-    color: rgb(51, 100, 163);
-    font-weight: bold;
-    font-style: normal;
-    text-decoration: none
+span.cls_008 {
+  font-family: "Liberation Sans Narrow", serif;
+  font-size: 12.1px;
+  color: rgb(51, 100, 163);
+  font-weight: normal;
+  font-style: normal;
+  text-decoration: none;
 }
 
-div.cls_007 {
-    font-family: "Liberation Sans Narrow Bold", serif;
-    font-size: 12.1px;
-    color: rgb(51, 100, 163);
-    font-weight: bold;
-    font-style: normal;
-    text-decoration: none
-}
-
-span.cls_009 {
-    font-family: "Liberation Sans Narrow", serif;
-    font-size: 12.1px;
-    color: rgb(51, 100, 163);
-    font-weight: normal;
-    font-style: normal;
-    text-decoration: none
-}
-
-div.cls_009 {
-    font-family: "Liberation Sans Narrow", serif;
-    font-size: 12.1px;
-    color: rgb(51, 100, 163);
-    font-weight: normal;
-    font-style: normal;
-    text-decoration: none
+div.cls_008 {
+  font-family: "Liberation Sans Narrow", serif;
+  font-size: 12.1px;
+  color: rgb(51, 100, 163);
+  font-weight: normal;
+  font-style: normal;
+  text-decoration: none;
 }
 
 /* Project Card */

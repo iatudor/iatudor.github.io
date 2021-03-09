@@ -27,16 +27,16 @@
     </div>
     <nav [ngClass]="getClassesIfRouteIsHome('navbar navbar-dark')">
         <div [ngClass]="getClassesIfRouteIsHome('container-fluid')">
-            <a [routerLink]="['/home']" [ngClass]="getClassesIfRouteIsHome('d-flex justify-content-start align-items-center text-light px-4')">
+            <a [routerLink]="['/home']" [routerLinkActive]="['active']" [ngClass]="getClassesIfRouteIsHome('d-flex justify-content-start align-items-center text-light px-4')">
                 <i [ngClass]="['fas fa-briefcase m-0 me-2 i-font-header']"></i>
                 <h3 [ngClass]="['fw-normal px-1 m-0 h-font-header']"> I. A. Portfolio</h3>
             </a>
             <div [ngClass]="['d-none d-lg-block']">
-                <a [routerLink]="['/cv']" [ngClass]="['btn btn-outline-light mx-1 h-border-r-btn border-0']">
+                <a [routerLink]="['/cv']" [routerLinkActive]="['active']" [ngClass]="['btn btn-outline-light mx-1 h-border-r-btn border-0']">
                     <i [ngClass]="['fas fa-user-graduate']"></i> CV
                 </a>
                 <span [ngClass]="['text-muted']">|</span>
-                <a [routerLink]="['/projects']" [ngClass]="['btn btn-outline-light mx-1 h-border-r-btn border-0']">
+                <a [routerLink]="['/projects']" [routerLinkActive]="['active']" [ngClass]="['btn btn-outline-light mx-1 h-border-r-btn border-0']">
                     <i [ngClass]="['fas fa-briefcase']"></i> Proyectos
                 </a>
                 <span [ngClass]="['text-muted']">|</span>
