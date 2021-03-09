@@ -39,3 +39,9 @@ this.editorConfig = {
           styles: ['full', 'side']
       }
     }
+
+
+*ACTIVE LINK PARA HEADER DE LAS RUTAS 
+- border bottom para cada ruta actual
+
+*MENU DE TAGS PARA LOS PROYECTOS AL FINAL DE LA PAGINA PROYECTOS

@@ -1,6 +1,6 @@
 <div [ngClass]="['container-fluid min-vh-100 mb-5']">
     <h1 [ngClass]="['title d-flex justify-content-center my-5 fa-4x']">Ionut Atudoroaie
-        <span [ngClass]="['title-span d-none d-sm-block']">&nbsp;|&nbsp;</span> <span [ngClass]="['title-span d-none d-sm-block']">Projects</span>
+        <span [ngClass]="['title-span d-none d-sm-block']">&nbsp;|&nbsp;</span> <span [ngClass]="['title-span d-none d-sm-block']">Proyectos</span>
     </h1>
     <div *ngFor="let pro of projects; let i = index" [ngClass]="['row mt-5 d-flex justify-content-center align-items-center']">
         <div [ngClass]="getOrder('col-12 col-md-6 col-lg-3 d-flex justify-content-center justify-content-md-center px-5', i+1)">
@@ -18,7 +18,7 @@
             </div>
             <div [ngClass]="['d-flex justify-content-center justify-content-md-end m-3']">
                 <button type="button" (click)="viewProject(i)" [ngClass]="['btn btn-outline-primary d-block']">
-                  <i [ngClass]="['fas fa-external-link-alt']"></i> Més info.
+                  <i [ngClass]="['fas fa-external-link-alt']"></i> Saber más
                 </button>
             </div>
         </div>

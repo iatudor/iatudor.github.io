@@ -11,13 +11,13 @@
                         </li>
                         <li [ngClass]="['nav-item my-3']">
                             <a [routerLink]="['/projects']" [ngClass]="['btn btn-outline-light border border-bottom-1 mx-3']" data-bs-toggle="collapse" data-bs-target="#headerNavbar" aria-controls="headerNavbar" aria-expanded="false" aria-label="Toggle navigation">
-                                <i [ngClass]="['fas fa-briefcase']"></i> Projectes
+                                <i [ngClass]="['fas fa-briefcase']"></i> Proyectos
                             </a>
                         </li>
                         <hr [ngClass]="['text-light']"/>
                         <li [ngClass]="['nav-item my-3']">
                             <a [routerLink]="['/home']" [ngClass]="['btn btn-primary mx-3']" data-bs-toggle="collapse" data-bs-target="#headerNavbar" aria-controls="headerNavbar" aria-expanded="false" aria-label="Toggle navigation">
-                                <i [ngClass]="['far fa-user']"></i> Iniciar sessió
+                                <i [ngClass]="['far fa-user']"></i> Iniciar sesión
                             </a>
                         </li>
                     </ul>
@@ -28,8 +28,8 @@
     <nav [ngClass]="getClassesIfRouteIsHome('navbar navbar-dark')">
         <div [ngClass]="getClassesIfRouteIsHome('container-fluid')">
             <a [routerLink]="['/home']" [ngClass]="getClassesIfRouteIsHome('d-flex justify-content-start align-items-center text-light px-4')">
-                <i [ngClass]="['fas fa-briefcase m-0 i-font-header']"></i>
-                <h3 [ngClass]="['fw-normal px-1 m-0 h-font-header']"> Ionut Atudoroaie</h3>
+                <i [ngClass]="['fas fa-briefcase m-0 me-2 i-font-header']"></i>
+                <h3 [ngClass]="['fw-normal px-1 m-0 h-font-header']"> I. A. Portfolio</h3>
             </a>
             <div [ngClass]="['d-none d-lg-block']">
                 <a [routerLink]="['/cv']" [ngClass]="['btn btn-outline-light mx-1 h-border-r-btn border-0']">
@@ -37,11 +37,11 @@
                 </a>
                 <span [ngClass]="['text-muted']">|</span>
                 <a [routerLink]="['/projects']" [ngClass]="['btn btn-outline-light mx-1 h-border-r-btn border-0']">
-                    <i [ngClass]="['fas fa-briefcase']"></i> Projectes
+                    <i [ngClass]="['fas fa-briefcase']"></i> Proyectos
                 </a>
                 <span [ngClass]="['text-muted']">|</span>
                 <a [routerLink]="['/home']" [ngClass]="['btn btn-outline-light mx-1 me-3 h-border-r-btn border-0']">
-                    <i [ngClass]="['fas fa-sign-in-alt']"></i> Iniciar sessió
+                    <i [ngClass]="['fas fa-sign-in-alt']"></i> Iniciar sesión
                 </a>
             </div>
             <button [ngClass]="['navbar-toggler nv-toggler-height d-lg-none px-3 border-0']" type="button" data-bs-toggle="collapse" data-bs-target="#headerNavbar" aria-controls="headerNavbar" aria-expanded="false" aria-label="Toggle navigation">
