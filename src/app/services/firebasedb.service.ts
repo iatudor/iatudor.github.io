@@ -12,8 +12,38 @@ export class FirebasedbService {
 
   constructor(private firestore: AngularFirestore) {}
 
-  //* Retorna documents de la DB 'projects'
+  //! Retorna documents de la DB 'projects'
   getProjects(): Observable<Project[]> {
     return this.firestore.collection<Project>('projects').valueChanges();
+  }
+
+  XretrieveProjectsFromFirestore() {
+
+    let size = 0;
+
+    /* this.projects.pipe(take(1)).subscribe(
+      (oProjects : Project[]) => {
+      size = oProjects.length;
+    }) */
+
+    if (size == 0) {
+      this.firestore.collection<Project>('projects').valueChanges({idField: 'id'}).forEach(
+        (doc : any) => {
+          
+          let project: Project = new Project();
+
+          project.id = doc.id;
+          project.title = doc.title;
+          project.image = doc.image;
+          project.desc = doc.desc;
+          project.html = doc.html;
+          project.tags = doc.tags;
+
+          /* this.projects.pipe(take(1)).subscribe(
+            (oProjects : Project[]) => {
+              this._projects.next(oProjects.concat(project));
+          }) */
+      });
+    }
   }
 }

@@ -2,10 +2,10 @@
     <h1 [ngClass]="['title d-flex justify-content-center my-5 fa-4x']">Ionut Atudoroaie
         <span [ngClass]="['title-span d-none d-sm-block']">&nbsp;|&nbsp;</span> <span [ngClass]="['title-span d-none d-sm-block']">CV</span>
     </h1>
-    <div [ngClass]="['cv-container-wrapper']">
+    <div [ngClass]="['cv-container-wrapper d-none d-md-block']">
         <div [ngClass]="['cv-container']">
             <div [ngClass]="['cv-container-bg']">
-                <img id="bg_cv_img" width=595 height=841>
+                <img id="bg_cv_img">
             </div>
             <div [ngClass]="['div-cls_003 cls_003']" style="position:absolute;left:312.40px;top:49.11px"><span [ngClass]="['cls_003']">Curriculum vitae</span></div>
             <div [ngClass]="['div-cls_004 cls_004']" style="position:absolute;left:55.40px;top:63.61px"><span [ngClass]="['cls_004']">IONUT EUSEBIU ATUDOROAIE</span></div>
@@ -49,4 +49,10 @@
             <div [ngClass]="['div-cls_002 cls_002']" style="position:absolute;left:346.21px;top:744.41px"><span [ngClass]="['cls_002']">Linux, Medio.</span></div>
         </div>
     </div>
+    <div [ngClass]="['text-center']">
+      <i [ngClass]="['far fa-file-pdf d-block my-5 fa-10x d-md-none']"></i>
+      <a [ngClass]="['btn btn-primary mx-3']">
+          <i [ngClass]="['far fa-file-pdf']"></i> Descargar PDF
+      </a>
+  </div>
 </div>

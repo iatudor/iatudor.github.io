@@ -9,15 +9,24 @@ import { FirebasedbService } from 'src/app/services/firebasedb.service';
   styleUrls: ['./projects.component.css']
 })
 export class ProjectsComponent implements OnInit {
+
+  private _projectView: Project;
   private _projects: Project[] = [];
 
   constructor(private firedbService: FirebasedbService) {
-    this.firedbService.getProjects().subscribe((originalProjects) => {
+    this.firedbService.getProjects().subscribe(
+      (originalProjects) => {
       this._projects = originalProjects;
     });
+    
+    this._projectView = new Project;
   }
 
   ngOnInit(): void { }
+
+  get project(): Project {
+    return this._projectView;
+  }
 
   get projects(): Project[] {
     return this._projects;
@@ -30,7 +39,12 @@ export class ProjectsComponent implements OnInit {
   }
 
   viewProject(i: number) {
-    // this.router.navigate(['forecast', latt_long, 'h', latt_long]);
+    console.log(i);
+    this._projectView = this._projects[i];
   }
+
+  //! viewProject(i: number) {
+  //!   this.router.navigate(['forecast', latt_long, 'h', latt_long]);
+  //! }
 
 }
