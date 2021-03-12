@@ -33,18 +33,18 @@ export class ProjectsComponent implements OnInit {
     return this._projects;
   }
 
+  //* Ordenar imatge + contingut segons l'índex parell o imparell
   getOrder(classesToAdd: string, n: number): string {
     
-    if (2 % n == 0) return classesToAdd + ' order-md-2';
+    if (n % 2 == 0) return classesToAdd + ' order-md-2';
     else return classesToAdd + ' order-md-1';
   }
 
-  viewProject(i: number) {
-    console.log(i);
+  loadProject(i: number) {
     this._projectView = this._projects[i];
   }
 
-  //! viewProject(i: number) {
+  //! loadProject(i: number) {
   //!   this.router.navigate(['forecast', latt_long, 'h', latt_long]);
   //! }
 
