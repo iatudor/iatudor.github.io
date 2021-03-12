@@ -1,6 +1,6 @@
 
 <div [ngClass]="['container-fluid min-vh-100 mb-5']">
-    <h1 [ngClass]="['title d-flex justify-content-center my-5 fa-4x']">Ionut Atudoroaie
+    <h1 [ngClass]="['title d-flex justify-content-center my-5 fa-4x']">Portfolio
         <span [ngClass]="['title-span d-none d-sm-block']">&nbsp;|&nbsp;</span> <span [ngClass]="['title-span d-none d-sm-block']">Proyectos</span>
     </h1>
     <div *ngFor="let pro of projects; let i = index" [ngClass]="['row mt-5 d-flex justify-content-center align-items-center']">
@@ -15,7 +15,7 @@
                 {{pro.desc}}
             </div>
             <div [ngClass]="['d-flex justify-content-center justify-content-md-start aling-items-center mx-2 my-3']">
-                <a *ngFor="let tag of pro.tags; let i = index" href="{{tag}}" [ngClass]="['mx-2']">{{tag}}</a>
+                <a *ngFor="let tag of pro.tags; let i = index" href="{{tag}}" [ngClass]="['mx-2']">#{{tag}}</a>
             </div>
             <div [ngClass]="['d-flex justify-content-center justify-content-md-end m-3']">
                 <!-- EXTERNAL PAGE -->
@@ -23,7 +23,7 @@
                   <i [ngClass]="['fas fa-external-link-alt']"></i> Saber más
                 </button> -->
                 <!-- MODAL -->
-                <button type="button" (click)="viewProject(i)" [ngClass]="['btn btn-outline-primary d-block']" data-bs-toggle="modal" data-bs-target="#projectModalView">
+                <button type="button" (click)="viewProject(i)" [ngClass]="['btn btn-outline-primary d-block']" data-bs-toggle="modal" data-bs-target="#viewProjectModal">
                     <i [ngClass]="['fas fa-external-link-alt']"></i> Saber más
                 </button>
             </div>
@@ -31,12 +31,12 @@
     </div>
 </div>
 <!-- MODAL -->
-<div [ngClass]="['modal fade']" id="projectModalView" tabindex="-1" aria-labelledby="projectModalViewLabel" aria-hidden="true">
+<div [ngClass]="['modal fade']" id="viewProjectModal" tabindex="-1" aria-labelledby="viewProjectModalLabel" aria-hidden="true">
     <div [ngClass]="['modal-dialog modal-dialog-centered']">
       <div [ngClass]="['modal-content']">
         <div [ngClass]="['modal-header']">
           <div [ngClass]="['d-flex justify-content-start align-items-center px-4']">
-            <i [ngClass]="['fas fa-briefcase m-0 me-2 i-font-header']"></i><h5 [ngClass]="['modal-title']" id="projectModalViewLabel"> {{ project.title }}</h5>
+            <i [ngClass]="['fas fa-briefcase m-0 me-2 i-font-header']"></i><h5 [ngClass]="['modal-title']" id="viewProjectModalLabel"> {{ project.title }}</h5>
           </div>
           <button type="button" [ngClass]="['btn-close']" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
@@ -50,7 +50,7 @@
           <hr/>
           <h3>#Tags</h3>
           <div [ngClass]="['d-flex justify-content-center aling-items-center mx-2 my-3']">
-            <a *ngFor="let tag of project.tags; let i = index" href="{{tag}}" [ngClass]="['mx-2']">{{tag}}</a>
+            <a *ngFor="let tag of project.tags; let i = index" href="{{tag}}" [ngClass]="['mx-2']">#{{tag}}</a>
         </div>
         </div>
         <div [ngClass]="['modal-footer']">

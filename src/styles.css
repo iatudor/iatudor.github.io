@@ -507,6 +507,15 @@ div.cls_008 {
   height: 300px !important;
 }
 
+.pro-card-manage {
+  width: 100px !important;
+  height: 100px !important;
+}
+
+textarea {
+	height: 120px !important;
+}
+
 /* .title-span-2 {
     color: #348de1;
     font-weight: lighter;

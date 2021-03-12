@@ -1,0 +1,135 @@
+<div [ngClass]="['container min-vh-100 mb-5']">
+  <h1 [ngClass]="['title d-flex justify-content-center my-5 fa-4x']">Portfolio
+    <span [ngClass]="['title-span d-none d-sm-block']">&nbsp;|&nbsp;</span>
+    <span [ngClass]="['title-span d-none d-sm-block']">Administrar proyectos</span>
+  </h1>
+
+  <div class="row">
+    <div class="col-12">
+      <a type="button" class="btn btn-primary m-4" (click)="clearProject()" data-bs-toggle="modal" data-bs-target="#addProjectModal">
+        <i class="fas fa-plus"></i>
+        Añadir proyecto
+      </a>
+      <table id="list_news_articles" class="table caption-top table-striped table-hover table-responsive">
+        <thead>
+          <tr>
+            <th scope="col">Título</th>
+            <th scope="col">Descripción</th>
+            <th scope="col" colspan="3"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let pro of projects; let i = index">
+            <th class="col-3 align-middle">
+              <img [src]="pro.image" alt="Representación del proyecto {{ i+1 }}: {{ pro.title }}" [ngClass]="['rounded pro-card-manage me-2 ']"/>
+              {{ pro.title }}
+            </th>
+            <td class="col-5 align-middle">
+              {{ pro.desc }}
+            </td>
+            <td class="align-middle">
+              <a type="button" class="btn btn-outline-info" (click)="viewProject(i)" data-bs-toggle="modal" data-bs-target="#viewProjectModal">
+                <i class="far fa-eye"></i>
+                Vista previa
+              </a>
+            </td>
+            <td class="align-middle">
+              <a type="button" class="btn btn-outline-warning" href="">
+                <i class="fas fa-pen"></i>
+                Modificar
+              </a>
+            </td>
+            <td class="align-middle">
+              <a type="button" class="btn btn-outline-danger" href="">
+                <i class="fas fa-trash-alt"></i>
+                Eliminar
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <a type="button" class="btn btn-primary m-4" (click)="clearProject()" data-bs-toggle="modal" data-bs-target="#addProjectModal">
+        <i class="fas fa-plus"></i>
+        Añadir proyecto
+      </a>
+    </div>
+  </div>
+</div>
+<div [ngClass]="['modal fade']" id="viewProjectModal" tabindex="-1" aria-labelledby="viewProjectModalLabel" aria-hidden="true">
+  <div [ngClass]="['modal-dialog modal-dialog-centered']">
+    <div [ngClass]="['modal-content']">
+      <div [ngClass]="['modal-header']">
+        <div [ngClass]="['d-flex justify-content-start align-items-center px-4']">
+          <i [ngClass]="['fas fa-briefcase m-0 me-2 i-font-header']"></i>
+          <h5 [ngClass]="['modal-title']" id="viewProjectModalLabel">
+            {{ project.title }}</h5>
+        </div>
+        <button type="button" [ngClass]="['btn-close']" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div [ngClass]="['modal-body']">
+        <div [ngClass]="['text-center']">
+          <img [src]="project.image" alt="Representación del proyecto: {{ project.title }}" [ngClass]="['shadow p-3 rounded pro-card']"/>
+          <h1 [ngClass]="['my-3']">{{ project.title }}</h1>
+        </div>
+        <hr/>
+        <div [innerHTML]="project.html"></div>
+        <hr/>
+        <h3>#Tags</h3>
+        <div [ngClass]="['d-flex justify-content-center aling-items-center mx-2 my-3']">
+          <a *ngFor="let tag of project.tags; let i = index" href="{{ tag }}" [ngClass]="['mx-2']">#{{ tag }}</a>
+        </div>
+      </div>
+      <div [ngClass]="['modal-footer']">
+        <button type="button" [ngClass]="['btn btn-secondary']" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div [ngClass]="['modal fade']" id="addProjectModal" tabindex="-1" aria-labelledby="addProjectModalLabel" aria-hidden="true">
+  <div [ngClass]="['modal-dialog modal-dialog-centered']">
+    <div [ngClass]="['modal-content']">
+      <div [ngClass]="['modal-header']">
+        <div [ngClass]="['d-flex justify-content-start align-items-center px-4']">
+          <i class="fas fa-plus me-2"></i> <i [ngClass]="['fas fa-briefcase m-0 me-2 i-font-header']"></i>
+          <h5 [ngClass]="['modal-title']" id="addProjectModalLabel">
+            Nuevo proyecto</h5>
+        </div>
+        <button type="button" [ngClass]="['btn-close']" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div [ngClass]="['modal-body']">
+        <div [ngClass]="['text-center']">
+          <!-- <img [src]="project.image" alt="Representación del proyecto: {{project.title}}" [ngClass]="['shadow p-3 rounded pro-card']" /> -->
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="pro_image" [(ngModel)]="project.image" placeholder="Imagen">
+              <label for="pro_image">Imagen</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="pro_title" [(ngModel)]="project.title" placeholder="Título">
+                <label for="pro_title">Título</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="pro_desc" [(ngModel)]="project.desc" placeholder="Password">
+                  <label for="pro_desc">Descripción</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <textarea class="form-control" id="pro_html" [(ngModel)]="project.html" placeholder="HTML"  rows="10" cols="10"></textarea>
+                  <label for="pro_html">HTML</label>
+                </div>
+                <hr/>
+                <div class="form-floating">
+                  <input type="text" class="form-control" id="pro_tags" [(ngModel)]="tags" placeholder="Tags">
+                    <label for="pro_tags">Tags</label>
+                </div>
+                </div>
+              </div>
+              <div [ngClass]="['modal-footer']">
+                <button type="button" [ngClass]="['btn btn-secondary']" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" [ngClass]="['btn btn-primary']" (click)="addProject()" data-bs-dismiss="modal">
+                  <i class="fas fa-plus"></i>Añadir proyecto
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+<!-- ! [ngClass]="[' -->

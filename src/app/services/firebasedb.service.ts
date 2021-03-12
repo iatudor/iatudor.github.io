@@ -17,6 +17,16 @@ export class FirebasedbService {
     return this.firestore.collection<Project>('projects').valueChanges();
   }
 
+  addProjects(project: Project) {
+    this.firestore.collection("projects").add({
+      image: project.image,
+      title: project.title,
+      desc: project.desc,
+      html: project.html,
+      tags: project.tags
+    });
+  }
+
   XretrieveProjectsFromFirestore() {
 
     let size = 0;

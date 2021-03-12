@@ -16,6 +16,11 @@
                         </li>
                         <hr [ngClass]="['text-light']"/>
                         <li [ngClass]="['nav-item my-3']">
+                            <a [routerLink]="['/manage']" [ngClass]="['btn btn-primary mx-3']" data-bs-toggle="collapse" data-bs-target="#headerNavbar" aria-controls="headerNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                                <i [ngClass]="['far fa-user']"></i> Administrar proyectos
+                            </a>
+                        </li>
+                        <li [ngClass]="['nav-item my-3']">
                             <a [routerLink]="['/home']" [ngClass]="['btn btn-primary mx-3']" data-bs-toggle="collapse" data-bs-target="#headerNavbar" aria-controls="headerNavbar" aria-expanded="false" aria-label="Toggle navigation">
                                 <i [ngClass]="['far fa-user']"></i> Iniciar sesión
                             </a>
@@ -35,12 +40,16 @@
                 <a [routerLink]="['/cv']" [routerLinkActive]="['active']" [ngClass]="['btn btn-outline-light mx-1 h-border-r-btn border-0']">
                     <i [ngClass]="['fas fa-user-graduate']"></i> CV
                 </a>
-                <span [ngClass]="['text-muted']">|</span>
+                <!-- <span [ngClass]="['text-muted']">|</span> -->
                 <a [routerLink]="['/projects']" [routerLinkActive]="['active']" [ngClass]="['btn btn-outline-light mx-1 h-border-r-btn border-0']">
                     <i [ngClass]="['fas fa-briefcase']"></i> Proyectos
                 </a>
+                <!-- <span [ngClass]="['text-muted']">|</span> -->
+                <a [routerLink]="['/manage']" [routerLinkActive]="['active']" [ngClass]="['btn btn-outline-light mx-1 h-border-r-btn border-0']">
+                    <i [ngClass]="['fas fa-briefcase']"></i> Administrar Proyectos
+                </a>
                 <span [ngClass]="['text-muted']">|</span>
-                <a [routerLink]="['/home']" [ngClass]="['btn btn-outline-light mx-1 me-3 h-border-r-btn border-0']">
+                <a [routerLink]="['/home']" [ngClass]="['btn btn-primary mx-1 me-3 h-border-r-btn border-0']">
                     <i [ngClass]="['fas fa-sign-in-alt']"></i> Iniciar sesión
                 </a>
             </div>

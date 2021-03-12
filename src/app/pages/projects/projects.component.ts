@@ -14,12 +14,13 @@ export class ProjectsComponent implements OnInit {
   private _projects: Project[] = [];
 
   constructor(private firedbService: FirebasedbService) {
-    this.firedbService.getProjects().subscribe(
-      (originalProjects) => {
-      this._projects = originalProjects;
-    });
-    
+
     this._projectView = new Project;
+    
+    this.firedbService.getProjects().subscribe(
+      (oProjects) => {
+      this._projects = oProjects;
+    });
   }
 
   ngOnInit(): void { }

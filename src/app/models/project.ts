@@ -60,6 +60,8 @@ export class Project {
   }
 
   public set tags(tags: string[]) {
-    this._tags = tags;
+    tags.forEach(t => {
+      this._tags.push(t);
+    });
   }
 }
