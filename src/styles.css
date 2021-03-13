@@ -30,7 +30,9 @@ body {
 } */
 
 /* Header */
-
+header {
+    height: 52px!important;
+}
 /* header {
     display: block;
     position: relative;
@@ -135,7 +137,7 @@ a {
   background-image: linear-gradient(rgba(0, 0, 0, 0.357), rgba(0, 0, 0, 0.672)),
     url("assets/img/Ionut_Atudor.JPG");
   position: relative;
-  margin-top: -53px;
+  margin-top: -52px;
   background-position: 30% 10%;
   background-repeat: no-repeat;
   background-size: cover !important;

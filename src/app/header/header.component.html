@@ -14,7 +14,7 @@
                                 <i [ngClass]="['fas fa-briefcase']"></i> Proyectos
                             </a>
                         </li>
-                        <hr [ngClass]="['text-light']"/>
+                        <hr [ngClass]="['text-light']" />
                         <li [ngClass]="['nav-item my-3']">
                             <a [routerLink]="['/manage']" [ngClass]="['btn btn-outline-light mx-3']" data-bs-toggle="collapse" data-bs-target="#headerNavbar" aria-controls="headerNavbar" aria-expanded="false" aria-label="Toggle navigation">
                                 <i [ngClass]="['far fa-user']"></i> Administrar
@@ -40,19 +40,21 @@
                 <a [routerLink]="['/cv']" [routerLinkActive]="['active']" [ngClass]="['btn btn-sm btn-outline-light mx-2 border-0']">
                     <i [ngClass]="['fas fa-user-graduate']"></i> CV
                 </a>
-                <div class="btn-group m-1">
+                <div class="btn-group">
                     <button [routerLink]="['/projects']" [routerLinkActive]="['active']" [ngClass]="['btn btn-sm btn-outline-light border-0']" type="button">
                         <i [ngClass]="['fas fa-briefcase']"></i> Proyectos
-                      </button>
-                      <button type="button" [ngClass]="['btn btn-sm btn-outline-light dropdown-toggle dropdown-toggle-split border-0 me-2']" data-bs-toggle="dropdown" aria-expanded="false">
+                    </button>
+                    <button type="button" [ngClass]="['btn btn-sm btn-outline-light dropdown-toggle dropdown-toggle-split border-0 me-2']" data-bs-toggle="dropdown" aria-expanded="false">
                         <span class="visually-hidden">Toggle Dropdown</span>
-                      </button>
+                    </button>
                     <ul class="dropdown-menu">
-                      <li><a [ngClass]="['dropdown-item']" [routerLink]="['/projects']" [routerLinkActive]="['active']"><i [ngClass]="['fas fa-briefcase']"></i> Proyectos</a></li>
-                      <li><hr [ngClass]="['dropdown-divider']"></li>
-                      <li><a [ngClass]="['dropdown-item']" [routerLink]="['/manage']" [routerLinkActive]="['active']" href="#"><i [ngClass]="['fas fa-tasks']"></i> Administrar</a></li>
+                        <li><a [ngClass]="['dropdown-item']" [routerLink]="['/projects']" [routerLinkActive]="['active']"><i [ngClass]="['fas fa-briefcase']"></i> Proyectos</a></li>
+                        <li>
+                            <hr [ngClass]="['dropdown-divider']">
+                        </li>
+                        <li><a [ngClass]="['dropdown-item']" [routerLink]="['/manage']" [routerLinkActive]="['active']" href="#"><i [ngClass]="['fas fa-tasks']"></i> Administrar</a></li>
                     </ul>
-                  </div>
+                </div>
                 <span [ngClass]="['text-muted']">|</span>
                 <a [routerLink]="['/home']" [ngClass]="['btn btn-sm btn-primary mx-1 mx-2 border-0']">
                     <i [ngClass]="['fas fa-sign-in-alt']"></i> Iniciar sesión
