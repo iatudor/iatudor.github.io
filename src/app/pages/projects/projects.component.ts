@@ -1,51 +1,91 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Project } from 'src/app/models/project';
 import { FirebasedbService } from 'src/app/services/firebasedb.service';
 
 @Component({
-  selector: 'app-projects',
-  templateUrl: './projects.component.html',
-  styleUrls: ['./projects.component.css']
+    selector: 'app-projects',
+    templateUrl: './projects.component.html',
+    styleUrls: ['./projects.component.css']
 })
-export class ProjectsComponent implements OnInit {
+export class ProjectsComponent {
 
-  private _projectView: Project;
-  private _projects: Project[] = [];
+    private _project: Project;
+    private _projects: Project[] = [];
+    public allProjectsTags: string[] = [];
+    public titleFilter: string = "";
 
-  constructor(private firedbService: FirebasedbService) {
+    constructor(private router: Router, private firedbService: FirebasedbService) {
 
-    this._projectView = new Project;
-    
-    this.firedbService.getProjects().subscribe(
-      (oProjects) => {
-      this._projects = oProjects;
-    });
-  }
+        this._project = new Project;
 
-  ngOnInit(): void { }
+        this.firedbService.getProjects().subscribe(
+            (oProjects: Project[]) => {
+                this._projects = oProjects;
+            });
 
-  get project(): Project {
-    return this._projectView;
-  }
+        //* Obtenir tots els tags dels projectes
+        this.firedbService.getProjectsTags().subscribe(
+            (oProjects: Project[]) => {
+                oProjects.forEach(
+                    (oProject) => {
+                        oProject.tags.forEach(
+                            (oTag) => {
+                                this.allProjectsTags.push(oTag);
+                            }
+                        )
+                    }
+                )
+            });
+    }
 
-  get projects(): Project[] {
-    return this._projects;
-  }
+    get project(): Project {
+        return this._project;
+    }
 
-  //* Ordenar imatge + contingut segons l'índex parell o imparell
-  getOrder(classesToAdd: string, n: number): string {
-    
-    if (n % 2 == 0) return classesToAdd + ' order-md-2';
-    else return classesToAdd + ' order-md-1';
-  }
+    get projects(): Project[] {
+        return this._projects;
+    }
 
-  loadProject(i: number) {
-    this._projectView = this._projects[i];
-  }
+    //* ?: opcional
+    searchProjects(tag?:string) {
 
-  //! loadProject(i: number) {
-  //!   this.router.navigate(['forecast', latt_long, 'h', latt_long]);
-  //! }
+        if (tag) {
+            this.firedbService.getProjectsByTags(tag).subscribe(
+                (oProjects: Project[]) => {
+                    this._projects = oProjects;
+                });
+        } else if (this.titleFilter == "") {
+            this.firedbService.getProjects().subscribe(
+                (oProjects: Project[]) => {
+                    this._projects = oProjects;
+                });
+        } else {
+            this.firedbService.getProjectsByTitle(this.titleFilter).subscribe(
+                (oProjects: Project[]) => {
+                    this._projects = oProjects;
+                });
+        }
+    }
+
+    getProjectsTags() {
+
+    }
+
+    //* Ordenar imatge + contingut segons l'índex parell o imparell
+    getOrder(classesToAdd: string, n: number): string {
+
+        if (n % 2 == 0) return classesToAdd + ' order-md-2';
+        else return classesToAdd + ' order-md-1';
+    }
+
+    loadProject(i: number) {
+        this._project = this._projects[i];
+    }
+
+    viewProject(id_pro: string) {
+        this.router.navigate(['project', id_pro]);
+    }
 
 }

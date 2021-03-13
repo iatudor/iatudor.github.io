@@ -1,11 +1,25 @@
-
 <div [ngClass]="['container-fluid min-vh-100 mb-5']">
     <h1 [ngClass]="['title d-flex justify-content-center my-5 fa-4x']">Portfolio
         <span [ngClass]="['title-span d-none d-sm-block']">&nbsp;|&nbsp;</span> <span [ngClass]="['title-span d-none d-sm-block']">Proyectos</span>
     </h1>
+    <div [ngClass]="['row d-flex justify-content-center']">
+        <div [ngClass]="['col-md-6 col-lg-3']">
+            <div [ngClass]="['input-group mb-3']">
+                <input type="text" [ngClass]="['form-control']" placeholder="Buscar por título" [(ngModel)]="titleFilter" aria-label="Buscar por título" aria-describedby="basic-addon2">
+                <div [ngClass]="['input-group-append']">
+                    <button [ngClass]="['btn btn-outline-secondary']" type="button" (click)="searchProjects()"><i class="fas fa-search"></i> Buscar</button>
+                </div>
+            </div>
+            <div [ngClass]="['d-flex flex-wrap justify']">
+                <h2 >#Tags</h2>
+                <a *ngFor="let tag of allProjectsTags; let i = index" (click)="searchProjects(tag)" [ngClass]="['pe-auto mx-2 my-2 pointer']">#{{tag}}</a>
+              </div>
+            
+        </div>
+    </div>
     <div *ngFor="let pro of projects; let i = index" [ngClass]="['row mt-5 d-flex justify-content-center align-items-center']">
         <div [ngClass]="getOrder('col-12 col-md-6 col-lg-3 d-flex justify-content-center justify-content-md-center px-5', i+1)">
-            <img [src]="pro.image" alt="Representación del proyecto {{i+1}}: {{pro.title}}" [ngClass]="['shadow p-3 rounded pro-card']" />
+            <img [src]="pro.image" alt="Representación del proyecto {{i+1}}: {{pro.title}}" [ngClass]="['shadow btn p-3 rounded pro-card']" (click)="loadProject(i)" data-bs-toggle="modal" data-bs-target="#viewProjectModal" />
         </div>
         <div [ngClass]="getOrder('col-12 col-md-6 col-lg-3', i+2)">
             <h1 [ngClass]="['d-flex justify-content-center justify-content-md-start m-1 mb-3 fa-3x']">
@@ -18,12 +32,7 @@
                 <a *ngFor="let tag of pro.tags; let i = index" href="{{tag}}" [ngClass]="['mx-2']">#{{tag}}</a>
             </div>
             <div [ngClass]="['d-flex justify-content-center justify-content-md-end m-3']">
-                <!-- EXTERNAL PAGE -->
-                <!-- <button type="button" (click)="viewProject(i)" [ngClass]="['btn btn-outline-primary d-block me-3']">
-                  <i [ngClass]="['fas fa-external-link-alt']"></i> Saber más
-                </button> -->
-                <!-- MODAL -->
-                <button type="button" (click)="loadProject(i)" [ngClass]="['btn btn-outline-primary d-block']" data-bs-toggle="modal" data-bs-target="#viewProjectModal">
+                <button type="button" (click)="viewProject(pro.id)" [ngClass]="['btn btn-outline-primary d-block']">
                     <i [ngClass]="['fas fa-external-link-alt']"></i> Saber más
                 </button>
             </div>
@@ -33,29 +42,31 @@
 <!-- MODAL -->
 <div [ngClass]="['modal fade']" id="viewProjectModal" tabindex="-1" aria-labelledby="viewProjectModalLabel" aria-hidden="true">
     <div [ngClass]="['modal-dialog modal-dialog-centered']">
-      <div [ngClass]="['modal-content']">
-        <div [ngClass]="['modal-header']">
-          <div [ngClass]="['d-flex justify-content-start align-items-center px-4']">
-            <i [ngClass]="['fas fa-briefcase m-0 me-2 i-font-header']"></i><h5 [ngClass]="['modal-title']" id="viewProjectModalLabel"> {{ project.title }}</h5>
-          </div>
-          <button type="button" [ngClass]="['btn-close']" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div [ngClass]="['modal-content']">
+            <div [ngClass]="['modal-header']">
+                <div [ngClass]="['d-flex justify-content-start align-items-center px-4']">
+                    <i [ngClass]="['fas fa-briefcase m-0 me-2 i-font-header']"></i>
+                    <h5 [ngClass]="['modal-title']" id="viewProjectModalLabel"> {{ project.title }}</h5>
+                </div>
+                <button type="button" [ngClass]="['btn-close']" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div [ngClass]="['modal-body']">
+                <div [ngClass]="['text-center']">
+                    <img [src]="project.image" alt="Representación del proyecto: {{project.title}}" [ngClass]="['shadow p-3 rounded pro-card']" />
+                    <h1 [ngClass]="['my-3']">{{ project.title }}</h1>
+                    <button type="button" [ngClass]="['btn btn-outline-primary']" (click)="viewProject(project.id)" data-bs-dismiss="modal">
+                        <i [ngClass]="['fas fa-external-link-alt']"></i> Saber más
+                    </button>
+                </div>
+                <hr/>
+                <h4>#Tags</h4>
+                <div [ngClass]="['d-flex justify-content-center aling-items-center mx-2 my-3']">
+                    <a *ngFor="let tag of project.tags; let i = index" href="{{tag}}" [ngClass]="['mx-2']">#{{tag}}</a>
+                </div>
+            </div>
+            <div [ngClass]="['modal-footer']">
+                <button type="button" [ngClass]="['btn btn-secondary']" data-bs-dismiss="modal">Cerrar</button>
+            </div>
         </div>
-        <div [ngClass]="['modal-body']">
-          <div [ngClass]="['text-center']">
-            <img [src]="project.image" alt="Representación del proyecto: {{project.title}}" [ngClass]="['shadow p-3 rounded pro-card']" />
-            <h1 [ngClass]="['my-3']">{{ project.title }}</h1>
-          </div>
-          <hr/>
-          <div [innerHTML]="project.html"></div>
-          <hr/>
-          <h3>#Tags</h3>
-          <div [ngClass]="['d-flex justify-content-center aling-items-center mx-2 my-3']">
-            <a *ngFor="let tag of project.tags; let i = index" href="{{tag}}" [ngClass]="['mx-2']">#{{tag}}</a>
-        </div>
-        </div>
-        <div [ngClass]="['modal-footer']">
-          <button type="button" [ngClass]="['btn btn-secondary']" data-bs-dismiss="modal">Cerrar</button>
-        </div>
-      </div>
     </div>
-  </div>
+</div>

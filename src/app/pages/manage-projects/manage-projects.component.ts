@@ -4,85 +4,99 @@ import { Project } from 'src/app/models/project';
 import { FirebasedbService } from 'src/app/services/firebasedb.service';
 
 @Component({
-  selector: 'app-manage-projects',
-  templateUrl: './manage-projects.component.html',
-  styleUrls: ['./manage-projects.component.css']
+    selector: 'app-manage-projects',
+    templateUrl: './manage-projects.component.html',
+    styleUrls: ['./manage-projects.component.css']
 })
 export class ManageProjectsComponent {
 
-  //* S'utilitza per visualitzar com per afegir
-  private _project: Project;
-  private _projects: Project[] = [];
-  public tags: string = "";
-  public mode: string;
+    //* S'utilitza per visualitzar com per afegir
+    private _project: Project;
+    private _projects: Project[] = [];
+    public tags: string = "";
+    public mode: string = "add";
+    public titleFilter: string = "";
 
-  constructor(private firedbService: FirebasedbService) {
+    constructor(private firedbService: FirebasedbService) {
 
-    this._project = new Project;
-    this.mode = "add";
-    
-    this.firedbService.getProjects().subscribe(
-      (oProjects: Project[]) => {
-      this._projects = oProjects;
-    });
-  }
+        this._project = new Project;
 
-  ngOnInit(): void { }
+        this.firedbService.getProjects().subscribe(
+            (oProjects: Project[]) => {
+                this._projects = oProjects;
+            });
+    }
 
-  get project(): Project {
-    return this._project;
-  }
+    ngOnInit(): void { }
 
-  get projects(): Project[] {
-    return this._projects;
-  }
+    get project(): Project {
+        return this._project;
+    }
 
-  clearProject() {
-    this.mode = "add";
-    this._project = new Project();
-    this.tags = "";
-  }
+    get projects(): Project[] {
+        return this._projects;
+    }
 
-  loadProject(i: number) {
-      
-    this.mode = "update";
-    this._project = this._projects[i];
+    clearProject() {
+        this.mode = "add";
+        this._project = new Project();
+        this.tags = "";
+    }
 
-    //* Obtenir els tags del projecte
-    this._project.tags.forEach(
-        (t) => {
-            this.tags = this.tags + " " + t;
+    loadProject(i: number) {
+
+        this.mode = "update";
+        this._project = this._projects[i];
+
+        //* Obtenir els tags del projecte
+        this._project.tags.forEach(
+            (t) => {
+                this.tags = this.tags + " " + t;
+            }
+        );
+    }
+
+    addProject() {
+        this.splitTags();
+        this.firedbService.addProjects(this._project);
+    }
+
+    updateProject() {
+        this.splitTags();
+        this.firedbService.updateProject(this._project.id, this._project);
+    }
+
+    deleteProject(i: number) {
+        this.firedbService.deleteProject(this._projects[i].id);
+    }
+
+    searchProjects() {
+        if (this.titleFilter == "") {
+            this.firedbService.getProjects().subscribe(
+                (oProjects: Project[]) => {
+                    this._projects = oProjects;
+                });
+        } else {
+            this.firedbService.getProjectsByTitle(this.titleFilter).subscribe(
+                (oProjects: Project[]) => {
+                    this._projects = oProjects;
+                });
         }
-    );
-  }
+    }
 
-  addProject() {
-    this.splitTags();
-    this.firedbService.addProjects(this._project);
-  }
+    private splitTags() {
+        let tagss = this.tags.split(" ");
+        this._project.tags = tagss;
+    }
 
-  updateProject() {
-    this.splitTags();
-    this.firedbService.updateProject(this._project.id, this._project);
-  }
+    //* Si la imatge ha carregat correctament
+    isImageLoaded() {
 
-  deleteProject(i: number) {
-    this.firedbService.deleteProject(this._projects[i].id);
-  }
+        let image = new Image();
+        image.src = this._project.image;
+        let isLoaded = image.complete && image.naturalHeight !== 0;
 
-  splitTags() {
-    let tagss = this.tags.split(" ");
-    this._project.tags = tagss;
-  }
-
-  //* Si la imatge ha carregat correctament
-  isImageLoaded() {
-
-    let image = new Image();
-    image.src = this._project.image;
-    let isLoaded = image.complete && image.naturalHeight !== 0;
-
-    return isLoaded;
-  }
+        return isLoaded;
+    }
 
 }

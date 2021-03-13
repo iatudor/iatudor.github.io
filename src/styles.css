@@ -516,6 +516,10 @@ textarea {
 	height: 120px !important;
 }
 
+.pointer {
+    cursor: pointer;
+}
+
 /* .title-span-2 {
     color: #348de1;
     font-weight: lighter;

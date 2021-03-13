@@ -15,7 +15,16 @@
       </ul>
     </nav>
   </div> -->
+
     <div [ngClass]="['row']">
+        <div [ngClass]="['col-12 col-lg-4']">
+            <div [ngClass]="['input-group mb-3']">
+                <input type="text" [ngClass]="['form-control']" placeholder="Buscar por título" [(ngModel)]="titleFilter" aria-label="Buscar por título" aria-describedby="basic-addon2">
+                <div [ngClass]="['input-group-append']">
+                    <button [ngClass]="['btn btn-outline-secondary']" type="button" (click)="searchProjects()"><i class="fas fa-search"></i> Buscar</button>
+                </div>
+            </div>
+        </div>
         <div [ngClass]="['col-12']">
             <a type="button" [ngClass]="['btn btn-primary m-4']" (click)="clearProject()" data-bs-toggle="modal" data-bs-target="#add_and_update_projectModal">
                 <i [ngClass]="['fas fa-plus']"></i> Añadir proyecto
@@ -114,11 +123,11 @@
             <div [ngClass]="['modal-body']">
                 <div [ngClass]="['text-center']">
                     <div [ngClass]="['form-floating mb-3']">
-                        <img id="pro_add_img" [src]="project.image" *ngIf="isImageLoaded()" alt="Representación del proyecto: {{project.title}}" [ngClass]="['shadow p-3 rounded pro-card']" />
+                        <img id="pro_add_img" [src]="project.image" *ngIf="isImageLoaded()" alt="Representación del proyecto: {{project.title}}" [ngClass]="['shadow p-3 mb-5 rounded pro-card']" />
                         <input type="text" [ngClass]="['form-control']" id="pro_add_image" [(ngModel)]="project.image" placeholder="Imagen" required>
                         <label for="pro_add_image">Imagen</label>
-                        <div [ngClass]="!isImageLoaded() ? 'text-primary d-block' : 'd-none'">
-                            Porfavor introduzca una imagen válida.
+                        <div [ngClass]="!isImageLoaded() ? 'text-primary d-block mt-2' : 'd-none'">
+                            Porfavor, indique una imagen válida.
                         </div>
                     </div>
                     <div [ngClass]="['form-floating mb-3']">

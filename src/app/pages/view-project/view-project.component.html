@@ -1,0 +1,29 @@
+<div [ngClass]="['container min-vh-100 mb-5']">
+    <h1 [ngClass]="['title d-flex justify-content-center my-5 fa-4x']">Proyecto
+        <span [ngClass]="['title-span d-none d-sm-block']">&nbsp;|&nbsp;</span> <span [ngClass]="['title-span d-none d-sm-block']">{{project.title}}</span>
+    </h1>
+
+    <div [ngClass]="['row mt-5 d-flex justify-content-center align-items-center mb-5']">
+        <div [ngClass]="['col-12 col-md-6 col-lg-3 d-flex justify-content-center justify-content-md-center px-5']">
+            <img [src]="project.image" alt="Representación del proyecto: {{project.title}}" [ngClass]="['shadow p-3 rounded pro-card']"/>
+        </div>
+        <!-- <div [ngClass]="['col-12 col-md-6 col-lg-3']">
+            <h1 [ngClass]="['d-flex justify-content-center justify-content-md-start m-1 mb-3 fa-3x']">
+                <span [ngClass]="['title-span d-none d-sm-block fw-600']">|&nbsp;</span>{{project.title}}
+            </h1>
+            <div [ngClass]="['d-flex justify-content-center justify-content-md-start mx-2']">
+                {{project.desc}}
+            </div>
+            <hr/>
+            <div [ngClass]="['d-flex justify-content-center justify-content-md-start aling-items-center mx-2 my-3']">
+                <a *ngFor="let tag of project.tags; let i = index" href="{{tag}}" [ngClass]="['mx-2']">#{{tag}}</a>
+            </div> -->
+            <!-- <div [ngClass]="['d-flex justify-content-center justify-content-md-end m-3']">
+                <button type="button" (click)="viewProject(project.id)" [ngClass]="['btn btn-outline-primary d-block']">
+                    <i [ngClass]="['fas fa-external-link-alt']"></i> Saber más
+                </button>
+            </div> -->
+        <!-- </div> -->
+    </div>
+    <div [ngClass]="['row mx-3']" [innerHTML]="project.html"></div>
+</div>
