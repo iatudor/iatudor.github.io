@@ -123,25 +123,25 @@ a {
   height: 36px !important;
 }
 
-/* Banner */
+/* Home-banner */
 
-.banner {
+.home-banner {
   font-family: nexa;
   text-transform: uppercase;
   color: #295883 !important;
 }
 
-.banner-image {
+.home-banner-image {
   background-image: linear-gradient(rgba(0, 0, 0, 0.357), rgba(0, 0, 0, 0.672)),
     url("assets/img/Ionut_Atudor.JPG");
   position: relative;
-  margin-top: -52px;
+  margin-top: -53px;
   background-position: 30% 10%;
   background-repeat: no-repeat;
   background-size: cover !important;
 }
 
-.banner-container {
+.home-banner-container {
   text-align: center;
   position: absolute;
   top: 50%;
@@ -150,7 +150,7 @@ a {
   color: white;
 }
 
-.banner-container a {
+.home-banner-container a:not(.mobile) {
   position: relative;
   width: fit-content;
   font-family: Arial !important;
@@ -168,7 +168,7 @@ a {
   transition: 400ms;
 }
 
-.banner-container a:hover {
+.home-banner-container a:hover:not(.mobile) {
   border-color: whitesmoke !important;
   background-color: whitesmoke !important;
   border-radius: 20px;
@@ -206,202 +206,193 @@ a {
   height: 841px;
 }
 
-.div-cls_003 {
+.div-cls_003_1 {
   position: absolute;
   left: 312.4px;
   top: 49.11px;
 }
-.div-cls_004 {
+.div-cls_004_2 {
   position: absolute;
   left: 55.4px;
   top: 63.61px;
 }
-.div-cls_002 {
+.div-cls_002_3 {
   position: absolute;
   left: 92.3px;
   top: 119.31px;
 }
-.div-cls_005 {
+.div-cls_005_4 {
   position: absolute;
   left: 92.3px;
   top: 133.11px;
 }
-.div-cls_002 {
+.div-cls_002_5 {
   position: absolute;
   left: 92.3px;
   top: 160.71px;
 }
-.div-cls_005 {
+.div-cls_005_6 {
   position: absolute;
   left: 92.3px;
   top: 174.51px;
 }
-.div-cls_002 {
+.div-cls_002_7 {
   position: absolute;
   left: 92.3px;
   top: 202.11px;
 }
-.div-cls_005 {
+.div-cls_005_8 {
   position: absolute;
   left: 92.3px;
   top: 215.91px;
 }
-.div-cls_002 {
+.div-cls_002_8 {
   position: absolute;
   left: 90.9px;
   top: 243.51px;
 }
-.div-cls_005 {
+.div-cls_005_9 {
   position: absolute;
   left: 90.9px;
   top: 257.31px;
 }
-.div-cls_006 {
+.div-cls_006_10 {
   position: absolute;
   left: 59.6px;
   top: 287.61px;
 }
-.div-cls_005 {
+.div-cls_005_11 {
   position: absolute;
   left: 59.6px;
   top: 307.91px;
 }
-.div-cls_005 {
+.div-cls_005_12 {
   position: absolute;
   left: 59.6px;
   top: 327.21px;
 }
-.div-cls_005 {
+.div-cls_005_13 {
   position: absolute;
   left: 59.6px;
   top: 346.51px;
 }
-.div-cls_005 {
+.div-cls_005_14 {
   position: absolute;
   left: 59.6px;
   top: 365.81px;
 }
-.div-cls_006 {
+.div-cls_006_15 {
   position: absolute;
   left: 59.6px;
   top: 404.41px;
 }
-.div-cls_005 {
+.div-cls_005_16 {
   position: absolute;
   left: 62.9px;
   top: 424.71px;
 }
-.div-cls_005 {
+.div-cls_005_17 {
   position: absolute;
   left: 181.5px;
   top: 447.11px;
 }
-.div-cls_005 {
+.div-cls_005_18 {
   position: absolute;
   left: 409.3px;
   top: 447.11px;
 }
-.div-cls_002 {
+.div-cls_002_19 {
   position: absolute;
   left: 502.2px;
   top: 468.91px;
 }
-.div-cls_005 {
+.div-cls_005_20 {
   position: absolute;
   left: 63px;
   top: 481.01px;
 }
-.div-cls_005 {
+.div-cls_005_21 {
   position: absolute;
   left: 181.5px;
   top: 499.21px;
 }
-.div-cls_005 {
+.div-cls_005_22 {
   position: absolute;
   left: 63px;
   top: 514.41px;
 }
-.div-cls_005 {
+.div-cls_005_23 {
   position: absolute;
   left: 181.5px;
   top: 526.81px;
 }
-.div-cls_005 {
+.div-cls_005_24 {
   position: absolute;
   left: 312.9px;
   top: 540.61px;
 }
-.div-cls_005 {
+.div-cls_005_25 {
   position: absolute;
   left: 70.6px;
   top: 559.01px;
 }
-.div-cls_008 {
+.div-cls_008_26 {
   position: absolute;
   left: 445.8px;
   top: 560.11px;
 }
-.div-cls_002 {
+.div-cls_002_27 {
   position: absolute;
   left: 504.1px;
   top: 585.21px;
 }
-.div-cls_006 {
+.div-cls_006_28 {
   position: absolute;
   left: 59.6px;
   top: 604.51px;
 }
-.div-cls_005 {
+.div-cls_005_29 {
   position: absolute;
   left: 62.9px;
   top: 624.81px;
 }
-.div-cls_005 {
+.div-cls_005_30 {
   position: absolute;
   left: 181.5px;
   top: 638.61px;
 }
-.div-cls_005 {
+.div-cls_005_31 {
   position: absolute;
   left: 460.1px;
   top: 652.41px;
 }
-.div-cls_002 {
+.div-cls_002_32 {
   position: absolute;
   left: 504.1px;
   top: 671.71px;
 }
-.div-cls_006 {
+.div-cls_006_33 {
   position: absolute;
   left: 59.6px;
   top: 710.31px;
 }
-.div-cls_005 {
+.div-cls_005_34 {
   position: absolute;
   left: 59.6px;
   top: 730.61px;
 }
-.div-cls_005 {
+.div-cls_005_35 {
   position: absolute;
   left: 229.7px;
   top: 730.61px;
 }
-.div-cls_002 {
+.div-cls_002_36 {
   position: absolute;
   left: 346.21px;
   top: 744.41px;
 }
 
 span.cls_003 {
-  font-family: "Liberation Sans Narrow Bold", serif;
-  font-size: 14.1px;
-  color: rgb(255, 255, 255);
-  font-weight: bold;
-  font-style: normal;
-  text-decoration: none;
-}
-
-div.cls_003 {
   font-family: "Liberation Sans Narrow Bold", serif;
   font-size: 14.1px;
   color: rgb(255, 255, 255);

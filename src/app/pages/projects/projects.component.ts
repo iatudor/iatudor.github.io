@@ -32,7 +32,9 @@ export class ProjectsComponent {
                     (oProject) => {
                         oProject.tags.forEach(
                             (oTag) => {
-                                this.allProjectsTags.push(oTag);
+                                //* Evitar duplicats
+                                if (this.allProjectsTags.includes(oTag) === false)
+                                    this.allProjectsTags.push(oTag);
                             }
                         )
                     }

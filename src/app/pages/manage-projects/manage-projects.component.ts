@@ -39,21 +39,24 @@ export class ManageProjectsComponent {
 
     clearProject() {
         this.mode = "add";
-        this._project = new Project();
         this.tags = "";
+        this._project = new Project();
     }
 
     loadProject(i: number) {
 
         this.mode = "update";
         this._project = this._projects[i];
+        this.tags = "";
 
         //* Obtenir els tags del projecte
         this._project.tags.forEach(
             (t) => {
-                this.tags = this.tags + " " + t;
+                this.tags += " " + t;
             }
         );
+        //* Eliminar el primer espai
+        this.tags = this.tags.substring(1,this.tags.length-1);
     }
 
     addProject() {
