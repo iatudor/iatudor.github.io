@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { Project } from 'src/app/models/project';
-import { FirebasedbService } from 'src/app/services/firebasedb.service';
+import { FirebaseDBService } from 'src/app/services/firebase-db.service';
 
 @Component({
     selector: 'app-view-project',
@@ -13,10 +13,9 @@ export class ViewProjectComponent {
 
     private _project: Project;
 
-    constructor(
-        private router: Router,
-        private route: ActivatedRoute,
-        private firedbService: FirebasedbService) {
+    constructor(private router: Router,
+                private route: ActivatedRoute,
+                private fireDBService: FirebaseDBService) {
 
         this._project = new Project;
 
@@ -27,7 +26,7 @@ export class ViewProjectComponent {
             if (id_pro == null)
                 this.router.navigate(['project']);
 
-            this.firedbService.getProjectById(id_pro).subscribe(
+            this.fireDBService.getProjectById(id_pro).subscribe(
                 (oProjects: Project[]) => {
                     this._project = oProjects[0];
                 });

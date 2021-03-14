@@ -29,10 +29,41 @@ body {
     background-color: #12385c!important;
 } */
 
+
+/* [title]:hover:after {
+    opacity: 1;
+    transition: all 0.1s ease 0.5s;
+    visibility: visible;
+}
+
+[title]:after {
+    content: attr(title);
+    background-color: #333;
+    color: #fff;
+    font-size: 14px;
+    font-family: Raleway;
+    position: absolute;
+    padding: 3px 20px;
+    bottom: -1.6em;
+    left: 100%;
+    white-space: nowrap;
+    box-shadow: 1px 1px 3px #222222;
+    opacity: 0;
+    border: 1px solid #111111;
+    z-index: 99999;
+    visibility: hidden;
+    border-radius: 6px;
+    
+}
+[title] {
+    position: relative;
+} */
+
 /* Header */
 header {
     height: 52px!important;
 }
+
 /* header {
     display: block;
     position: relative;
@@ -86,7 +117,7 @@ header {
   } */
 
 .i-font-header {
-  font-size: 2rem;
+  font-size: 1.6rem;
 }
 
 .h-font-header {
@@ -165,9 +196,13 @@ a {
   border-color: #808080;
   /* border-radius: 20px; */
   border: 0px;
-  border-bottom: 4px solid #348de1;
+  border-bottom: 3px solid #348de1;
   cursor: pointer;
   transition: 400ms;
+}
+
+.home-banner-container a:not(.mobile) h4 {
+    font-size: 20px;
 }
 
 .home-banner-container a:hover:not(.mobile) {
@@ -185,11 +220,11 @@ a {
   height: 841px;
 }
 
-.cv-container {
+.cv-container-pdf {
   position: absolute;
   left: 50%;
   margin-left: -297px;
-  top: 190px;
+  top: auto;
   width: 595px;
   height: 841px;
   border-style: outset;
@@ -511,6 +546,19 @@ textarea {
 
 .pointer {
     cursor: pointer;
+}
+
+/* Login */
+
+.login-container,
+.cv-container {
+    margin-top: -52px;
+    margin-bottom: -113px;
+}
+
+.login-container-content {
+    margin-top: 52px;
+    margin-bottom: 113px;
 }
 
 /* .title-span-2 {

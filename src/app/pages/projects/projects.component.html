@@ -1,9 +1,16 @@
 <div [ngClass]="['container-fluid min-vh-100 mb-5']">
-    <div [ngClass]="['d-flex justify-content-center align-items-center px-4']">
+    <!-- <div [ngClass]="['d-flex justify-content-center align-items-center px-4']">
         <i [ngClass]="['fas fa-briefcase me-2 fa-4x']"></i>
         <h1 [ngClass]="['title my-5 fa-4x']">
             Proyectos
         </h1>
+    </div> -->
+    <div [ngClass]="['text-center mt-5 mb-2']">
+        <i [ngClass]="['fas fa-briefcase fa-4x']"></i>
+        <h1 [ngClass]="['title fa-3x']">
+            Proyectos
+        </h1>
+        <p>Échale un vistazo a mis últimos proyectos.</p>
     </div>
     <!-- <a [routerLink]="['/home']" [routerLinkActive]="['active']" [ngClass]="getClassesIfRouteIsHome('d-flex justify-content-start align-items-center text-light px-4')">
         <i [ngClass]="['fas fa-briefcase m-0 me-2 i-font-header']"></i>
@@ -14,14 +21,13 @@
             <div [ngClass]="['input-group mb-3']">
                 <input type="text" [ngClass]="['form-control']" placeholder="Buscar por título" [(ngModel)]="titleFilter" aria-label="Buscar por título" aria-describedby="basic-addon2">
                 <div [ngClass]="['input-group-append']">
-                    <button [ngClass]="['btn btn-outline-secondary']" type="button" (click)="searchProjects()"><i class="fas fa-search"></i> Buscar</button>
+                    <button [ngClass]="['btn btn-outline-secondary']" type="button" (click)="searchProjects()"><i [ngClass]="['fas fa-search']"></i> Buscar</button>
                 </div>
             </div>
             <div [ngClass]="['d-flex flex-wrap justify-content-between']">
                 <h2 >#Tags</h2>
                 <a *ngFor="let tag of allProjectsTags; let i = index" (click)="searchProjects(tag)" [ngClass]="['pe-auto mx-2 my-2 pointer']">#{{tag}}</a>
-              </div>
-            
+            </div>
         </div>
     </div>
     <div *ngFor="let pro of projects; let i = index" [ngClass]="['row mt-5 d-flex justify-content-center align-items-center']">
@@ -36,7 +42,7 @@
                 {{pro.desc}}
             </div>
             <div [ngClass]="['d-flex flex-wrap justify-content-center justify-content-md-start aling-items-center mx-2 my-3']">
-                <a *ngFor="let tag of pro.tags; let i = index" href="{{tag}}" [ngClass]="['mx-2']">#{{tag}}</a>
+                <a *ngFor="let tag of pro.tags; let i = index" (click)="searchProjects(tag)" [ngClass]="['pe-auto mx-2 my-2 pointer']">#{{tag}}</a>
             </div>
             <div [ngClass]="['d-flex justify-content-center justify-content-md-end m-3']">
                 <button type="button" (click)="viewProject(pro.id)" [ngClass]="['btn btn-outline-primary d-block']">

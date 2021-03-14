@@ -1,15 +1,22 @@
-<div [ngClass]="['container-fluid min-vh-100 mb-5']">
+<div [ngClass]="['container min-vh-100 mb-5']">
     <!-- <h1 [ngClass]="['title d-flex justify-content-center my-5 fa-4x']">Portfolio
         <span [ngClass]="['title-span d-none d-sm-block']">&nbsp;|&nbsp;</span> <span [ngClass]="['title-span d-none d-sm-block']">CV</span>
     </h1> -->
-    <div [ngClass]="['d-flex justify-content-center align-items-center px-4']">
+    <div [ngClass]="['text-center mt-5 d-none d-md-block']">
+        <i [ngClass]="['fas fa-user-graduate fa-4x']"></i>
+        <h1 [ngClass]="['title fa-3x']">
+            Curriculum Vitae
+        </h1>
+        <p>Puedes descargar el CV en formato PDF con el botón al final de la página.</p>
+    </div>
+    <!-- <div [ngClass]="['d-flex justify-content-center align-items-center px-4']">
         <i [ngClass]="['fas fa-user-graduate me-2 fa-4x']"></i>
         <h1 [ngClass]="['title my-5 fa-4x']">
             CV
         </h1>
-    </div>
-    <div [ngClass]="['cv-container-wrapper d-none d-md-block']">
-        <div [ngClass]="['cv-container']">
+    </div> -->
+    <div [ngClass]="['cv-container-wrapper mt-5 d-none d-md-block']">
+        <div [ngClass]="['cv-container-pdf']">
             <div [ngClass]="['cv-container-bg']">
                 <img id="bg_cv_img">
             </div>
@@ -55,10 +62,22 @@
             <div [ngClass]="['div-cls_002_36 cls_002']"><span [ngClass]="['cls_002']">Linux, Medio.</span></div>
         </div>
     </div>
-    <div [ngClass]="['text-center']">
-      <i [ngClass]="['far fa-file-pdf d-block my-5 fa-10x d-md-none']"></i>
-      <a [ngClass]="['btn btn-primary mx-3']" download="" href="assets/pdf/CVIonutAtudoroaie2021.pdf">
-          <i [ngClass]="['far fa-file-pdf']"></i> Descargar PDF
-      </a>
-  </div>
+    <!-- <div [ngClass]="['text-center mt-5 d-none d-md-block']">
+        <p>Puedes descargar el CV en formato PDF con el siguiente botón.</p>
+        <a [ngClass]="['btn btn-primary mx-3']" download href="assets/pdf/CVIonutAtudoroaie2021.pdf">
+            <i [ngClass]="['far fa-file-pdf']"></i> Descargar PDF
+        </a>
+    </div> -->
+    <div [ngClass]="['text-center mt-5 d-flex justify-content-center']">
+        <div style="width: fit-content;" class="justify-content-center shadow shadow p-5">
+        <i [ngClass]="['far fa-file-pdf mt-5 fa-6x']"></i>
+        <h1 [ngClass]="['title fa-3x']">
+            Curriculum vitae
+        </h1>
+        <p>Descargue el CV en formato PDF con el siguiente botón.</p>
+        <a [ngClass]="['btn btn-primary mx-3']" download href="assets/pdf/CVIonutAtudoroaie2021.pdf">
+            <i [ngClass]="['far fa-file-pdf']"></i> Descargar PDF
+        </a>
+    </div>
+    </div>
 </div>

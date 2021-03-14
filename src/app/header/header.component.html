@@ -14,17 +14,27 @@
                                 <i [ngClass]="['fas fa-briefcase']"></i> Proyectos
                             </a>
                         </li>
-                        <hr [ngClass]="['text-light']" />
-                        <li [ngClass]="['nav-item my-3']">
+                        <li *ngIf="user != null" [ngClass]="['nav-item my-3']">
                             <a [routerLink]="['/manage']" [ngClass]="['btn btn-outline-light mx-3']" data-bs-toggle="collapse" data-bs-target="#headerNavbar" aria-controls="headerNavbar" aria-expanded="false" aria-label="Toggle navigation">
-                                <i [ngClass]="['far fa-user']"></i> Administrar
+                                <i [ngClass]="['fas fa-tasks']"></i> Administrar proyectos
                             </a>
                         </li>
-                        <li [ngClass]="['nav-item my-3']">
-                            <a [routerLink]="['/home']" [ngClass]="['btn btn-primary mx-3']" data-bs-toggle="collapse" data-bs-target="#headerNavbar" aria-controls="headerNavbar" aria-expanded="false" aria-label="Toggle navigation">
-                                <i [ngClass]="['far fa-user']"></i> Iniciar sesión
+                        <hr [ngClass]="['text-light']" />
+                        <li *ngIf="user == null" [ngClass]="['nav-item my-3']">
+                            <a [routerLink]="['/login']" [ngClass]="['btn btn-primary mx-3']" data-bs-toggle="collapse" data-bs-target="#headerNavbar" aria-controls="headerNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                                <i [ngClass]="['fas fa-sign-in-alt']"></i> Iniciar sesión
                             </a>
                         </li>
+                        <li *ngIf="user != null" [ngClass]="['nav-item my-3']">
+                            <a [ngClass]="['btn btn-danger mx-3']" data-bs-toggle="modal" data-bs-target="#logout_modal">
+                                <i [ngClass]="['fas fa-sign-out-alt']"></i> Cerrar sesión
+                            </a>
+                        </li>
+                        <!-- <li *ngIf="user != null" [ngClass]="['nav-item my-3']">
+                            <a (click)="logout()" [ngClass]="['btn btn-danger mx-3']" data-bs-toggle="collapse" data-bs-target="#headerNavbar" aria-controls="headerNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                                <i [ngClass]="['fas fa-sign-out-alt']"></i> Cerrar sesión
+                            </a>
+                        </li> -->
                     </ul>
                 </div>
             </div>
@@ -33,32 +43,46 @@
     <nav [ngClass]="getClassesIfRouteIsHome('navbar navbar-dark')">
         <div [ngClass]="getClassesIfRouteIsHome('container-fluid')">
             <a [routerLink]="['/home']" [routerLinkActive]="['active']" [ngClass]="getClassesIfRouteIsHome('d-flex justify-content-start align-items-center text-light px-4')">
-                <i [ngClass]="['fas fa-briefcase m-0 me-2 i-font-header']"></i>
-                <h3 [ngClass]="['fw-normal px-1 m-0 h-font-header']"> Portfolio</h3>
+                <i [ngClass]="['fas fa-user-graduate m-0 me-2 i-font-header']"></i>
+                <h3 [ngClass]="['fw-normal px-1 m-0 h-font-header']"></h3>
             </a>
             <div [ngClass]="['d-none d-lg-block']">
                 <a [routerLink]="['/cv']" [routerLinkActive]="['active']" [ngClass]="['btn btn-sm btn-outline-light mx-2 border-0']">
                     <i [ngClass]="['fas fa-user-graduate']"></i> CV
                 </a>
-                <div class="btn-group">
-                    <button [routerLink]="['/projects']" [routerLinkActive]="['active']" [ngClass]="['btn btn-sm btn-outline-light border-0']" type="button">
+                <div [ngClass]="['btn-group']">
+                    <a [routerLink]="['/projects']" [routerLinkActive]="['active']" [ngClass]="['btn btn-sm btn-outline-light border-0']">
                         <i [ngClass]="['fas fa-briefcase']"></i> Proyectos
-                    </button>
-                    <button type="button" [ngClass]="['btn btn-sm btn-outline-light dropdown-toggle dropdown-toggle-split border-0 me-2']" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span class="visually-hidden">Toggle Dropdown</span>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a [ngClass]="['dropdown-item']" [routerLink]="['/projects']" [routerLinkActive]="['active']"><i [ngClass]="['fas fa-briefcase']"></i> Proyectos</a></li>
+                    </a>
+                    <a *ngIf="user != null" [ngClass]="['btn btn-sm btn-outline-light dropdown-toggle dropdown-toggle-split border-0']" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span [ngClass]="['visually-hidden']">Toggle Dropdown</span>
+                    </a>
+                    <ul *ngIf="user != null" [ngClass]="['dropdown-menu']">
+                        <li>
+                            <a [routerLink]="['/projects']" [routerLinkActive]="['active']" [ngClass]="['dropdown-item']">
+                                <i [ngClass]="['fas fa-briefcase']"></i> Proyectos
+                            </a>
+                        </li>
                         <li>
                             <hr [ngClass]="['dropdown-divider']">
                         </li>
-                        <li><a [ngClass]="['dropdown-item']" [routerLink]="['/manage']" [routerLinkActive]="['active']" href="#"><i [ngClass]="['fas fa-tasks']"></i> Administrar</a></li>
+                        <li>
+                            <a [routerLink]="['/manage']" [routerLinkActive]="['active']" [ngClass]="['dropdown-item']">
+                                <i [ngClass]="['fas fa-tasks']"></i> Administrar
+                            </a>
+                        </li>
                     </ul>
                 </div>
-                <span [ngClass]="['text-muted']">|</span>
-                <a [routerLink]="['/home']" [ngClass]="['btn btn-sm btn-primary mx-1 mx-2 border-0']">
+                <span [ngClass]="['text-muted mx-2']"> | </span>
+                <a *ngIf="user == null" [routerLink]="['/login']" [ngClass]="['btn btn-sm btn-primary mx-1 border-1']">
                     <i [ngClass]="['fas fa-sign-in-alt']"></i> Iniciar sesión
                 </a>
+                <a *ngIf="user != null" [ngClass]="['btn btn-sm btn-danger mx-1 border-1']" data-bs-toggle="modal" data-bs-target="#logout_modal">
+                    <i [ngClass]="['fas fa-sign-in-alt']"></i> Cerrar sesión
+                </a>
+                <!-- <a *ngIf="user != null" [routerLink]="['/logout']" [ngClass]="['btn btn-sm btn-danger mx-1 border-1']">
+                    <i [ngClass]="['fas fa-sign-in-alt']"></i> Cerrar sesión
+                </a> -->
             </div>
             <button [ngClass]="['navbar-toggler nv-toggler-height d-lg-none px-3 border-0']" type="button" data-bs-toggle="collapse" data-bs-target="#headerNavbar" aria-controls="headerNavbar" aria-expanded="false" aria-label="Toggle navigation">
                     <span [ngClass]="['navbar-toggler-icon']"></span>
@@ -66,3 +90,20 @@
         </div>
     </nav>
 </header>
+<div [ngClass]="['modal fade']" id="logout_modal" tabindex="-1" aria-labelledby="logout_modalLabel" aria-hidden="true">
+    <div [ngClass]="['modal-dialog']">
+        <div [ngClass]="['modal-content']">
+            <div [ngClass]="['modal-header']">
+                <h5 [ngClass]="['modal-title text-danger']" id="logout_modalLabel"><i [ngClass]="['fas fa-sign-out-alt']"></i> Cerrar sesión</h5>
+                <button type="button" [ngClass]="['btn-close']" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div [ngClass]="['modal-body text-center']">
+                Seguro que quiere cerrar sesión?
+            </div>
+            <div [ngClass]="['modal-footer']">
+                <button type="button" [ngClass]="['btn btn-secondary']" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" (click)="logout()" [ngClass]="['btn btn-danger']" data-bs-dismiss="modal"><i [ngClass]="['fas fa-sign-out-alt']"></i> Cerrar sesión</button>
+            </div>
+        </div>
+    </div>
+</div>

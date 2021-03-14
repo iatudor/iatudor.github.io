@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { Project } from 'src/app/models/project';
-import { FirebasedbService } from 'src/app/services/firebasedb.service';
+import { FirebaseDBService } from 'src/app/services/firebase-db.service';
 
 @Component({
     selector: 'app-manage-projects',
@@ -17,11 +17,11 @@ export class ManageProjectsComponent {
     public mode: string = "add";
     public titleFilter: string = "";
 
-    constructor(private firedbService: FirebasedbService) {
+    constructor(private fireDBService: FirebaseDBService) {
 
         this._project = new Project;
 
-        this.firedbService.getProjects().subscribe(
+        this.fireDBService.getProjects().subscribe(
             (oProjects: Project[]) => {
                 this._projects = oProjects;
             });
@@ -61,26 +61,26 @@ export class ManageProjectsComponent {
 
     addProject() {
         this.splitTags();
-        this.firedbService.addProjects(this._project);
+        this.fireDBService.addProjects(this._project);
     }
 
     updateProject() {
         this.splitTags();
-        this.firedbService.updateProject(this._project.id, this._project);
+        this.fireDBService.updateProject(this._project.id, this._project);
     }
 
     deleteProject(i: number) {
-        this.firedbService.deleteProject(this._projects[i].id);
+        this.fireDBService.deleteProject(this._projects[i].id);
     }
 
     searchProjects() {
         if (this.titleFilter == "") {
-            this.firedbService.getProjects().subscribe(
+            this.fireDBService.getProjects().subscribe(
                 (oProjects: Project[]) => {
                     this._projects = oProjects;
                 });
         } else {
-            this.firedbService.getProjectsByTitle(this.titleFilter).subscribe(
+            this.fireDBService.getProjectsByTitle(this.titleFilter).subscribe(
                 (oProjects: Project[]) => {
                     this._projects = oProjects;
                 });

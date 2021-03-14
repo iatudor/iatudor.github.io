@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Project } from 'src/app/models/project';
-import { FirebasedbService } from 'src/app/services/firebasedb.service';
+import { FirebaseDBService } from 'src/app/services/firebase-db.service';
 
 @Component({
     selector: 'app-projects',
@@ -16,17 +16,18 @@ export class ProjectsComponent {
     public allProjectsTags: string[] = [];
     public titleFilter: string = "";
 
-    constructor(private router: Router, private firedbService: FirebasedbService) {
+    constructor(private router: Router,
+                private fireDBService: FirebaseDBService) {
 
         this._project = new Project;
 
-        this.firedbService.getProjects().subscribe(
+        this.fireDBService.getProjects().subscribe(
             (oProjects: Project[]) => {
                 this._projects = oProjects;
             });
 
         //* Obtenir tots els tags dels projectes
-        this.firedbService.getProjectsTags().subscribe(
+        this.fireDBService.getProjectsTags().subscribe(
             (oProjects: Project[]) => {
                 oProjects.forEach(
                     (oProject) => {
@@ -54,17 +55,17 @@ export class ProjectsComponent {
     searchProjects(tag?:string) {
 
         if (tag) {
-            this.firedbService.getProjectsByTags(tag).subscribe(
+            this.fireDBService.getProjectsByTags(tag).subscribe(
                 (oProjects: Project[]) => {
                     this._projects = oProjects;
                 });
         } else if (this.titleFilter == "") {
-            this.firedbService.getProjects().subscribe(
+            this.fireDBService.getProjects().subscribe(
                 (oProjects: Project[]) => {
                     this._projects = oProjects;
                 });
         } else {
-            this.firedbService.getProjectsByTitle(this.titleFilter).subscribe(
+            this.fireDBService.getProjectsByTitle(this.titleFilter).subscribe(
                 (oProjects: Project[]) => {
                     this._projects = oProjects;
                 });
