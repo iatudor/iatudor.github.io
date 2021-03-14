@@ -16,7 +16,6 @@ import { ProjectsComponent } from './pages/projects/projects.component';
 import { CvComponent } from './pages/cv/cv.component';
 import { ViewProjectComponent } from './pages/view-project/view-project.component';
 import { LoginComponent } from './pages/login/login.component';
-import { LogoutComponent } from './pages/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -28,8 +27,7 @@ import { LogoutComponent } from './pages/logout/logout.component';
     ProjectsComponent,
     CvComponent,
     ViewProjectComponent,
-    LoginComponent,
-    LogoutComponent
+    LoginComponent
   ],
   imports: [
     BrowserModule,

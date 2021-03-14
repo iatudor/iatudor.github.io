@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AngularFireAuthGuard, hasCustomClaim, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard';
 
 import { HomeComponent } from './pages/home/home.component';
 import { CvComponent } from './pages/cv/cv.component';
@@ -7,7 +8,9 @@ import { ProjectsComponent } from './pages/projects/projects.component';
 import { ViewProjectComponent } from './pages/view-project/view-project.component';
 import { ManageProjectsComponent } from './pages/manage-projects/manage-projects.component';
 import { LoginComponent } from './pages/login/login.component';
-import { LogoutComponent } from './pages/logout/logout.component';
+
+const redirectLoggedInToHome = () => redirectLoggedInTo(['home']);
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 
 const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -18,9 +21,8 @@ const routes: Routes = [
         {path: '', component: ProjectsComponent},
         {path: ':id_pro', component: ViewProjectComponent}
     ]},
-    { path: 'manage', component: ManageProjectsComponent },
-    { path: 'login', component: LoginComponent },
-    { path: 'logout', component: LogoutComponent }
+    { path: 'manage', component: ManageProjectsComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedTo} },
+    { path: 'login', component: LoginComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectLoggedInToHome }}
   ];
 
 @NgModule({
