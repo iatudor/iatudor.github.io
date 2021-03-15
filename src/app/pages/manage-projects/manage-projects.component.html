@@ -1,7 +1,13 @@
 <div [ngClass]="['container min-vh-100 mb-5']">
-    <div [ngClass]="['d-flex justify-content-center align-items-center px-4']">
+    <!-- <div [ngClass]="['d-flex justify-content-center align-items-center px-4']">
         <i [ngClass]="['fas fa-tasks me-2 fa-4x']"></i>
         <h1 [ngClass]="['title my-5 fa-4x']">
+            Administrar proyectos
+        </h1>
+    </div> -->
+    <div [ngClass]="['row text-center mt-5 mb-2']">
+        <i [ngClass]="['fas fa-tasks me-2 fa-4x']"></i>
+        <h1 [ngClass]="['title fa-3x']">
             Administrar proyectos
         </h1>
     </div>
@@ -25,7 +31,7 @@
     </nav>
   </div> -->
 
-    <div [ngClass]="['row']">
+    <div [ngClass]="['row justify-content-center']">
         <div [ngClass]="['col-12 col-lg-4']">
             <div [ngClass]="['input-group mb-3']">
                 <input type="text" [ngClass]="['form-control']" placeholder="Buscar por título" [(ngModel)]="titleFilter" aria-label="Buscar por título" aria-describedby="basic-addon2">
@@ -95,6 +101,9 @@
                 <div [ngClass]="['text-center']">
                     <img [src]="project.image" alt="Representación del proyecto: {{ project.title }}" [ngClass]="['shadow p-3 rounded pro-card']" />
                     <h1 [ngClass]="['my-3']">{{ project.title }}</h1>
+                    <button type="button" [ngClass]="['btn btn-outline-primary']" (click)="viewProject(project.id)" data-bs-dismiss="modal">
+                        <i [ngClass]="['fas fa-external-link-alt']"></i> Saber más
+                    </button>
                 </div>
                 <hr />
                 <div [ngClass]="['d-flex justify-content-center justify-content-md-start mx-2']">

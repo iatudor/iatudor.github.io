@@ -61,7 +61,14 @@ body {
 
 /* Header */
 header {
+    /* background-color: rgba(2, 84, 139, 0.433) !important;
+    background-color: rgba(2, 84, 139, 0) !important;
+    backdrop-filter: saturate(100%) blur(30px) !important; */
     height: 52px!important;
+}
+
+.backdrop-filter {
+    backdrop-filter: saturate(100%) blur(60px) !important;
 }
 
 /* header {
@@ -129,8 +136,10 @@ a {
 }
 
 .i-a {
-  background-color: #2d3b48 !important;
-  background-color: #12385c !important;
+  /* background-color: #2d3b48 !important; */
+  /* background-color: #12385c !important; */
+  /* background-color: #12385c65 !important; */
+  background-color: #12385c9e !important;
 }
 
 .h-border-r-btn {

@@ -5,7 +5,7 @@
             Proyectos
         </h1>
     </div> -->
-    <div [ngClass]="['text-center mt-5 mb-2']">
+    <div [ngClass]="['row text-center mt-5 mb-2']">
         <i [ngClass]="['fas fa-briefcase fa-4x']"></i>
         <h1 [ngClass]="['title fa-3x']">
             Proyectos
@@ -21,12 +21,13 @@
             <div [ngClass]="['input-group mb-3']">
                 <input type="text" [ngClass]="['form-control']" placeholder="Buscar por título" [(ngModel)]="titleFilter" aria-label="Buscar por título" aria-describedby="basic-addon2">
                 <div [ngClass]="['input-group-append']">
-                    <button [ngClass]="['btn btn-outline-secondary']" type="button" (click)="searchProjects()"><i [ngClass]="['fas fa-search']"></i> Buscar</button>
+                    <button [ngClass]="['btn btn-outline-secondary']" type="button" (click)="listProjectByTitle()"><i [ngClass]="['fas fa-search']"></i> Buscar</button>
+                    <!-- <button [ngClass]="['btn btn-outline-secondary']" type="button" (click)="filterProjects()"><i [ngClass]="['fas fa-search']"></i> Buscar</button> -->
                 </div>
             </div>
-            <div [ngClass]="['d-flex flex-wrap justify-content-between']">
+            <div [ngClass]="['d-flex flex-wrap justify-content-center']">
                 <h2 >#Tags</h2>
-                <a *ngFor="let tag of allProjectsTags; let i = index" (click)="searchProjects(tag)" [ngClass]="['pe-auto mx-2 my-2 pointer']">#{{tag}}</a>
+                <a *ngFor="let tag of allProjectsTags; let i = index" (click)="listProjectByTag(tag)" [ngClass]="['pe-auto mx-2 my-2 pointer']">#{{tag}}</a>
             </div>
         </div>
     </div>
@@ -42,12 +43,23 @@
                 {{pro.desc}}
             </div>
             <div [ngClass]="['d-flex flex-wrap justify-content-center justify-content-md-start aling-items-center mx-2 my-3']">
-                <a *ngFor="let tag of pro.tags; let i = index" (click)="searchProjects(tag)" [ngClass]="['pe-auto mx-2 my-2 pointer']">#{{tag}}</a>
+                <a *ngFor="let tag of pro.tags; let i = index" (click)="listProjectByTag(tag)" [ngClass]="['pe-auto mx-2 my-2 pointer']">#{{tag}}</a>
             </div>
             <div [ngClass]="['d-flex justify-content-center justify-content-md-end m-3']">
                 <button type="button" (click)="viewProject(pro.id)" [ngClass]="['btn btn-outline-primary d-block']">
                     <i [ngClass]="['fas fa-external-link-alt']"></i> Saber más
                 </button>
+            </div>
+        </div>
+    </div>
+    
+    <div [ngClass]="['row d-flex justify-content-center mt-5']">
+        <div [ngClass]="['col-md-6 col-lg-3']">
+            <hr/>
+            <div [ngClass]="['d-flex flex-wrap justify-content-center']">
+                <h2 >#Tags</h2>
+                <a *ngFor="let tag of allProjectsTags; let i = index" (click)="listProjectByTag(tag)" [ngClass]="['pe-auto mx-2 my-2 pointer']">#{{tag}}</a>
+                <!-- <a *ngFor="let tag of allProjectsTags; let i = index" (click)="filterProjects(tag)" [ngClass]="['pe-auto mx-2 my-2 pointer']">#{{tag}}</a> -->
             </div>
         </div>
     </div>
@@ -71,10 +83,13 @@
                         <i [ngClass]="['fas fa-external-link-alt']"></i> Saber más
                     </button>
                 </div>
+                <div [ngClass]="['d-flex justify-content-md-start mx-2']">
+                    {{project.desc}}
+                </div>
                 <hr/>
                 <h4>#Tags</h4>
                 <div [ngClass]="['d-flex justify-content-center aling-items-center mx-2 my-3']">
-                    <a *ngFor="let tag of project.tags; let i = index" href="{{tag}}" [ngClass]="['mx-2']">#{{tag}}</a>
+                    <a *ngFor="let tag of project.tags; let i = index" [ngClass]="['mx-2 pointer']" (click)="listProjectByTag(tag)" data-bs-dismiss="modal">#{{tag}}</a>
                 </div>
             </div>
             <div [ngClass]="['modal-footer']">

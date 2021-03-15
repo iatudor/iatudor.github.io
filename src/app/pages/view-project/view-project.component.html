@@ -1,11 +1,15 @@
 <div [ngClass]="['container min-vh-100 mb-5']">
-    <h1 [ngClass]="['title d-flex justify-content-center my-5 fa-4x']">Proyecto
+    <!-- <h1 [ngClass]="['title d-flex justify-content-center my-5 fa-4x']">Proyecto
         <span [ngClass]="['title-span d-none d-sm-block']">&nbsp;|&nbsp;</span> <span [ngClass]="['title-span d-none d-sm-block']">{{project.title}}</span>
-    </h1>
-
+    </h1> -->
     <div [ngClass]="['row mt-5 d-flex justify-content-center align-items-center mb-5']">
         <div [ngClass]="['col-12 col-md-6 col-lg-3 d-flex justify-content-center justify-content-md-center px-5']">
             <img [src]="project.image" alt="Representación del proyecto: {{project.title}}" [ngClass]="['shadow p-3 rounded pro-card']"/>
+        </div>
+        <div [ngClass]="['text-center mt-5 mb-2']">
+            <h1 [ngClass]="['title fa-3x']">
+                {{project.title}}
+            </h1>
         </div>
         <!-- <div [ngClass]="['col-12 col-md-6 col-lg-3']">
             <h1 [ngClass]="['d-flex justify-content-center justify-content-md-start m-1 mb-3 fa-3x']">
@@ -26,4 +30,13 @@
         <!-- </div> -->
     </div>
     <div [ngClass]="['row mx-3']" [innerHTML]="project.html"></div>
+    <div [ngClass]="['row d-flex justify-content-center mt-5']">
+        <div [ngClass]="['col-md-6 col-lg-3']">
+            <hr/>
+            <div [ngClass]="['d-flex flex-wrap justify-content-center']">
+                <h2 >#Tags</h2>
+                <a *ngFor="let tag of project.tags; let i = index" [ngClass]="['pe-auto mx-2 my-2 pointer']" (click)="listProjectByTag(tag)">#{{tag}}</a>
+            </div>
+        </div>
+    </div>
 </div>

@@ -42,6 +42,6 @@ export class HeaderComponent implements OnInit {
 
         if (curr[1] == route) return classesToAdd + ' bg-transparent';
 
-        return classesToAdd + ' i-a';
+        return classesToAdd + ' i-a backdrop-filter';
     }
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+
 
 import { Project } from 'src/app/models/project';
 import { FirebaseDBService } from 'src/app/services/firebase-db.service';
@@ -17,7 +18,8 @@ export class ProjectsComponent {
     public titleFilter: string = "";
 
     constructor(private router: Router,
-                private fireDBService: FirebaseDBService) {
+        private route: ActivatedRoute,//*
+        private fireDBService: FirebaseDBService) {
 
         this._project = new Project;
 
@@ -41,6 +43,21 @@ export class ProjectsComponent {
                     }
                 )
             });
+
+        //* Paràmetres per llistar
+        this.route.params.subscribe((params: Params) => {
+
+            let id_pro = params['tag_pro'];
+            this.titleFilter = params['title_pro'];
+
+            if (id_pro != null)
+                this.filterProjects(id_pro);
+            else if (this.titleFilter != null)
+                this.filterProjects();
+            else
+                this.router.navigate(['projects']);
+
+        });
     }
 
     get project(): Project {
@@ -51,29 +68,21 @@ export class ProjectsComponent {
         return this._projects;
     }
 
-    //* ?: opcional
-    searchProjects(tag?:string) {
+    filterProjects(tag?: string) { //* ?: opcional
 
         if (tag) {
             this.fireDBService.getProjectsByTags(tag).subscribe(
                 (oProjects: Project[]) => {
-                    this._projects = oProjects;
-                });
-        } else if (this.titleFilter == "") {
-            this.fireDBService.getProjects().subscribe(
-                (oProjects: Project[]) => {
-                    this._projects = oProjects;
+                    if (oProjects.length > 0) //* Si existeixen el projectes filtrats
+                        this._projects = oProjects;
                 });
         } else {
             this.fireDBService.getProjectsByTitle(this.titleFilter).subscribe(
                 (oProjects: Project[]) => {
-                    this._projects = oProjects;
+                    if (oProjects.length > 0) 
+                        this._projects = oProjects;
                 });
         }
-    }
-
-    getProjectsTags() {
-
     }
 
     //* Ordenar imatge + contingut segons l'índex parell o imparell
@@ -89,6 +98,22 @@ export class ProjectsComponent {
 
     viewProject(id_pro: string) {
         this.router.navigate(['project', id_pro]);
+    }
+
+    listProjectByTitle() { //*
+        
+        //* Llistar-los tots
+        if (this.titleFilter == undefined || this.titleFilter == "") {
+            this.fireDBService.getProjects().subscribe(
+                (oProjects: Project[]) => {
+                    this._projects = oProjects;
+                });
+        } else
+            this.router.navigate(['projects', 'title', this.titleFilter]);
+    }
+
+    listProjectByTag(tag_pro: string) { //*
+        this.router.navigate(['projects', 'tags', tag_pro]);
     }
 
 }

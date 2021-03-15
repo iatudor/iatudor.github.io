@@ -2,7 +2,7 @@
     <!-- <h1 [ngClass]="['title d-flex justify-content-center my-5 fa-4x']">Portfolio
         <span [ngClass]="['title-span d-none d-sm-block']">&nbsp;|&nbsp;</span> <span [ngClass]="['title-span d-none d-sm-block']">CV</span>
     </h1> -->
-    <div [ngClass]="['text-center mt-5 d-none d-md-block']">
+    <div [ngClass]="['row text-center mt-5 d-none d-md-block']">
         <i [ngClass]="['fas fa-user-graduate fa-4x']"></i>
         <h1 [ngClass]="['title fa-3x']">
             Curriculum Vitae
@@ -39,7 +39,7 @@
             <div [ngClass]="['div-cls_005_16 cls_005']"><span [ngClass]="['cls_005']">2012</span></div>
             <div [ngClass]="['div-cls_005_17 cls_005']"><span [ngClass]="['cls_005']">| ESO</span><span [ngClass]="['cls_002']"> INS Samuel Gili i Gaya.</span></div>
             <div [ngClass]="['div-cls_005_18 cls_005']"><span [ngClass]="['cls_005']"> </span>
-                <A href="https://web.institutgiligaya.cat/">web.institutgiligaya.cat</A> </div>
+                <a href="https://web.institutgiligaya.cat/">web.institutgiligaya.cat</a> </div>
             <div [ngClass]="['div-cls_002_19 cls_002']"><span [ngClass]="['cls_002']">Lleida</span></div>
             <div [ngClass]="['div-cls_005_20 cls_005']"><span [ngClass]="['cls_005']">2017</span></div>
             <div [ngClass]="['div-cls_005_21 cls_005']"><span [ngClass]="['cls_005']">| CFGM</span><span [ngClass]="['cls_002']"> INS Caparrella - Sistemas Microinformáticos y Redes.</span></div>
@@ -48,13 +48,13 @@
             <div [ngClass]="['div-cls_005_24 cls_005']"><span [ngClass]="['cls_005']">(Cursando 2º Grado actualmente)</span></div>
             <div [ngClass]="['div-cls_005_25 cls_005']"><span [ngClass]="['cls_005']">Actualidad</span></div>
             <div [ngClass]="['div-cls_008_26 cls_008']"><span [ngClass]="['cls_008']"> </span>
-                <A href="http://iescaparrella.cat/">iescaparrella.cat</A> </div>
+                <a href="http://iescaparrella.cat/">iescaparrella.cat</a> </div>
             <div [ngClass]="['div-cls_002_27 cls_002']"><span [ngClass]="['cls_002']">Lleida</span></div>
             <div [ngClass]="['div-cls_006_28 cls_006']"><span [ngClass]="['cls_006']">Experiencia laboral</span></div>
             <div [ngClass]="['div-cls_005_29 cls_005']"><span [ngClass]="['cls_005']">2019</span></div>
             <div [ngClass]="['div-cls_005_30 cls_005']"><span [ngClass]="['cls_005']">| Prácticas en empresa</span><span [ngClass]="['cls_002']"> - iSAT Lleida 352 horas.</span></div>
             <div [ngClass]="['div-cls_005_31 cls_005']"><span [ngClass]="['cls_005']"> </span>
-                <A href="https://isatlleida.com/">isatlleida.com</A> </div>
+                <a href="https://isatlleida.com/">isatlleida.com</a> </div>
             <div [ngClass]="['div-cls_002_32 cls_002']"><span [ngClass]="['cls_002']">Lleida</span></div>
             <div [ngClass]="['div-cls_006_33 cls_006']"><span [ngClass]="['cls_006']">Informática</span></div>
             <div [ngClass]="['div-cls_005_34 cls_005']"><span [ngClass]="['cls_005']">Ofimática: </span><span [ngClass]="['cls_002']">Medio - Alto.</span></div>
@@ -69,14 +69,17 @@
         </a>
     </div> -->
     <div [ngClass]="['text-center mt-5 d-flex justify-content-center']">
-        <div style="width: fit-content;" class="justify-content-center shadow shadow p-5">
+        <div style="width: fit-content;" class="justify-content-center shadow rounded p-5">
         <i [ngClass]="['far fa-file-pdf mt-5 fa-6x']"></i>
         <h1 [ngClass]="['title fa-3x']">
             Curriculum vitae
         </h1>
         <p>Descargue el CV en formato PDF con el siguiente botón.</p>
-        <a [ngClass]="['btn btn-primary mx-3']" download href="assets/pdf/CVIonutAtudoroaie2021.pdf">
+        <a [ngClass]="['btn btn-primary my-3 mx-3']" download href="assets/pdf/CVIonutAtudoroaie2021.pdf">
             <i [ngClass]="['far fa-file-pdf']"></i> Descargar PDF
+        </a>
+        <a [ngClass]="['btn btn-primary my-3 mx-3']" target="_blank" href="assets/pdf/CVIonutAtudoroaie2021.pdf">
+            <i [ngClass]="['far fa-file-pdf']"></i> Ver en nueva pesaña
         </a>
     </div>
     </div>

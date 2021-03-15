@@ -10,6 +10,35 @@ INNER HTML DE DETALLS PROJECTE:
 
 EN VEZ DE UNA IMAGEN --> UN VIDEO DE CADA PROYECTO
 
+*ACTIVE LINK PARA HEADER DE LAS RUTAS 
+- border bottom para cada ruta actual
+
+*MENU DE TAGS PARA LOS PROYECTOS AL FINAL DE LA PAGINA PROYECTOS
+
+
+*CONDICIONAL PARA EL HEADER DE QUE PAGINA ES LA ACTUAL
+
+*DOWNLOAD CV LINK
+
+*APLICAR LA MISMA ESTRUCTURA QUE EL COMPONENTE HOME.ts
+
+*Children para los tags get de los proyectos
+
+export class App implements OnInit {
+  constructor() {
+     // Called first time before the ngOnInit()
+  }
+
+  ngOnInit() {
+     // Called after the constructor and called  after the first ngOnChanges() 
+  }
+}
+
+mplement this interface to execute custom initialization logic after your directive's data-bound properties have been initialized. ngOnInit is called right after the directive's data-bound properties have been checked for the first time, and before any of its children have been checked. It is invoked only once when the directive is instantiated.
+
+Mostly we use ngOnInit for all the initialization/declaration and avoid stuff to work in the constructor. The constructor should only be used to initialize class members but shouldn't do actual "work".
+
+So you should use constructor() to setup Dependency Injection and not much else. ngOnInit() is better place to "start" - it's where/when components' bindings are resolved.
 
 YT:
 https://youtu.be/QKZDFBupVUA?list=PLCOqCeQCPXXVB6hrWIAZtZRL6VZ5OIa1l&t=1804
@@ -41,30 +70,3 @@ this.editorConfig = {
     }
 
 
-*ACTIVE LINK PARA HEADER DE LAS RUTAS 
-- border bottom para cada ruta actual
-
-*MENU DE TAGS PARA LOS PROYECTOS AL FINAL DE LA PAGINA PROYECTOS
-
-
-*CONDICIONAL PARA EL HEADER DE QUE PAGINA ES LA ACTUAL
-
-*DOWNLOAD CV LINK
-
-*APLICAR LA MISMA ESTRUCTURA QUE EL COMPONENTE HOME.ts
-
-export class App implements OnInit {
-  constructor() {
-     // Called first time before the ngOnInit()
-  }
-
-  ngOnInit() {
-     // Called after the constructor and called  after the first ngOnChanges() 
-  }
-}
-
-mplement this interface to execute custom initialization logic after your directive's data-bound properties have been initialized. ngOnInit is called right after the directive's data-bound properties have been checked for the first time, and before any of its children have been checked. It is invoked only once when the directive is instantiated.
-
-Mostly we use ngOnInit for all the initialization/declaration and avoid stuff to work in the constructor. The constructor should only be used to initialize class members but shouldn't do actual "work".
-
-So you should use constructor() to setup Dependency Injection and not much else. ngOnInit() is better place to "start" - it's where/when components' bindings are resolved.

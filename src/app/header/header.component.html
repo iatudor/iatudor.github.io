@@ -1,8 +1,8 @@
 <header [ngClass]="['sticky-top']">
-    <div [ngClass]="['collapse i-a']" id="headerNavbar">
-        <div [ngClass]="['container i-a']">
-            <div [ngClass]="['row i-a']">
-                <div [ngClass]="['text-center p-5 i-a']">
+    <div [ngClass]="['collapse i-a backdrop-filter']" id="headerNavbar">
+        <div [ngClass]="['container']">
+            <div [ngClass]="['row']">
+                <div [ngClass]="['text-center p-5']">
                     <ul [ngClass]="['navbar-nav mr-auto']">
                         <li [ngClass]="['nav-item my-3']">
                             <a [routerLink]="['/cv']" [ngClass]="['btn btn-outline-light border border-bottom-1 mx-3']" data-bs-toggle="collapse" data-bs-target="#headerNavbar" aria-controls="headerNavbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,8 +41,8 @@
         </div>
     </div>
     <nav [ngClass]="getClassesIfRouteIsHome('navbar navbar-dark')">
-        <div [ngClass]="getClassesIfRouteIsHome('container-fluid')">
-            <a [routerLink]="['/home']" [routerLinkActive]="['active']" [ngClass]="getClassesIfRouteIsHome('d-flex justify-content-start align-items-center text-light px-4')">
+        <div [ngClass]="['container-fluid']">
+            <a [routerLink]="['/home']" [routerLinkActive]="['active']" [ngClass]="['d-flex justify-content-start align-items-center text-light px-4']">
                 <i [ngClass]="['fas fa-user-graduate m-0 me-2 i-font-header']"></i>
                 <h3 [ngClass]="['fw-normal px-1 m-0 h-font-header']"></h3>
             </a>

@@ -37,4 +37,8 @@ export class ViewProjectComponent {
         return this._project;
     }
 
+    listProjectByTag(tag_pro: string) { //*
+        this.router.navigate(['projects', 'tags', tag_pro]);
+    }
+
 }

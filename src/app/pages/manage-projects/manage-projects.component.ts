@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Project } from 'src/app/models/project';
 import { FirebaseDBService } from 'src/app/services/firebase-db.service';
@@ -17,7 +18,8 @@ export class ManageProjectsComponent {
     public mode: string = "add";
     public titleFilter: string = "";
 
-    constructor(private fireDBService: FirebaseDBService) {
+    constructor(private router: Router,
+                private fireDBService: FirebaseDBService) {
 
         this._project = new Project;
 
@@ -100,6 +102,10 @@ export class ManageProjectsComponent {
         let isLoaded = image.complete && image.naturalHeight !== 0;
 
         return isLoaded;
+    }
+
+    viewProject(id_pro: string) {
+        this.router.navigate(['project', id_pro]);
     }
 
 }
