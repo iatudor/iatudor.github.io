@@ -18,15 +18,13 @@ export class HeaderComponent implements OnInit {
                 private router: Router) { }
 
     ngOnInit(): void {
-        // this.user = new
 
         this.fireAuth.user.subscribe(
             (oUser: firebase.User) => {
                 this.user = oUser;
-                
-                console.log("_____________USER  DATA_____________");
-                console.log(this.user);
-                console.log("____________________________________");
+                // console.log("_____________USER  DATA_____________");
+                // console.log(this.user);
+                // console.log("____________________________________");
             }
         )
     }

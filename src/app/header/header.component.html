@@ -94,15 +94,14 @@
     <div [ngClass]="['modal-dialog']">
         <div [ngClass]="['modal-content']">
             <div [ngClass]="['modal-header']">
-                <h5 [ngClass]="['modal-title text-danger']" id="logout_modalLabel"><i [ngClass]="['fas fa-sign-out-alt']"></i> Cerrar sesión</h5>
+                <h5 [ngClass]="['modal-title text-danger']" id="logout_modalLabel"><i [ngClass]="['fas fa-sign-out-alt']"></i> Seguro que quiere cerrar sesión?</h5>
                 <button type="button" [ngClass]="['btn-close']" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div [ngClass]="['modal-body text-center']">
-                Seguro que quiere cerrar sesión?
             </div>
             <div [ngClass]="['modal-footer']">
                 <button type="button" [ngClass]="['btn btn-secondary']" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" (click)="logout()" [ngClass]="['btn btn-danger']" data-bs-dismiss="modal"><i [ngClass]="['fas fa-sign-out-alt']"></i> Cerrar sesión</button>
+                <a [routerLink]="['/home']" (click)="logout()" [ngClass]="['btn btn-danger']" data-bs-dismiss="modal">
+                    <i [ngClass]="['fas fa-sign-out-alt']"></i> Cerrar sesión
+                </a>
             </div>
         </div>
     </div>

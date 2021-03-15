@@ -1,4 +1,5 @@
-<div [ngClass]="['container login-container d-flex justify-content-center h-100']">
+<div [ngClass]="['container login-container d-flex justify-content-center min-vh-100']">
+<!-- <div [ngClass]="['container login-container d-flex justify-content-center h-100']"> -->
     <!-- * Escriptori -->
     <!-- <div [ngClass]="['text-center pt-5 mt-5 d-none d-md-block']">
         <i [ngClass]="['fab fa-google fa-4x']"></i>
@@ -27,17 +28,17 @@
             Iniciar sessión
         </h1>
         <p>Inicia sessión con Google.</p>
+        <div [ngClass]="loginFailed ? 'd-block text-danger m-3 mb-4' : 'd-none'">
+            <h5>Se ha producido un error al iniciar sesión, por favor inténtelo de nuevo.</h5>
+        </div>
+        <div [ngClass]="userDenied ? 'd-block text-danger mt-3 mb-4' : 'd-none'">
+            <h5>Usuario sin permiso.</h5>
+        </div>
         <button *ngIf="!userDenied" type="button" [ngClass]="['btn btn-outline-primary']" (click)="login()">
             <i [ngClass]="['fab fa-google']"></i> Iniciar sesión
         </button>
         <button *ngIf="userDenied" type="button" [ngClass]="['btn btn-outline-primary']" (click)="login()">
             <i [ngClass]="['fas fa-exchange-alt']"></i> Cambiar usuario
         </button>
-        <div [ngClass]="loginFailed ? 'd-block text-danger mt-3' : 'd-none'" title="Disabled tooltip">
-            Se ha producido un error al iniciar sesión, por favor inténtelo de nuevo.
-        </div>
-        <div [ngClass]="userDenied ? 'd-block text-danger mt-3' : 'd-none'" data-bs-toggle="tooltip" title="Disabled tooltip">
-            Usuario sin permisos.
-        </div>
     </div>
 </div>

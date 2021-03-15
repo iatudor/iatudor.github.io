@@ -561,6 +561,11 @@ textarea {
     margin-bottom: 113px;
 }
 
+.login-container {
+    margin-top: -26px;
+    margin-bottom: auto;
+}
+
 /* .title-span-2 {
     color: #348de1;
     font-weight: lighter;
