@@ -21,7 +21,7 @@
             <div [ngClass]="['input-group mb-3']">
                 <input type="text" [ngClass]="['form-control']" placeholder="Buscar por título" [(ngModel)]="titleFilter" aria-label="Buscar por título" aria-describedby="basic-addon2">
                 <div [ngClass]="['input-group-append']">
-                    <button [ngClass]="['btn btn-outline-secondary']" type="button" (click)="listProjectByTitle()"><i [ngClass]="['fas fa-search']"></i> Buscar</button>
+                    <button [ngClass]="['btn btn-outline-secondary']" type="button" (click)="filterProjects()"><i [ngClass]="['fas fa-search']"></i> Buscar</button>
                     <!-- <button [ngClass]="['btn btn-outline-secondary']" type="button" (click)="filterProjects()"><i [ngClass]="['fas fa-search']"></i> Buscar</button> -->
                 </div>
             </div>
