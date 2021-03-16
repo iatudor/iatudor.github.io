@@ -67,7 +67,11 @@ export class ProjectsComponent {
     get projects(): Project[] {
         return this._projects;
     }
-
+    //! El input de buscar si llama directamente a esta función, 
+    //! busca los elementos en firebase sin cambiar la ruta actual,
+    //! en cambio si llama a listProjectByTitle(), si modifica la ruta actual
+    //! ventajas de llamarla por aqui, lo se refresa ca pagina porque no cambia la ruta de 'tags' a 'title'
+    //! cosa que si pasa si llamas a llistProjectByTitle().
     filterProjects(tag?: string) { //* ?: opcional
 
         if (tag) {
@@ -76,13 +80,19 @@ export class ProjectsComponent {
                     if (oProjects.length > 0) //* Si existeixen el projectes filtrats
                         this._projects = oProjects;
                 });
-        } else {
+        } else if (this.titleFilter != undefined && this.titleFilter != "") {
             this.fireDBService.getProjectsByTitle(this.titleFilter).subscribe(
                 (oProjects: Project[]) => {
-                    if (oProjects.length > 0) 
+                    if (oProjects.length > 0)
                         this._projects = oProjects;
                 });
+        } else {
+            this.fireDBService.getProjects().subscribe(
+                (oProjects: Project[]) => {
+                    this._projects = oProjects;
+                });
         }
+
     }
 
     //* Ordenar imatge + contingut segons l'índex parell o imparell
@@ -101,7 +111,7 @@ export class ProjectsComponent {
     }
 
     listProjectByTitle() { //*
-        
+
         //* Llistar-los tots
         if (this.titleFilter == undefined || this.titleFilter == "") {
             this.fireDBService.getProjects().subscribe(

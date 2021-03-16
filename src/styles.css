@@ -139,7 +139,9 @@ a {
   /* background-color: #2d3b48 !important; */
   /* background-color: #12385c !important; */
   /* background-color: #12385c65 !important; */
-  background-color: #12385c9e !important;
+  /* background-color: rgba(2, 85, 139, 0.91); */
+  /* background-color: #12385c9e !important; */
+  background-color: #10406de0 !important;
 }
 
 .h-border-r-btn {
