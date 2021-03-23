@@ -1,10 +1,4 @@
 <div [ngClass]="['container-fluid min-vh-100 mb-5']">
-    <!-- <div [ngClass]="['d-flex justify-content-center align-items-center px-4']">
-        <i [ngClass]="['fas fa-briefcase me-2 fa-4x']"></i>
-        <h1 [ngClass]="['title my-5 fa-4x']">
-            Proyectos
-        </h1>
-    </div> -->
     <div [ngClass]="['row text-center mt-5 mb-2']">
         <i [ngClass]="['fas fa-briefcase fa-4x']"></i>
         <h1 [ngClass]="['title fa-3x']">
@@ -12,21 +6,16 @@
         </h1>
         <p>Échale un vistazo a mis últimos proyectos.</p>
     </div>
-    <!-- <a [routerLink]="['/home']" [routerLinkActive]="['active']" [ngClass]="getClassesIfRouteIsHome('d-flex justify-content-start align-items-center text-light px-4')">
-        <i [ngClass]="['fas fa-briefcase m-0 me-2 i-font-header']"></i>
-        <h3 [ngClass]="['fw-normal px-1 m-0 h-font-header']"> Portfolio</h3>
-    </a> -->
     <div [ngClass]="['row d-flex justify-content-center']">
         <div [ngClass]="['col-md-6 col-lg-3']">
             <div [ngClass]="['input-group mb-3']">
                 <input type="text" [ngClass]="['form-control']" placeholder="Buscar por título" [(ngModel)]="titleFilter" aria-label="Buscar por título" aria-describedby="basic-addon2">
                 <div [ngClass]="['input-group-append']">
                     <button [ngClass]="['btn btn-outline-secondary']" type="button" (click)="filterProjects()"><i [ngClass]="['fas fa-search']"></i> Buscar</button>
-                    <!-- <button [ngClass]="['btn btn-outline-secondary']" type="button" (click)="filterProjects()"><i [ngClass]="['fas fa-search']"></i> Buscar</button> -->
                 </div>
             </div>
             <div [ngClass]="['d-flex flex-wrap justify-content-center']">
-                <h2 >#Tags</h2>
+                <h2>#Tags</h2>
                 <a *ngFor="let tag of allProjectsTags; let i = index" (click)="listProjectByTag(tag)" [ngClass]="['pe-auto mx-2 my-2 pointer']">#{{tag}}</a>
             </div>
         </div>
@@ -52,19 +41,17 @@
             </div>
         </div>
     </div>
-    
     <div [ngClass]="['row d-flex justify-content-center mt-5']">
         <div [ngClass]="['col-md-6 col-lg-3']">
             <hr/>
             <div [ngClass]="['d-flex flex-wrap justify-content-center']">
-                <h2 >#Tags</h2>
+                <h2>#Tags</h2>
                 <a *ngFor="let tag of allProjectsTags; let i = index" (click)="listProjectByTag(tag)" [ngClass]="['pe-auto mx-2 my-2 pointer']">#{{tag}}</a>
-                <!-- <a *ngFor="let tag of allProjectsTags; let i = index" (click)="filterProjects(tag)" [ngClass]="['pe-auto mx-2 my-2 pointer']">#{{tag}}</a> -->
             </div>
         </div>
     </div>
 </div>
-<!-- MODAL -->
+
 <div [ngClass]="['modal fade']" id="viewProjectModal" tabindex="-1" aria-labelledby="viewProjectModalLabel" aria-hidden="true">
     <div [ngClass]="['modal-dialog modal-dialog-centered']">
         <div [ngClass]="['modal-content']">

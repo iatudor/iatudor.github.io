@@ -44,11 +44,14 @@ export class ProjectsComponent {
                 )
             });
 
-        //* Paràmetres per llistar
+        //* Paràmetres filtre
         this.route.params.subscribe((params: Params) => {
 
             let id_pro = params['tag_pro'];
             this.titleFilter = params['title_pro'];
+            let p = params['p'];
+            console.log(p);
+            
 
             if (id_pro != null)
                 this.filterProjects(id_pro);
@@ -56,7 +59,6 @@ export class ProjectsComponent {
                 this.filterProjects();
             else
                 this.router.navigate(['projects']);
-
         });
     }
 
@@ -67,32 +69,29 @@ export class ProjectsComponent {
     get projects(): Project[] {
         return this._projects;
     }
-    //! El input de buscar si llama directamente a esta función, 
-    //! busca los elementos en firebase sin cambiar la ruta actual,
-    //! en cambio si llama a listProjectByTitle(), si modifica la ruta actual
-    //! ventajas de llamarla por aqui, lo se refresa ca pagina porque no cambia la ruta de 'tags' a 'title'
-    //! cosa que si pasa si llamas a llistProjectByTitle().
-    filterProjects(tag?: string) { //* ?: opcional
+
+    filterProjects(tag?: string) {
 
         if (tag) {
+            //* LListar-los per tags
             this.fireDBService.getProjectsByTags(tag).subscribe(
                 (oProjects: Project[]) => {
-                    if (oProjects.length > 0) //* Si existeixen el projectes filtrats
+                    if (oProjects.length > 0)
                         this._projects = oProjects;
                 });
         } else if (this.titleFilter != undefined && this.titleFilter != "") {
+            //* Llisatar-los per filtre
             this.fireDBService.getProjectsByTitle(this.titleFilter).subscribe(
                 (oProjects: Project[]) => {
                     if (oProjects.length > 0)
                         this._projects = oProjects;
                 });
-        } else {
+        } else { //* Llisatar-los tots
             this.fireDBService.getProjects().subscribe(
                 (oProjects: Project[]) => {
                     this._projects = oProjects;
                 });
         }
-
     }
 
     //* Ordenar imatge + contingut segons l'índex parell o imparell
@@ -110,7 +109,7 @@ export class ProjectsComponent {
         this.router.navigate(['project', id_pro]);
     }
 
-    listProjectByTitle() { //*
+    listProjectByTitle() {
 
         //* Llistar-los tots
         if (this.titleFilter == undefined || this.titleFilter == "") {

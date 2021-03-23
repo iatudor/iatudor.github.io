@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+// import { Observable } from 'rxjs';
 
 import { AngularFireAuth } from '@angular/fire/auth';
 import firebase from 'firebase/app';
@@ -22,6 +22,7 @@ export class FirebaseAuthService {
         return this.fireAuth.signOut();
     }
 
+    //! STRICT ERROR
     //! get user(): Observable<firebase.User> {
     //!     return this.fireAuth.user;
     //! }

@@ -52,13 +52,10 @@ export class FirebaseDBService {
     }
     
     checkAllowedUsers(email: string): Observable<any[]> {
-        console.log("Email check allowed users: " + email);
-        
         return this.firestore.collection('allowed_users', ref => this.queryByEmail(email, ref)).valueChanges();
     }
 
     private queryByEmail(email: string, ref: any) {
         return ref.where("email", "==", email);
     }
-
 }

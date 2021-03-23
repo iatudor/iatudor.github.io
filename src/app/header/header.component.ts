@@ -11,7 +11,6 @@ import { FirebaseAuthService } from '../services/firebase-auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-    //! public user: firebase.User; !/?
     public user!: firebase.User;
 
     constructor(private fireAuth: FirebaseAuthService,
@@ -33,7 +32,7 @@ export class HeaderComponent implements OnInit {
         this.fireAuth.logout();
     }
 
-    // Header transparent si la ruta és /home
+    //* Header transparent si la ruta és /home
     getClassesIfRouteIsHome(classesToAdd: string): string {
 
         let route = 'home';

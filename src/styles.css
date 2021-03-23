@@ -141,7 +141,7 @@ a {
   /* background-color: #12385c65 !important; */
   /* background-color: rgba(2, 85, 139, 0.91); */
   /* background-color: #12385c9e !important; */
-  background-color: #10406de0 !important;
+  background-color: #054179e0 !important;
 }
 
 .h-border-r-btn {
@@ -219,7 +219,7 @@ a {
 .home-banner-container a:hover:not(.mobile) {
   border-color: whitesmoke !important;
   background-color: whitesmoke !important;
-  border-radius: 20px;
+  border-radius: 6px;
   color: #295883 !important;
   border-style: solid !important;
   box-shadow: 5px 2px 12px #8d8d8d !important;

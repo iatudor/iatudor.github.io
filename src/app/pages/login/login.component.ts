@@ -34,27 +34,23 @@ export class LoginComponent implements OnInit {
         this.fireAuth.login().then(
             (oUser: firebase.auth.UserCredential) => {
                 //* Login correcte
-                //! let email = oUser.user.email; - !
                 let email = null;
                 
                 email = oUser.user!.email;
-                
-                
+        
                 this.fireDBService.checkAllowedUsers(email!).pipe(take(1)).subscribe(
                     (oEmails: any[]) => {
                         if (oEmails.length == 1) {
                             //* Correcte
-                            console.log("SIGNED IN & ACCESS IN");
                             this._loginFailed = false;
                             this._userDenied = false;
                             this.router.navigate(['/home'])
                         } else {
                             //* Error
+                            //* Tancar sessió de l'usuari per falta de permisos
                             this._loginFailed = false;
                             this._userDenied = true;
                             this.fireAuth.logout();
-                            //* Tancar sesión de l'usuari per falta de permisos
-                            console.log("SIGNED IN BUT NO ACCESS");
                         }
                     }
                 );
@@ -62,7 +58,7 @@ export class LoginComponent implements OnInit {
         ).catch(
             () => {
                 //* Login incorrecte
-                //* Tancar sesión de l'usuari per credencials incorrectes
+                //* Tancar sessió de l'usuari per credencials incorrectes
                 this._loginFailed = true;
                 this._userDenied = false;
                 console.log("SIGNED ERROR");

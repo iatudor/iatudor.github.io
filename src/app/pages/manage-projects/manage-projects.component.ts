@@ -11,7 +11,6 @@ import { FirebaseDBService } from 'src/app/services/firebase-db.service';
 })
 export class ManageProjectsComponent {
 
-    //* S'utilitza per visualitzar com per afegir
     private _project: Project;
     private _projects: Project[] = [];
     public tags: string = "";
@@ -19,7 +18,7 @@ export class ManageProjectsComponent {
     public titleFilter: string = "";
 
     constructor(private router: Router,
-                private fireDBService: FirebaseDBService) {
+        private fireDBService: FirebaseDBService) {
 
         this._project = new Project;
 
@@ -48,6 +47,7 @@ export class ManageProjectsComponent {
     loadProject(i: number) {
 
         this.mode = "update";
+        //! Utilitzar el setters
         this._project = this._projects[i];
         this.tags = "";
 
@@ -58,7 +58,7 @@ export class ManageProjectsComponent {
             }
         );
         //* Eliminar el primer espai
-        this.tags = this.tags.substring(1,this.tags.length-1);
+        this.tags = this.tags.substring(1, this.tags.length);
     }
 
     addProject() {
