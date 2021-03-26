@@ -7,12 +7,21 @@ export class Project {
   private _tags: string[];
 
   constructor() {
-    this._id = '';
-    this._title = '';
-    this._desc = '';
-    this._image = '';
-    this._html = '';
+    this._id = "";
+    this._title = "";
+    this._desc = "";
+    this._image = "";
+    this._html = "";
     this._tags = [];
+  }
+
+  public loadProject(pro: Project) {
+    this._id = pro.id;
+    this._title = pro.title;
+    this._desc = pro.desc;
+    this._image = pro.image;
+    this._html = pro.html;
+    this._tags = pro.tags;
   }
 
   public get id(): string {
@@ -60,6 +69,7 @@ export class Project {
   }
 
   public set tags(tags: string[]) {
+    this._tags = [];
     tags.forEach(t => {
       this._tags.push(t);
     });

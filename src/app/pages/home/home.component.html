@@ -1,27 +1,29 @@
 <div [ngClass]="['home-banner-image h-100']">
-    <div [ngClass]="['home-banner-container']">
-        <h1 [ngClass]="['title d-flex justify-content-center fa-4x m-1']"> Ionut Atudoroaie
-            <span [ngClass]="['title-span d-none d-sm-block']">&nbsp;|&nbsp;</span> <span [ngClass]="['title-span d-none d-sm-block']">Portfolio</span>
-        </h1>
-        <div [ngClass]="['d-flex flex-wrap justify-content-center']">
-            <div [ngClass]="['d-none d-lg-block']">
-                <a [routerLink]="['/cv']" [ngClass]="['d-inline-flex justify-content-center align-items-center text-light px-4 mx-3']">
-                    <i [ngClass]="['fas fa-user-graduate m-0 i-font-header me-2']"></i>
-                    <h5 [ngClass]="['px-1 m-0']"> CV</h5>
-                </a>
-                <a [routerLink]="['/projects']" [ngClass]="['d-inline-flex justify-content-center align-items-center text-light px-4 mx-3']">
-                    <i [ngClass]="['fas fa-briefcase m-0 i-font-header me-2']"></i>
-                    <h5 [ngClass]="['px-1 m-0']"> PROYECTOS</h5>
-                </a>
-            </div>
-            <a [routerLink]="['/cv']" [ngClass]="['d-flex btn btn-outline-light mobile justify-content-center align-items-center px-4 mx-3 d-lg-none my-3']">
-                <i [ngClass]="['fas fa-user-graduate m-0 i-font-header me-2']"></i>
-                <h3 [ngClass]="['px-1 m-0']"> CV</h3>
-            </a>
-            <a [routerLink]="['/projects']" [ngClass]="['d-flex btn btn-outline-light mobile justify-content-center align-items-center px-4 mx-3 d-lg-none my-3']">
-                <i [ngClass]="['fas fa-briefcase m-0 i-font-header me-2']"></i>
-                <h3 [ngClass]="['px-1 m-0']"> PROYECTOS</h3>
-            </a>
-        </div>
+  <div [ngClass]="['home-banner-container']">
+    <h1 [ngClass]="['title d-flex justify-content-center fa-4x m-1']"> Ionut Atudoroaie
+      <span [ngClass]="['title-span d-none d-sm-block']">&nbsp;|&nbsp;</span> <span [ngClass]="['title-span d-none d-sm-block']">Portfolio</span>
+    </h1>
+    
+    <div [ngClass]="['d-flex flex-wrap justify-content-center']">
+      <div [ngClass]="['d-none d-lg-block']">
+        <a [routerLink]="['/cv']" [ngClass]="['d-inline-flex justify-content-center align-items-center text-light px-4 mx-3']">
+          <i [ngClass]="['fas fa-user-graduate m-0 i-font-header me-2']"></i>
+          <h5 [ngClass]="['px-1 m-0']"> CV</h5>
+        </a>
+        <a [routerLink]="['/projects']" [ngClass]="['d-inline-flex justify-content-center align-items-center text-light px-4 mx-3']">
+          <i [ngClass]="['fas fa-briefcase m-0 i-font-header me-2']"></i>
+          <h5 [ngClass]="['px-1 m-0']"> PROYECTOS</h5>
+        </a>
+      </div>
+
+      <a [routerLink]="['/cv']" [ngClass]="['d-flex btn btn-outline-light mobile justify-content-center align-items-center px-4 mx-3 d-lg-none my-3']">
+        <i [ngClass]="['fas fa-user-graduate m-0 i-font-header me-2']"></i>
+        <h3 [ngClass]="['px-1 m-0']"> CV</h3>
+      </a>
+      <a [routerLink]="['/projects']" [ngClass]="['d-flex btn btn-outline-light mobile justify-content-center align-items-center px-4 mx-3 d-lg-none my-3']">
+        <i [ngClass]="['fas fa-briefcase m-0 i-font-header me-2']"></i>
+        <h3 [ngClass]="['px-1 m-0']"> PROYECTOS</h3>
+      </a>
     </div>
+  </div>
 </div>

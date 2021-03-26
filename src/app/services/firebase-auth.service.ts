@@ -5,30 +5,25 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import firebase from 'firebase/app';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class FirebaseAuthService {
 
-    constructor(private fireAuth: AngularFireAuth) { }
+  constructor(private fireAuth: AngularFireAuth) { }
 
-    login(): Promise<firebase.auth.UserCredential> {
-        let provider = new firebase.auth.GoogleAuthProvider();
-        provider.setCustomParameters({prompt: "select_account"});
-        
-        return this.fireAuth.signInWithPopup(provider);
-    }
+  login(): Promise<firebase.auth.UserCredential> {
+    let provider = new firebase.auth.GoogleAuthProvider();
+    provider.setCustomParameters({ prompt: "select_account" });
 
-    logout(): Promise<void> {
-        return this.fireAuth.signOut();
-    }
+    return this.fireAuth.signInWithPopup(provider);
+  }
 
-    //! STRICT ERROR
-    //! get user(): Observable<firebase.User> {
-    //!     return this.fireAuth.user;
-    //! }
-
-    get user(): any {
-        return this.fireAuth.user;
-    }
+  logout(): Promise<void> {
+    return this.fireAuth.signOut();
+  }
+  
+  get user(): any {
+    return this.fireAuth.user;
+  }
 
 }

@@ -1,0 +1,21 @@
+- Parpaeo botones de iniciar sesión
+
+- FINISH - Función loadProject; al crear el objeto project e intentar guardarlo en la BBDD, firebase no lo accepta porque es "un objeto modificado"
+
+- app.module.ts:
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular/ckeditor.module'; // ERROR
+
+- manage.project.component.ts:
+import * as ClassicEditor from '../../../ckeditor5/build/ckeditor'; // ERROR
+
+- FINISH - como podria insertar videos de los proyectos?
+
+- anchor scrolling? para moverse por la pantalla
+
+- Para listar los proyectos. Es mejor respetar la barra de rutas? Ahora mismo la respeta para los tags
+
+
+
+angular router link # id
+
+PROBAR DE PONER UN FORM EN EL BUSCAR

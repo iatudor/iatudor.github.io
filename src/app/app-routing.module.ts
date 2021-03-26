@@ -18,7 +18,7 @@ const routes: Routes = [
     { path: 'cv', component: CvComponent },
     { path: 'projects', children: [
       {path: '', component: ProjectsComponent},
-      {path: 'tags/:tag_pro', component: ProjectsComponent}, //! Perque l'agaffa la ruta?
+      {path: 'tags/:tag_pro', component: ProjectsComponent},
       {path: 'title/:title_pro', component: ProjectsComponent}
     ]},
     { path: 'project', children: [

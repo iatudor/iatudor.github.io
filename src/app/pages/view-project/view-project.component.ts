@@ -5,40 +5,39 @@ import { Project } from 'src/app/models/project';
 import { FirebaseDBService } from 'src/app/services/firebase-db.service';
 
 @Component({
-    selector: 'app-view-project',
-    templateUrl: './view-project.component.html',
-    styleUrls: ['./view-project.component.css']
+  selector: 'app-view-project',
+  templateUrl: './view-project.component.html',
+  styleUrls: ['./view-project.component.css']
 })
 export class ViewProjectComponent {
 
-    private _project: Project;
+  private _project: Project;
 
-    constructor(private router: Router,
-                private route: ActivatedRoute,
-                private fireDBService: FirebaseDBService) {
+  constructor(private router: Router,
+    private route: ActivatedRoute,
+    private fireDBService: FirebaseDBService) {
 
-        this._project = new Project;
+    this._project = new Project;
 
-        this.route.params.subscribe((params: Params) => {
+    this.route.params.subscribe((params: Params) => {
 
-            let id_pro = params['id_pro'];
+      let id_pro = params['id_pro'];
 
-            if (id_pro == null)
-                this.router.navigate(['project']);
+      if (id_pro == null)
+        this.router.navigate(['project']);
 
-            this.fireDBService.getProjectById(id_pro).subscribe(
-                (oProjects: Project[]) => {
-                    this._project = oProjects[0];
-                });
+      this.fireDBService.getProjectById(id_pro).subscribe(
+        (oProjects: Project[]) => {
+          this._project = oProjects[0];
         });
-    }
+    });
+  }
 
-    get project(): Project {
-        return this._project;
-    }
+  get project(): Project {
+    return this._project;
+  }
 
-    listProjectByTag(tag_pro: string) { //*
-        this.router.navigate(['projects', 'tags', tag_pro]);
-    }
-
+  listProjectByTag(tag_pro: string) { //*
+    this.router.navigate(['projects', 'tags', tag_pro]);
+  }
 }

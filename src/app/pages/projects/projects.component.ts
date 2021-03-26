@@ -6,123 +6,126 @@ import { Project } from 'src/app/models/project';
 import { FirebaseDBService } from 'src/app/services/firebase-db.service';
 
 @Component({
-    selector: 'app-projects',
-    templateUrl: './projects.component.html',
-    styleUrls: ['./projects.component.css']
+  selector: 'app-projects',
+  templateUrl: './projects.component.html',
+  styleUrls: ['./projects.component.css']
 })
 export class ProjectsComponent {
 
-    private _project: Project;
-    private _projects: Project[] = [];
-    public allProjectsTags: string[] = [];
-    public titleFilter: string = "";
+  private _project: Project;
+  private _projects: Project[] = [];
+  public allProjectsTags: string[] = [];
+  public titleFilter: string = "";
 
-    constructor(private router: Router,
-        private route: ActivatedRoute,//*
-        private fireDBService: FirebaseDBService) {
+  constructor(private router: Router,
+    private route: ActivatedRoute,//*
+    private fireDBService: FirebaseDBService) {
 
-        this._project = new Project;
+    this._project = new Project;
 
-        this.fireDBService.getProjects().subscribe(
-            (oProjects: Project[]) => {
-                this._projects = oProjects;
-            });
+    this.fireDBService.getProjects().subscribe(
+      (oProjects: Project[]) => {
+        this._projects = oProjects;
+      });
 
-        //* Obtenir tots els tags dels projectes
-        this.fireDBService.getProjectsTags().subscribe(
-            (oProjects: Project[]) => {
-                oProjects.forEach(
-                    (oProject) => {
-                        oProject.tags.forEach(
-                            (oTag) => {
-                                //* Evitar duplicats
-                                if (this.allProjectsTags.includes(oTag) === false)
-                                    this.allProjectsTags.push(oTag);
-                            }
-                        )
-                    }
-                )
-            });
+    //* Obtenir tots els tags dels projectes
+    this.fireDBService.getProjectsTags().subscribe(
+      (oProjects: Project[]) => {
+        oProjects.forEach(
+          (oProject) => {
+            oProject.tags.forEach(
+              (oTag) => {
+                //* Evitar duplicats
+                if (this.allProjectsTags.includes(oTag) === false)
+                  this.allProjectsTags.push(oTag);
+              }
+            )
+          }
+        )
+      });
 
-        //* Paràmetres filtre
-        this.route.params.subscribe((params: Params) => {
+    //* Paràmetres filtre
+    this.route.params.subscribe((params: Params) => {
 
-            let id_pro = params['tag_pro'];
-            this.titleFilter = params['title_pro'];
-            let p = params['p'];
-            console.log(p);
-            
+      let id_pro = params['tag_pro'];
+      this.titleFilter = params['title_pro'];
+      let p = params['p'];
+      console.log(p);
 
-            if (id_pro != null)
-                this.filterProjects(id_pro);
-            else if (this.titleFilter != null)
-                this.filterProjects();
-            else
-                this.router.navigate(['projects']);
+
+      if (id_pro != null)
+        this.filterProjects(id_pro);
+      else if (this.titleFilter != null)
+        this.filterProjects();
+      else
+        this.router.navigate(['projects']);
+    });
+  }
+
+  get project(): Project {
+    return this._project;
+  }
+
+  get projects(): Project[] {
+    return this._projects;
+  }
+
+  projectsFound(): boolean {
+    return this._projects.length < 1;
+  }
+
+  filterProjects(tag?: string) {
+
+    if (tag) {
+      //* LListar-los per tags
+      this.fireDBService.getProjectsByTags(tag).subscribe(
+        (oProjects: Project[]) => {
+          this._projects = oProjects;
+        });
+    } else if (this.titleFilter != undefined && this.titleFilter != "") {
+      //* Llisatar-los per filtre
+      this.fireDBService.getProjectsByTitle(this.titleFilter).subscribe(
+        (oProjects: Project[]) => {
+          this._projects = oProjects;
+        });
+    } else { //* Llisatar-los tots
+      this.fireDBService.getProjects().subscribe(
+        (oProjects: Project[]) => {
+          this._projects = oProjects;
         });
     }
+  }
 
-    get project(): Project {
-        return this._project;
-    }
+  //* Ordenar imatge + contingut segons l'índex parell o imparell
+  getOrder(classesToAdd: string, n: number): string {
 
-    get projects(): Project[] {
-        return this._projects;
-    }
+    if (n % 2 == 0) return classesToAdd + ' order-md-2';
+    else return classesToAdd + ' order-md-1';
+  }
 
-    filterProjects(tag?: string) {
+  loadProject(i: number) {
+    this._project = this._projects[i];
+  }
 
-        if (tag) {
-            //* LListar-los per tags
-            this.fireDBService.getProjectsByTags(tag).subscribe(
-                (oProjects: Project[]) => {
-                    if (oProjects.length > 0)
-                        this._projects = oProjects;
-                });
-        } else if (this.titleFilter != undefined && this.titleFilter != "") {
-            //* Llisatar-los per filtre
-            this.fireDBService.getProjectsByTitle(this.titleFilter).subscribe(
-                (oProjects: Project[]) => {
-                    if (oProjects.length > 0)
-                        this._projects = oProjects;
-                });
-        } else { //* Llisatar-los tots
-            this.fireDBService.getProjects().subscribe(
-                (oProjects: Project[]) => {
-                    this._projects = oProjects;
-                });
-        }
-    }
+  viewProject(id_pro: string) {
+    console.log(id_pro);
 
-    //* Ordenar imatge + contingut segons l'índex parell o imparell
-    getOrder(classesToAdd: string, n: number): string {
+    this.router.navigate(['project', id_pro]);
+  }
 
-        if (n % 2 == 0) return classesToAdd + ' order-md-2';
-        else return classesToAdd + ' order-md-1';
-    }
+  listProjectByTitle() {
+    //* Llistar-los tots si no s'especifica cap
+    /* if (this.titleFilter == undefined || this.titleFilter == "") {
+      this.fireDBService.getProjects().subscribe(
+        (oProjects: Project[]) => {
+          this._projects = oProjects;
+        });
+    } else */
+      this.router.navigate(['projects', 'title', this.titleFilter]);
+  }
 
-    loadProject(i: number) {
-        this._project = this._projects[i];
-    }
-
-    viewProject(id_pro: string) {
-        this.router.navigate(['project', id_pro]);
-    }
-
-    listProjectByTitle() {
-
-        //* Llistar-los tots
-        if (this.titleFilter == undefined || this.titleFilter == "") {
-            this.fireDBService.getProjects().subscribe(
-                (oProjects: Project[]) => {
-                    this._projects = oProjects;
-                });
-        } else
-            this.router.navigate(['projects', 'title', this.titleFilter]);
-    }
-
-    listProjectByTag(tag_pro: string) { //*
-        this.router.navigate(['projects', 'tags', tag_pro]);
-    }
+  listProjectByTag(tag_pro: string) { //*
+    this.router.navigate(['projects', 'tags', tag_pro]);
+  }
 
 }
