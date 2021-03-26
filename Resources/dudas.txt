@@ -19,3 +19,5 @@ import * as ClassicEditor from '../../../ckeditor5/build/ckeditor'; // ERROR
 angular router link # id
 
 PROBAR DE PONER UN FORM EN EL BUSCAR
+
+guardar en 

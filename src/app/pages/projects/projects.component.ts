@@ -47,14 +47,11 @@ export class ProjectsComponent {
     //* Paràmetres filtre
     this.route.params.subscribe((params: Params) => {
 
-      let id_pro = params['tag_pro'];
+      let tagFilter = params['tag_pro'];
       this.titleFilter = params['title_pro'];
-      let p = params['p'];
-      console.log(p);
 
-
-      if (id_pro != null)
-        this.filterProjects(id_pro);
+      if (tagFilter != null)
+        this.filterProjects(tagFilter);
       else if (this.titleFilter != null)
         this.filterProjects();
       else

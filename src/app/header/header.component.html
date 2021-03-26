@@ -59,7 +59,7 @@
           <i [ngClass]="['fas fa-user-graduate']"></i> CV
         </a>
         <div [ngClass]="['btn-group']">
-          <a [routerLink]="['/projects/tags/:tag_pro']" [routerLinkActive]="['active']"
+          <a [routerLink]="['/projects']" [routerLinkActive]="['active']"
             [ngClass]="['btn btn-sm btn-outline-light border-0']">
             <i [ngClass]="['fas fa-briefcase']"></i> Proyectos
           </a>
@@ -68,7 +68,7 @@
             data-bs-toggle="dropdown" aria-expanded="false"></a>
           <ul *ngIf="user != null" [ngClass]="['dropdown-menu']">
             <li>
-              <a [routerLink]="['/projects/tags/:tag_pro']" [routerLinkActive]="['active']"
+              <a [routerLink]="['/projects']" [routerLinkActive]="['active']"
                 [ngClass]="['dropdown-item']">
                 <i [ngClass]="['fas fa-briefcase']"></i> Proyectos
               </a>
