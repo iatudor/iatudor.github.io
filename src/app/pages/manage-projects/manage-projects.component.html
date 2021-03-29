@@ -5,8 +5,8 @@
       Administrar proyectos
     </h1>
   </div>
-  
-  <div [ngClass]="['row justify-content-center']">
+
+  <div *ngIf="!managing" [ngClass]="['row justify-content-center']">
     <div [ngClass]="['col-12 col-lg-4']">
       <div [ngClass]="['input-group mb-3']">
         <input type="text" [ngClass]="['form-control']" placeholder="Buscar proyecto por título" [(ngModel)]="titleFilter" aria-label="Buscar proyecto por título" aria-describedby="basic-addon2">
@@ -17,9 +17,9 @@
     </div>
 
     <div [ngClass]="['col-12']">
-      <a type="button" [ngClass]="['btn btn-primary m-4']" (click)="clearProject()" data-bs-toggle="modal" data-bs-target="#add_and_update_projectModal">
+      <button type="button" [ngClass]="['btn btn-primary m-4']" (click)="clearProject()" data-bs-toggle="modal" data-bs-target="#add_and_update_projectModal">
         <i [ngClass]="['fas fa-plus']"></i> Añadir proyecto
-      </a>
+      </button>
       <table id="list_news_articles" [ngClass]="['table caption-top table-striped table-hover table-responsive']">
         <thead>
           <tr>
@@ -37,14 +37,14 @@
               {{ pro.desc }}
             </td>
             <td [ngClass]="['align-middle']">
-              <button type="button" [ngClass]="['btn btn-outline-info']" (click)="loadProject(i)" data-bs-toggle="modal" data-bs-target="#viewProjectModal">
+              <button type="button" [ngClass]="['btn btn-outline-info']" (click)="loadProject(i, false)" data-bs-toggle="modal" data-bs-target="#viewProjectModal">
                 <i [ngClass]="['far fa-eye']"></i> Vista previa
               </button>
             </td>
             <td [ngClass]="['align-middle']">
-              <button type="button" [ngClass]="['btn btn-outline-warning']" (click)="loadProject(i)" data-bs-toggle="modal" data-bs-target="#add_and_update_projectModal">
+              <a [ngClass]="['btn btn-outline-warning']" (click)="loadProject(i)">
                 <i [ngClass]="['fas fa-pen']"></i> Modificar
-              </button>
+              </a>
             </td>
             <td [ngClass]="['align-middle']">
               <button type="button" [ngClass]="['btn btn-outline-danger']" (click)="deleteProject(i)">
@@ -54,9 +54,68 @@
           </tr>
         </tbody>
       </table>
-      <a type="button" [ngClass]="['btn btn-primary m-4']" (click)="clearProject()" data-bs-toggle="modal" data-bs-target="#add_and_update_projectModal">
+      <button type="button" [ngClass]="['btn btn-primary m-4']" (click)="clearProject()" data-bs-toggle="modal" data-bs-target="#add_and_update_projectModal">
         <i [ngClass]="['fas fa-plus']"></i> Añadir proyecto
-      </a>
+      </button>
+    </div>
+  </div>
+
+  <div id="manage">
+    <div *ngIf="managing">
+      <div [ngClass]="['d-flex justify-content-start align-items-center px-4']">
+        <div [ngClass]="['d-flex justify-content-start align-items-center']" *ngIf="mode == 'add'">
+          <i [ngClass]="['fas fa-plus me-2']"></i>
+          <i [ngClass]="['fas fa-briefcase m-0 me-2 i-font-header']"></i>
+          <h2 [ngClass]="['modal-title']">
+            Nuevo proyecto
+          </h2>
+        </div>
+        
+        <div [ngClass]="['d-flex justify-content-start align-items-center']" *ngIf="mode == 'update'">
+          <i [ngClass]="['fas fa-pen m-0 me-2 i-font-header']"></i>
+          <h2 [ngClass]="['modal-title']">
+            Modificar proyecto
+          </h2>
+        </div>
+        <button type="button" [ngClass]="['btn btn-secondary m-5']" (click)="managing = false">Cancelar</button>
+      </div>
+      
+
+      <div [ngClass]="['text-center']">
+        <img id="pro_img" [src]="project.image" *ngIf="isImageLoaded()" alt="Representación del proyecto: {{project.title}}" [ngClass]="['shadow p-3 mb-5 rounded pro-card']" />
+
+        <div [ngClass]="['d-flex justify-content-center']">
+          <div [ngClass]="['form-floating mb-5 w-50']">
+            <input type="text" [ngClass]="['form-control']" id="pro_image" [(ngModel)]="project.image" placeholder="Imagen" required>
+            <label for="pro_image">Imagen</label>
+            <div [ngClass]="!isImageLoaded() ? 'text-primary d-block mt-2' : 'd-none'">
+              Porfavor, indique una imagen válida.
+            </div>
+          </div>
+        </div>
+        <div [ngClass]="['form-floating mb-3 w-50']">
+          <input type="text" [ngClass]="['form-control']" id="pro_title" [(ngModel)]="project.title" placeholder="Título" required>
+          <label for="pro_title">Título</label>
+        </div>
+        <div [ngClass]="['form-floating mb-3 w-50']">
+          <input type="text" [ngClass]="['form-control']" id="pro_desc" [(ngModel)]="project.desc" placeholder="Password" required>
+          <label for="pro_desc">Descripción</label>
+        </div>
+        <div [ngClass]="['form-floating mb-3 w-50']">
+          <input type="text" [ngClass]="['form-control']" id="pro_tags" [(ngModel)]="tags" placeholder="Tags" required>
+          <label for="pro_tags">Tags</label>
+        </div>
+        
+        <ckeditor [editor]="textEditor" id="pro_html" [config]="editorConfig" [(ngModel)]="project.html"></ckeditor>
+
+        <button type="button" [ngClass]="['btn btn-secondary m-5']" (click)="managing = false">Cancelar</button>
+        <button type="button" *ngIf="mode == 'add'" [disabled]="!isImageLoaded()" (click)="addProject()" [ngClass]="['btn btn-primary m-5']">
+          <i [ngClass]="['fas fa-plus']"></i> Añadir
+        </button>
+        <button type="button" *ngIf="mode == 'update'" [disabled]="!isImageLoaded()" (click)="updateProject()" [ngClass]="['btn btn-primary m-5']">
+          <i [ngClass]="['fas fa-pen']"></i> Modificar
+        </button>
+      </div>
     </div>
   </div>
 </div>
@@ -78,11 +137,10 @@
         <div [ngClass]="['text-center']">
           <img [src]="project.image" alt="Representación del proyecto: {{ project.title }}" [ngClass]="['shadow p-3 rounded pro-card']" />
           <h1 [ngClass]="['my-3']">{{ project.title }}</h1>
-          <button type="button" [ngClass]="['btn btn-outline-primary']" (click)="viewProject(project.id)" data-bs-dismiss="modal">
+          <button type="button" [ngClass]="['btn btn-outline-primary my-3']" (click)="viewProject(project.id)" data-bs-dismiss="modal">
             <i [ngClass]="['fas fa-external-link-alt']"></i> Saber más
           </button>
         </div>
-        <hr />
         <div [ngClass]="['d-flex justify-content-center justify-content-md-start mx-2']">
           {{project.desc}}
         </div>
@@ -95,70 +153,6 @@
 
       <div [ngClass]="['modal-footer']">
         <button type="button" [ngClass]="['btn btn-secondary']" data-bs-dismiss="modal">Cerrar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div [ngClass]="['modal fade']" id="add_and_update_projectModal" tabindex="-1" aria-labelledby="add_and_update_projectModalLabel" aria-hidden="true">
-  <div [ngClass]="['modal-dialog modal-dialog-centered']">
-    <div [ngClass]="['modal-content']">
-      <div [ngClass]="['modal-header']">
-        <div [ngClass]="['d-flex justify-content-start align-items-center px-4']" *ngIf="mode == 'add'">
-          <i [ngClass]="['fas fa-plus me-2']"></i>
-          <i [ngClass]="['fas fa-briefcase m-0 me-2 i-font-header']"></i>
-          <h5 [ngClass]="['modal-title']">
-            Nuevo proyecto
-          </h5>
-        </div>
-        <div [ngClass]="['d-flex justify-content-start align-items-center px-4']" *ngIf="mode == 'update'">
-          <i [ngClass]="['fas fa-pen m-0 me-2 i-font-header']"></i>
-          <h5 [ngClass]="['modal-title']">
-            Modificar proyecto
-          </h5>
-        </div>
-        <button type="button" [ngClass]="['btn-close']" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-
-      <div [ngClass]="['modal-body']">
-        <div [ngClass]="['text-center']">
-          <div [ngClass]="['form-floating mb-3']">
-            <img id="pro_add_img" [src]="project.image" *ngIf="isImageLoaded()" alt="Representación del proyecto: {{project.title}}" [ngClass]="['shadow p-3 mb-5 rounded pro-card']" />
-            <input type="text" [ngClass]="['form-control']" id="pro_add_image" [(ngModel)]="project.image" placeholder="Imagen" required>
-            <label for="pro_add_image">Imagen</label>
-            <div [ngClass]="!isImageLoaded() ? 'text-primary d-block mt-2' : 'd-none'">
-              Porfavor, indique una imagen válida.
-            </div>
-          </div>
-          <div [ngClass]="['form-floating mb-3']">
-            <input type="text" [ngClass]="['form-control']" id="pro_add_title" [(ngModel)]="project.title" placeholder="Título" required>
-            <label for="pro_add_title">Título</label>
-          </div>
-          <div [ngClass]="['form-floating mb-3']">
-            <input type="text" [ngClass]="['form-control']" id="pro_add_desc" [(ngModel)]="project.desc" placeholder="Password" required>
-            <label for="pro_add_desc">Descripción</label>
-          </div>
-          <div [ngClass]="['form-floating mb-3']">
-            <textarea [ngClass]="['form-control']" id="pro_add_html" [(ngModel)]="project.html" placeholder="HTML" rows="10" cols="10" required></textarea>
-            <label for="pro_add_html">HTML</label>
-          </div>
-          <hr />
-          <div [ngClass]="['form-floating']">
-            <input type="text" [ngClass]="['form-control']" id="pro_add_tags" [(ngModel)]="tags" placeholder="Tags" required>
-            <label for="pro_add_tags">Tags</label>
-          </div>
-        </div>
-      </div>
-
-      <div [ngClass]="['modal-footer']">
-        <button type="button" [ngClass]="['btn btn-secondary']" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" [ngClass]="['btn btn-primary']" *ngIf="mode == 'add'" (click)="addProject()" [disabled]="!isImageLoaded()" data-bs-dismiss="modal">
-          <i [ngClass]="['fas fa-plus']"></i> Añadir
-        </button>
-
-        <button type="button" [ngClass]="['btn btn-primary']" *ngIf="mode == 'update'" (click)="updateProject()" data-bs-dismiss="modal">
-          <i [ngClass]="['fas fa-plus']"></i> Modificar
-        </button>
       </div>
     </div>
   </div>

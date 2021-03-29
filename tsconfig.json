@@ -20,7 +20,7 @@
       "es2018",
       "dom"
     ],
-    "allowSyntheticDefaultImports": true
+    "allowJs": true
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

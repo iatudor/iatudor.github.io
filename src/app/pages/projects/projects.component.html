@@ -1,7 +1,7 @@
-<div [ngClass]="['container-fluid min-vh-100 mb-5']">
+<div id="top" [ngClass]="['container-fluid min-vh-100 mb-5']">
   <div [ngClass]="['row text-center mt-5 mb-2']">
     <i [ngClass]="['fas fa-briefcase fa-4x']"></i>
-    <h1 id="anchor" [ngClass]="['title fa-3x']">
+    <h1 [ngClass]="['title fa-3x']">
       Proyectos
     </h1>
     <p>Échale un vistazo a mis últimos proyectos.</p>
@@ -50,10 +50,18 @@
     </h2>
   </div>
 
+  <div *ngIf="!projectsFound() && showBackToTop" [ngClass]="['fixed-bottom row mb-5 d-flex justify-content-end align-items-center']">
+    <div [ngClass]="['d-flex justify-content-center justify-content-md-start m-1 mb-5 col-12 col-md-6 col-lg-3']">
+      <a (click)="backToTop()" title="Volver al principio" [ngClass]="['btn p-0 mb-5']">
+        <i [ngClass]="['fas fa-chevron-circle-up fa-3x back-to-top']"></i>
+      </a>
+    </div>
+  </div>
+  <!-- <div class="fixed-bottom"><i [ngClass]="['fas fa-chevron-circle-up fa-3x']"></i></div> -->
+
   <div *ngIf="!projectsFound()" [ngClass]="['row d-flex justify-content-center mt-5']">
     <div [ngClass]="['col-md-6 col-lg-3']">
       <hr />
-      <a [routerLink]="['/projects', 'tags', ':tag_pro', '#anchor']">Anchor</a>
       <div [ngClass]="['d-flex flex-wrap justify-content-center']">
         <h2>#Tags</h2>
         <a *ngFor="let tag of allProjectsTags; let i = index" (click)="listProjectByTag(tag)" [ngClass]="['pe-auto mx-2 my-2 pointer']">#{{tag}}</a>
@@ -72,11 +80,12 @@
         </div>
         <button type="button" [ngClass]="['btn-close']" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+      
       <div [ngClass]="['modal-body']">
         <div [ngClass]="['text-center']">
           <img [src]="project.image" alt="Representación del proyecto: {{project.title}}" [ngClass]="['shadow p-3 rounded pro-card']" />
           <h1 [ngClass]="['my-3']">{{ project.title }}</h1>
-          <button type="button" [ngClass]="['btn btn-outline-primary']" (click)="viewProject(project.id)" data-bs-dismiss="modal">
+          <button type="button" [ngClass]="['btn btn-outline-primary my-3']" (click)="viewProject(project.id)" data-bs-dismiss="modal">
             <i [ngClass]="['fas fa-external-link-alt']"></i> Saber más
           </button>
         </div>
@@ -89,6 +98,7 @@
           <a *ngFor="let tag of project.tags; let i = index" [ngClass]="['mx-2 pointer']" (click)="listProjectByTag(tag)" data-bs-dismiss="modal">#{{tag}}</a>
         </div>
       </div>
+
       <div [ngClass]="['modal-footer']">
         <button type="button" [ngClass]="['btn btn-secondary']" data-bs-dismiss="modal">Cerrar</button>
       </div>

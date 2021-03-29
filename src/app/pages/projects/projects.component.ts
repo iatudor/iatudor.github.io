@@ -16,6 +16,7 @@ export class ProjectsComponent {
   private _projects: Project[] = [];
   public allProjectsTags: string[] = [];
   public titleFilter: string = "";
+  public showBackToTop: boolean = false;
 
   constructor(private router: Router,
     private route: ActivatedRoute,//*
@@ -57,6 +58,14 @@ export class ProjectsComponent {
       else
         this.router.navigate(['projects']);
     });
+
+    //* Mostrar botó tornar a dalt
+    window.onscroll = () => {
+      if (document.body.scrollTop > 436 || document.documentElement.scrollTop > 436)
+        this.showBackToTop = true;
+      else
+        this.showBackToTop = false;      
+    }
   }
 
   get project(): Project {
@@ -69,6 +78,10 @@ export class ProjectsComponent {
 
   projectsFound(): boolean {
     return this._projects.length < 1;
+  }
+
+  backToTop(): void {
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
   }
 
   filterProjects(tag?: string) {
