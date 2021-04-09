@@ -20,7 +20,8 @@
       "es2018",
       "dom"
     ],
-    "allowJs": true
+    "allowJs": true,
+    "resolveJsonModule": true,
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

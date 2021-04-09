@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-// import { Observable } from 'rxjs';
 
 import { AngularFireAuth } from '@angular/fire/auth';
 import firebase from 'firebase/app';
@@ -21,9 +20,8 @@ export class FirebaseAuthService {
   logout(): Promise<void> {
     return this.fireAuth.signOut();
   }
-  
+
   get user(): any {
     return this.fireAuth.user;
   }
-
 }

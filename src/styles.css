@@ -15,6 +15,12 @@ html {
   box-sizing: border-box;
 }
 
+body::before {
+  display:block;
+  content: '';
+  height:52px; /* or whatever */
+}
+
 body {
   position: relative;
   margin: 0;
@@ -145,6 +151,11 @@ a {
   /* background-color: rgba(2, 85, 139, 0.91); */
   /* background-color: #12385c9e !important; */
   background-color: #054179e0 !important;
+}
+
+.i-a2 {
+	background-color: #2d3b48 !important;
+	background-color: #12385c !important;
 }
 
 .h-border-r-btn {

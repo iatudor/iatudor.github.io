@@ -1,4 +1,4 @@
-<header [ngClass]="['sticky-top']">
+<header [ngClass]="['fixed-top']">
   <div [ngClass]="['collapse i-a backdrop-filter']" id="headerNavbar">
     <div [ngClass]="['container']">
       <div [ngClass]="['row']">
@@ -50,7 +50,7 @@
             <i [ngClass]="['fas fa-briefcase']"></i> Proyectos
           </a>
           <a *ngIf="user != null" [ngClass]="['btn btn-sm btn-outline-light dropdown-toggle dropdown-toggle-split border-0']" data-bs-toggle="dropdown" aria-expanded="false"></a>
-          <ul *ngIf="user != null" [ngClass]="['dropdown-menu']">
+          <ul *ngIf="user != null" [ngClass]="['dropdown-menu dropdown-menu-dark i-a']">
             <li>
               <a [routerLink]="['/projects']" [routerLinkActive]="['active']" [ngClass]="['dropdown-item']">
                 <i [ngClass]="['fas fa-briefcase']"></i> Proyectos

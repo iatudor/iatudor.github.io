@@ -9,7 +9,7 @@
   <div *ngIf="!managing" [ngClass]="['row justify-content-center']">
     <div [ngClass]="['col-12 col-lg-4']">
       <div [ngClass]="['input-group mb-3']">
-        <input type="text" [ngClass]="['form-control']" placeholder="Buscar proyecto por título" [(ngModel)]="titleFilter" aria-label="Buscar proyecto por título" aria-describedby="basic-addon2">
+        <input type="text" [ngClass]="['form-control']" placeholder="Buscar proyecto por título" (keydown)="onKeyDown($event)" [(ngModel)]="titleFilter" aria-label="Buscar proyecto por título" aria-describedby="basic-addon2">
         <div [ngClass]="['input-group-append']">
           <button [ngClass]="['btn btn-outline-secondary']" type="button" (click)="searchProjects()"><i class="fas fa-search"></i></button>
         </div>
@@ -17,13 +17,13 @@
     </div>
 
     <div [ngClass]="['col-12']">
-      <button type="button" [ngClass]="['btn btn-primary m-4']" (click)="clearProject()" data-bs-toggle="modal" data-bs-target="#add_and_update_projectModal">
+      <button type="button" [ngClass]="['btn btn-primary m-4']" (click)="clearProject()">
         <i [ngClass]="['fas fa-plus']"></i> Añadir proyecto
       </button>
       <table id="list_news_articles" [ngClass]="['table caption-top table-striped table-hover table-responsive']">
         <thead>
-          <tr>
-            <th scope="col">Título</th>
+          <tr *ngIf="projectsFound()">
+            <th scope="col">Título proyecto</th>
             <th scope="col">Descripción</th>
             <th scope="col" colspan="3"></th>
           </tr>
@@ -52,9 +52,14 @@
               </button>
             </td>
           </tr>
+          <tr *ngIf="!projectsFound()">
+            <th scope="col" colspan="5">
+              <h4>Ningún proyecto encontrado</h4>
+            </th>
+          </tr>
         </tbody>
       </table>
-      <button type="button" [ngClass]="['btn btn-primary m-4']" (click)="clearProject()" data-bs-toggle="modal" data-bs-target="#add_and_update_projectModal">
+      <button type="button" *ngIf="projectsFound()" [ngClass]="['btn btn-primary m-4']" (click)="clearProject()">
         <i [ngClass]="['fas fa-plus']"></i> Añadir proyecto
       </button>
     </div>
@@ -80,7 +85,6 @@
         <button type="button" [ngClass]="['btn btn-secondary m-5']" (click)="managing = false">Cancelar</button>
       </div>
       
-
       <div [ngClass]="['text-center']">
         <img id="pro_img" [src]="project.image" *ngIf="isImageLoaded()" alt="Representación del proyecto: {{project.title}}" [ngClass]="['shadow p-3 mb-5 rounded pro-card']" />
 
@@ -106,7 +110,7 @@
           <label for="pro_tags">Tags</label>
         </div>
         
-        <ckeditor [editor]="textEditor" id="pro_html" [config]="editorConfig" [(ngModel)]="project.html"></ckeditor>
+        <ckeditor id="pro_html" [editor]="textEditor" [config]="editorConfig" [(ngModel)]="project.html"></ckeditor>
 
         <button type="button" [ngClass]="['btn btn-secondary m-5']" (click)="managing = false">Cancelar</button>
         <button type="button" *ngIf="mode == 'add'" [disabled]="!isImageLoaded()" (click)="addProject()" [ngClass]="['btn btn-primary m-5']">

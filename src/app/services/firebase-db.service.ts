@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { AngularFirestore } from '@angular/fire/firestore';
-import { Project } from '../models/project';
+import { Project } from 'src/app/models/project';
 
 @Injectable({ providedIn: 'root' })
 export class FirebaseDBService {
@@ -17,8 +17,8 @@ export class FirebaseDBService {
     const id: string = this.firestore.createId();
     this.firestore.collection("projects").doc(id).set({
       id: id,
-      image: project.image,
       title: project.title,
+      image: project.image,
       desc: project.desc,
       html: project.html,
       tags: project.tags
@@ -27,9 +27,9 @@ export class FirebaseDBService {
 
   updateProject(id: string, project: Project) {
     this.firestore.collection("projects").doc(id).update({
-      desc: project.desc,
       title: project.title,
       image: project.image,
+      desc: project.desc,
       html: project.html,
       tags: project.tags
     });

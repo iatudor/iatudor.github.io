@@ -109,6 +109,15 @@ export class ManageProjectsComponent {
     this.fireDBService.deleteProject(this._projects[i].id);
   }
 
+  projectsFound(): boolean {
+    return this._projects.length > 0;
+  }
+
+  onKeyDown(evt: KeyboardEvent):void {
+    if (evt.key === "Enter")
+      this.searchProjects();
+  }
+
   searchProjects() {
     if (this.titleFilter == "") {
       this.fireDBService.getProjects().subscribe(
@@ -145,5 +154,4 @@ export class ManageProjectsComponent {
   listProjectByTag(tag_pro: string) { //*
     this.router.navigate(['projects', 'tags', tag_pro]);
   }
-
 }

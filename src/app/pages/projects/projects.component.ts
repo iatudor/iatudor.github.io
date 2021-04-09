@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-
+import { DomSanitizer, SafeHtml, SafeScript, SafeStyle, SafeUrl, SafeResourceUrl } from '@angular/platform-browser';
 
 import { Project } from 'src/app/models/project';
 import { FirebaseDBService } from 'src/app/services/firebase-db.service';
@@ -17,16 +17,23 @@ export class ProjectsComponent {
   public allProjectsTags: string[] = [];
   public titleFilter: string = "";
   public showBackToTop: boolean = false;
-
-  constructor(private router: Router,
-    private route: ActivatedRoute,//*
+  public videoProjects: any;
+    
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private sanitizer: DomSanitizer,
     private fireDBService: FirebaseDBService) {
-
+          
     this._project = new Project;
 
     this.fireDBService.getProjects().subscribe(
       (oProjects: Project[]) => {
         this._projects = oProjects;
+        this._projects.forEach(element => {
+          element
+          
+        });
       });
 
     //* Obtenir tots els tags dels projectes
@@ -67,17 +74,17 @@ export class ProjectsComponent {
         this.showBackToTop = false;      
     }
   }
-
+  
   get project(): Project {
     return this._project;
   }
-
+  
   get projects(): Project[] {
     return this._projects;
   }
-
-  projectsFound(): boolean {
-    return this._projects.length < 1;
+  
+  getSantizeUrl(url : string) { 
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url); 
   }
 
   backToTop(): void {
@@ -108,7 +115,6 @@ export class ProjectsComponent {
 
   //* Ordenar imatge + contingut segons l'índex parell o imparell
   getOrder(classesToAdd: string, n: number): string {
-
     if (n % 2 == 0) return classesToAdd + ' order-md-2';
     else return classesToAdd + ' order-md-1';
   }
@@ -123,19 +129,20 @@ export class ProjectsComponent {
     this.router.navigate(['project', id_pro]);
   }
 
+  projectsFound(): boolean {
+    return this._projects.length > 0;
+  }
+  
+  onKeyDown(evt: KeyboardEvent):void {
+    if (evt.key === "Enter")
+      this.listProjectByTitle();
+  }
+
   listProjectByTitle() {
-    //* Llistar-los tots si no s'especifica cap
-    /* if (this.titleFilter == undefined || this.titleFilter == "") {
-      this.fireDBService.getProjects().subscribe(
-        (oProjects: Project[]) => {
-          this._projects = oProjects;
-        });
-    } else */
       this.router.navigate(['projects', 'title', this.titleFilter]);
   }
 
   listProjectByTag(tag_pro: string) { //*
     this.router.navigate(['projects', 'tags', tag_pro]);
   }
-
 }
