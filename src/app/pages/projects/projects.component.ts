@@ -17,7 +17,7 @@ export class ProjectsComponent {
   public allProjectsTags: string[] = [];
   public titleFilter: string = "";
   public showBackToTop: boolean = false;
-  public videoProjects: any;
+  public videoProjectSRC: any;
 
   constructor(
     private router: Router,
@@ -80,11 +80,6 @@ export class ProjectsComponent {
     return this._projects;
   }
 
-  getSanitizedVideoProjectURL(projectTitle: string): SafeHtml | void {
-    if (projectTitle)
-      return this.sanitizer.bypassSecurityTrustResourceUrl("assets/media/" + projectTitle + ".mp4");
-  }
-
   backToTop(): void {
     document.body.scrollTop = document.documentElement.scrollTop = 0;
   }
@@ -119,6 +114,12 @@ export class ProjectsComponent {
 
   loadProject(i: number) {
     this._project = this._projects[i];
+    this.videoProjectSRC = this.getSanitizedVideoProjectSRC(this._project.title);
+  }
+
+  getSanitizedVideoProjectSRC(projectTitle: string): SafeHtml | void {
+    if (projectTitle)
+      return this.sanitizer.bypassSecurityTrustResourceUrl("assets/media/" + projectTitle + ".mp4");
   }
 
   projectsFound(): boolean {
