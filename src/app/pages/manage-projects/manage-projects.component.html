@@ -6,13 +6,19 @@
     </h1>
   </div>
 
-  <div *ngIf="!managing" [ngClass]="['row justify-content-center']">
-    <div [ngClass]="['col-12 col-lg-4']">
+  <div *ngIf="!managing" [ngClass]="['row d-flex justify-content-center']">
+    <div [ngClass]="['col-12 col-lg-5']">
       <div [ngClass]="['input-group mb-3']">
         <input type="text" [ngClass]="['form-control']" placeholder="Buscar proyecto por título" (keydown)="onKeyDown($event)" [(ngModel)]="titleFilter" aria-label="Buscar proyecto por título" aria-describedby="basic-addon2">
         <div [ngClass]="['input-group-append']">
-          <button [ngClass]="['btn btn-outline-secondary']" type="button" (click)="searchProjects()"><i class="fas fa-search"></i></button>
+          <button type="button" [ngClass]="['btn btn-outline-secondary']" (click)="listProjectByTitle()">
+            <i class="fas fa-search"></i>
+          </button>
         </div>
+      </div>
+      <div [ngClass]="['d-flex flex-wrap justify-content-center']">
+        <h2>#Tags</h2>
+        <a *ngFor="let tag of allProjectsTags; let i = index" (click)="listProjectByTag(tag)" [ngClass]="['pe-auto mx-2 my-2 pointer']">#{{tag}}</a>
       </div>
     </div>
 
@@ -75,7 +81,7 @@
             Nuevo proyecto
           </h2>
         </div>
-        
+
         <div [ngClass]="['d-flex justify-content-start align-items-center']" *ngIf="mode == 'update'">
           <i [ngClass]="['fas fa-pen m-0 me-2 i-font-header']"></i>
           <h2 [ngClass]="['modal-title']">
@@ -84,7 +90,7 @@
         </div>
         <button type="button" [ngClass]="['btn btn-secondary m-5']" (click)="managing = false">Cancelar</button>
       </div>
-      
+
       <div [ngClass]="['text-center']">
         <img id="pro_img" [src]="project.image" *ngIf="isImageLoaded()" alt="Representación del proyecto: {{project.title}}" [ngClass]="['shadow p-3 mb-5 rounded pro-card']" />
 
@@ -109,8 +115,8 @@
           <input type="text" [ngClass]="['form-control']" id="pro_tags" [(ngModel)]="tags" placeholder="Tags" required>
           <label for="pro_tags">Tags</label>
         </div>
-        
-        <ckeditor id="pro_html" [editor]="textEditor" [config]="editorConfig" [(ngModel)]="project.html"></ckeditor>
+
+        <ckeditor id="pro_html" [editor]="dataEditor" [config]="editorConfig" [(ngModel)]="project.html"></ckeditor>
 
         <button type="button" [ngClass]="['btn btn-secondary m-5']" (click)="managing = false">Cancelar</button>
         <button type="button" *ngIf="mode == 'add'" [disabled]="!isImageLoaded()" (click)="addProject()" [ngClass]="['btn btn-primary m-5']">

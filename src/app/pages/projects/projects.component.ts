@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { DomSanitizer, SafeHtml, SafeScript, SafeStyle, SafeUrl, SafeResourceUrl } from '@angular/platform-browser';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 import { Project } from 'src/app/models/project';
 import { FirebaseDBService } from 'src/app/services/firebase-db.service';
@@ -18,39 +18,12 @@ export class ProjectsComponent {
   public titleFilter: string = "";
   public showBackToTop: boolean = false;
   public videoProjects: any;
-    
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private sanitizer: DomSanitizer,
     private fireDBService: FirebaseDBService) {
-          
-    this._project = new Project;
-
-    this.fireDBService.getProjects().subscribe(
-      (oProjects: Project[]) => {
-        this._projects = oProjects;
-        this._projects.forEach(element => {
-          element
-          
-        });
-      });
-
-    //* Obtenir tots els tags dels projectes
-    this.fireDBService.getProjectsTags().subscribe(
-      (oProjects: Project[]) => {
-        oProjects.forEach(
-          (oProject) => {
-            oProject.tags.forEach(
-              (oTag) => {
-                //* Evitar duplicats
-                if (this.allProjectsTags.includes(oTag) === false)
-                  this.allProjectsTags.push(oTag);
-              }
-            )
-          }
-        )
-      });
 
     //* Paràmetres filtre
     this.route.params.subscribe((params: Params) => {
@@ -66,25 +39,50 @@ export class ProjectsComponent {
         this.router.navigate(['projects']);
     });
 
+    //* Obtenir tots els tags dels projectes
+    this.fireDBService.getProjectsTags().subscribe(
+      (oProjects: Project[]) => {
+        oProjects.forEach(
+          (oProject) => {
+            oProject.tags.forEach(
+              (oTag) => {
+                //* Evitar duplicats
+                if (this.allProjectsTags.includes(oTag) === false)
+                  this.allProjectsTags.push(oTag);
+              }
+            )
+          }
+        )
+      }
+    );
+
     //* Mostrar botó tornar a dalt
     window.onscroll = () => {
       if (document.body.scrollTop > 436 || document.documentElement.scrollTop > 436)
         this.showBackToTop = true;
       else
-        this.showBackToTop = false;      
+        this.showBackToTop = false;
     }
+
+    this._project = new Project;
+
+    this.fireDBService.getProjects().subscribe(
+      (oProjects: Project[]) => {
+        this._projects = oProjects;
+      });
   }
-  
+
   get project(): Project {
     return this._project;
   }
-  
+
   get projects(): Project[] {
     return this._projects;
   }
-  
-  getSantizeUrl(url : string) { 
-    return this.sanitizer.bypassSecurityTrustResourceUrl(url); 
+
+  getSanitizedVideoProjectURL(projectTitle: string): SafeHtml | void {
+    if (projectTitle)
+      return this.sanitizer.bypassSecurityTrustResourceUrl("assets/media/" + projectTitle + ".mp4");
   }
 
   backToTop(): void {
@@ -123,23 +121,21 @@ export class ProjectsComponent {
     this._project = this._projects[i];
   }
 
-  viewProject(id_pro: string) {
-    console.log(id_pro);
-
-    this.router.navigate(['project', id_pro]);
-  }
-
   projectsFound(): boolean {
     return this._projects.length > 0;
   }
-  
-  onKeyDown(evt: KeyboardEvent):void {
+
+  onKeyDown(evt: KeyboardEvent): void {
     if (evt.key === "Enter")
       this.listProjectByTitle();
   }
 
+  viewProject(id_pro: string) {
+    this.router.navigate(['project', id_pro]);
+  }
+
   listProjectByTitle() {
-      this.router.navigate(['projects', 'title', this.titleFilter]);
+    this.router.navigate(['projects', 'title', this.titleFilter]);
   }
 
   listProjectByTag(tag_pro: string) { //*

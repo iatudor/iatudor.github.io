@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 import firebase from 'firebase/app';
 import { Project } from 'src/app/models/project';
@@ -12,11 +13,12 @@ import { FirebaseAuthService } from 'src/app/services/firebase-auth.service';
 })
 export class ViewProjectComponent {
 
-    public user!: firebase.User;
+  public user!: firebase.User;
   private _project: Project;
 
   constructor(private router: Router,
     private route: ActivatedRoute,
+    private sanitizer: DomSanitizer,
     private fireAuth: FirebaseAuthService,
     private fireDBService: FirebaseDBService) {
 
@@ -24,11 +26,11 @@ export class ViewProjectComponent {
 
     this.route.params.subscribe((params: Params) => {
 
-    this.fireAuth.user.subscribe(
-          (oUser: firebase.User) => {
-            this.user = oUser;
-          }
-        )
+      this.fireAuth.user.subscribe(
+        (oUser: firebase.User) => {
+          this.user = oUser;
+        }
+      )
 
       let id_pro = params['id_pro'];
 
@@ -44,6 +46,11 @@ export class ViewProjectComponent {
 
   get project(): Project {
     return this._project;
+  }
+
+  getSanitizedVideoProjectURL(projectTitle: string): SafeHtml | void {
+    if (projectTitle)
+      return this.sanitizer.bypassSecurityTrustResourceUrl("assets/media/" + projectTitle + ".mp4");
   }
 
   listProjectByTag(tag_pro: string) { //*

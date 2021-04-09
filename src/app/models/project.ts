@@ -1,7 +1,6 @@
 export class Project {
   private _id: string;
   private _title: string;
-  private _video: string;
   private _desc: string;
   private _image: string;
   private _html: string;
@@ -10,7 +9,6 @@ export class Project {
   constructor() {
     this._id = "";
     this._title = "";
-    this._video = "";
     this._desc = "";
     this._image = "";
     this._html = "";
@@ -20,7 +18,6 @@ export class Project {
   public loadProject(pro: Project) {
     this._id = pro.id;
     this._title = pro.title;
-    this._video = pro.video;
     this._desc = pro.desc;
     this._image = pro.image;
     this._html = pro.html;
@@ -41,14 +38,6 @@ export class Project {
 
   public set title(title: string) {
     this._title = title;
-  }
-
-  public get video(): string {
-    return this._video;
-  }
-
-  public set video(video: string) {
-    this._video = video;
   }
 
   public get desc(): string {

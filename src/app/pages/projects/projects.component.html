@@ -12,7 +12,7 @@
       <div [ngClass]="['input-group mb-3']">
         <input type="text" [ngClass]="['form-control']" placeholder="Buscar proyecto por título" (keydown)="onKeyDown($event)" [(ngModel)]="titleFilter" aria-label="Buscar proyecto por título" aria-describedby="basic-addon2">
         <div [ngClass]="['input-group-append']">
-          <button [ngClass]="['btn btn-outline-secondary']" type="submit" (click)="listProjectByTitle()">
+          <button type="button" [ngClass]="['btn btn-outline-secondary']" (click)="listProjectByTitle()">
             <i [ngClass]="['fas fa-search']"></i></button>
         </div>
       </div>
@@ -81,8 +81,10 @@
       <div [ngClass]="['modal-body']">
         <div [ngClass]="['text-center']">
           <div class="ratio ratio-16x9">
-            <iframe [src]="getSantizeUrl(project.video)"></iframe>
-            <!-- <iframe src="https://drive.google.com/file/d/1eDAa0zCtXCFepMHqH9VTsGEoaFPTG_Ce/preview" width="640" height="480"></iframe> -->
+            <video *ngIf="project.title" title="Vídeo {{ project.title }}" allowfullscreen controls width="100%">
+              <source [src]="getSanitizedVideoProjectURL(project.title)" type="video/webm">
+              El vostre navegador no admet vídeos incrustats :(
+            </video>
           </div>
           <h1 [ngClass]="['my-3']">{{ project.title }}</h1>
           <button type="button" [ngClass]="['btn btn-outline-primary my-3']" (click)="viewProject(project.id)" data-bs-dismiss="modal">

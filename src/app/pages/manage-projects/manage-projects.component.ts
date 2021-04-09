@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { Project } from 'src/app/models/project';
 import { FirebaseDBService } from 'src/app/services/firebase-db.service';
@@ -14,16 +14,49 @@ export class ManageProjectsComponent {
 
   private _project: Project;
   private _projects: Project[] = [];
+  public allProjectsTags: string[] = [];
   public tags: string = "";
   public mode: string = "add";
   public managing: boolean = false;
   public titleFilter: string = "";
-  public textEditor = ClassicEditor;
-  // public dataEditor: string = "";
+  public dataEditor = ClassicEditor;
   public editorConfig: any = {};
 
-  constructor(private router: Router,
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
     private fireDBService: FirebaseDBService) {
+
+    //* Paràmetres filtre
+    this.route.params.subscribe((params: Params) => {
+
+      let tagFilter = params['tag_pro'];
+      this.titleFilter = params['title_pro'];
+
+      if (tagFilter != null)
+        this.filterProjects(tagFilter);
+      else if (this.titleFilter != null)
+        this.filterProjects();
+      else
+        this.router.navigate(['manage']);
+    });
+
+    //* Obtenir tots els tags dels projectes
+    this.fireDBService.getProjectsTags().subscribe(
+      (oProjects: Project[]) => {
+        oProjects.forEach(
+          (oProject) => {
+            oProject.tags.forEach(
+              (oTag) => {
+                //* Evitar duplicats
+                if (this.allProjectsTags.includes(oTag) === false)
+                  this.allProjectsTags.push(oTag);
+              }
+            )
+          }
+        )
+      }
+    );
 
     this._project = new Project();
 
@@ -73,11 +106,33 @@ export class ManageProjectsComponent {
     this._project = new Project();
   }
 
+  filterProjects(tag?: string) {
+
+    if (tag) {
+      //* LListar-los per tags
+      this.fireDBService.getProjectsByTags(tag).subscribe(
+        (oProjects: Project[]) => {
+          this._projects = oProjects;
+        });
+    } else if (this.titleFilter != undefined && this.titleFilter != "") {
+      //* Llisatar-los per filtre
+      this.fireDBService.getProjectsByTitle(this.titleFilter).subscribe(
+        (oProjects: Project[]) => {
+          this._projects = oProjects;
+        });
+    } else { //* Llisatar-los tots
+      this.fireDBService.getProjects().subscribe(
+        (oProjects: Project[]) => {
+          this._projects = oProjects;
+        });
+    }
+  }
+
   loadProject(i: number, managing: boolean = true) {
-    
+
     if (managing)
       this.managing = true;
-    
+
     this.mode = "update";
     this._project = new Project();
     this._project.loadProject(this._projects[i]);
@@ -113,24 +168,24 @@ export class ManageProjectsComponent {
     return this._projects.length > 0;
   }
 
-  onKeyDown(evt: KeyboardEvent):void {
-    if (evt.key === "Enter")
-      this.searchProjects();
-  }
+  // onKeyDown(evt: KeyboardEvent): void {
+  //   if (evt.key === "Enter")
+  //     this.searchProjects();
+  // }
 
-  searchProjects() {
-    if (this.titleFilter == "") {
-      this.fireDBService.getProjects().subscribe(
-        (oProjects: Project[]) => {
-          this._projects = oProjects;
-        });
-    } else {
-      this.fireDBService.getProjectsByTitle(this.titleFilter).subscribe(
-        (oProjects: Project[]) => {
-          this._projects = oProjects;
-        });
-    }
-  }
+  // searchProjects() {
+  //   if (this.titleFilter == "") {
+  //     this.fireDBService.getProjects().subscribe(
+  //       (oProjects: Project[]) => {
+  //         this._projects = oProjects;
+  //       });
+  //   } else {
+  //     this.fireDBService.getProjectsByTitle(this.titleFilter).subscribe(
+  //       (oProjects: Project[]) => {
+  //         this._projects = oProjects;
+  //       });
+  //   }
+  // }
 
   private splitTags() {
     let tagss = this.tags.split(" ");
@@ -147,11 +202,20 @@ export class ManageProjectsComponent {
     return isLoaded;
   }
 
+  onKeyDown(evt: KeyboardEvent): void {
+    if (evt.key === "Enter")
+      this.listProjectByTitle();
+  }
+
   viewProject(id_pro: string) {
     this.router.navigate(['project', id_pro]);
   }
 
+  listProjectByTitle() {
+    this.router.navigate(['manage', 'title', this.titleFilter]);
+  }
+
   listProjectByTag(tag_pro: string) { //*
-    this.router.navigate(['projects', 'tags', tag_pro]);
+    this.router.navigate(['manage', 'tags', tag_pro]);
   }
 }
