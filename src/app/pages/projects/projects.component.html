@@ -82,6 +82,7 @@
         <div [ngClass]="['text-center']">
           <div class="ratio ratio-16x9">
             <video *ngIf="project.title" [src]="videoProjectSRC" title="Vídeo {{ project.title }}" allowfullscreen controls width="100%">
+              El vostre navegador no admet vídeos incrustats :(
             </video>
           </div>
           <h1 [ngClass]="['my-3']">{{ project.title }}</h1>

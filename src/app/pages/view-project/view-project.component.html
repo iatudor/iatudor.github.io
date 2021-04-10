@@ -20,7 +20,7 @@
     </div>
   </div>
 
-  <div [ngClass]="['row mx-3 ck-content']" [innerHTML]="project.html"></div>
+  <div [ngClass]="['row mx-3 ck-content']" [innerHTML]="sanitizedProjectHtml"></div>
 
   <div [ngClass]="['row d-flex justify-content-center mt-5']">
     <div [ngClass]="['col-md-6 col-lg-3']">

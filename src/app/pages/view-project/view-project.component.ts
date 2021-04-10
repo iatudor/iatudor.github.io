@@ -13,8 +13,9 @@ import { FirebaseAuthService } from 'src/app/services/firebase-auth.service';
 })
 export class ViewProjectComponent {
 
-  public user!: firebase.User;
   private _project: Project;
+  public user!: firebase.User;
+  public sanitizedProjectHtml: any;
 
   constructor(private router: Router,
     private route: ActivatedRoute,
@@ -40,6 +41,7 @@ export class ViewProjectComponent {
       this.fireDBService.getProjectById(id_pro).subscribe(
         (oProjects: Project[]) => {
           this._project = oProjects[0];
+          this.sanitizedProjectHtml = this.sanitizer.bypassSecurityTrustHtml(this._project.html);
         });
     });
   }
