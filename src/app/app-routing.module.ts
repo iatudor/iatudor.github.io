@@ -21,7 +21,7 @@ const routerOptions: ExtraOptions = {
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'cv', component: CvComponent },
+  // { path: 'cv', component: CvComponent },
   {
     path: 'projects', children: [
       { path: '', component: ProjectsComponent },
